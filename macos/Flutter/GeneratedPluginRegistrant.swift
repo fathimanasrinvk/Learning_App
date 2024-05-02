@@ -5,6 +5,14 @@
 import FlutterMacOS
 import Foundation
 
+<<<<<<< HEAD
+import path_provider_foundation
+import shared_preferences_foundation
+
+func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
+  PathProviderPlugin.register(with: registry.registrar(forPlugin: "PathProviderPlugin"))
+  SharedPreferencesPlugin.register(with: registry.registrar(forPlugin: "SharedPreferencesPlugin"))
+=======
 import cloud_firestore
 import file_selector_macos
 import firebase_auth
@@ -31,4 +39,5 @@ func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
   SqflitePlugin.register(with: registry.registrar(forPlugin: "SqflitePlugin"))
   UrlLauncherPlugin.register(with: registry.registrar(forPlugin: "UrlLauncherPlugin"))
   FVPVideoPlayerPlugin.register(with: registry.registrar(forPlugin: "FVPVideoPlayerPlugin"))
+>>>>>>> 390b8248e3ad6378ffd927e2626a85b13c778ca0
 }

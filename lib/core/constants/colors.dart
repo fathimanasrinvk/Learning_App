@@ -10,9 +10,4 @@ class ColorTheme {
   static Color red = const Color.fromARGB(255, 209, 0, 0);
   static Color green = const Color(0xFF00c254);
   static Color lightgrey = const Color(0xFFBBBBBB);
-
-
-
-
-
 }

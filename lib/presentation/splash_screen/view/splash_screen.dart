@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gaming_app/core/constants/colors.dart';
+import 'package:introduction_screen/introduction_screen.dart';
 
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: SplashScreen(),
-  ));
-}
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -26,8 +20,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ColorTheme.maincolor,
+    return IntroductionScreen(
+      
     );
   }
 }

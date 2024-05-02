@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
+import 'package:gaming_app/presentation/registration_page/view/registration.dart';
 import 'package:google_fonts/google_fonts.dart';
-// void main(){
-//   runApp(MaterialApp(home: LoginScreen(),));
-// }
+
 
 class LoginScreen extends StatelessWidget {
   final econtroller = TextEditingController();
   final pcontroller = TextEditingController();
+  final formkey = GlobalKey<FormState>();
 
 
   @override
@@ -19,7 +19,7 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: 150,),
-              Text("Welcome To SpeakUp",style: GoogleFonts.nunito(fontWeight: FontWeight.w700,color: ColorTheme.maincolor,fontSize:24),),
+              Text("Welcome Back !!",style: GoogleFonts.nunito(fontWeight: FontWeight.w700,color: ColorTheme.maincolor,fontSize:24),),
                 Padding(
                   padding: const EdgeInsets.only(left: 35,right: 35,top: 100),
                   child: TextFormField(
@@ -74,7 +74,9 @@ class LoginScreen extends StatelessWidget {
               ),
 
                 SizedBox(height: 280),
-    TextButton(onPressed: () {},
+    TextButton(onPressed: () {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>RegistrationScreen()));
+    },
     child:RichText( text: TextSpan( children: <TextSpan>[
     TextSpan( text: "Don't have account ?  ",style: GoogleFonts.lato(
     decoration: TextDecoration.none, fontSize: 14,color: Colors.black),),

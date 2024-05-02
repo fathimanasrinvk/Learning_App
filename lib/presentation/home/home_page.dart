@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../alphabet screen/alphabet screen.dart';
+
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -45,7 +47,7 @@ class HomeScreen extends StatelessWidget {
                   crossAxisSpacing: 20,childAspectRatio: .9),
                   children:List.generate(4, (index) => InkWell(
                     onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>
-                    screen[index]));},
+                    AlphabetScreen()));},
                     child: Container(
                         decoration: BoxDecoration(color: ColorTheme.white,
                           borderRadius: BorderRadius.circular(20),

@@ -6,9 +6,6 @@ class AlphabetScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Alphabets'),
-      ),
       body: ListView.builder(
         itemCount: alphabets.length,
         itemBuilder: (context, index) {

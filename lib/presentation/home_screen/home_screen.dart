@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
       'LEARN WITH GAMES',
       'TRANSLATION'
     ];
-    var screen = [AlphabetScreen(),WordScreen(),GameScreen(),Translation()];
+    var screen = [AlphabetScreen(), WordScreen(), GameScreen(), Translation()];
     double size = constantsize(context);
     return Scaffold(
         body: Stack(children: [
@@ -38,20 +38,18 @@ class HomeScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Hi, Maya👋",
-                    style: GoogleFonts.nunito(
-                      decoration: TextDecoration.none,
-                      fontSize: 20,
-                      color: ColorTheme.maincolor,fontWeight:FontWeight.bold
-                    )
-                  ),
+                  Text("Hi, Maya👋",
+                      style: GoogleFonts.nunito(
+                          decoration: TextDecoration.none,
+                          fontSize: 20,
+                          color: ColorTheme.maincolor,
+                          fontWeight: FontWeight.bold)),
                   Text("Let’s start learning!",
                       style: GoogleFonts.nunito(
                           decoration: TextDecoration.none,
                           fontSize: 15,
-                          color: ColorTheme.maincolor,fontWeight:FontWeight.bold
-                      ))
+                          color: ColorTheme.maincolor,
+                          fontWeight: FontWeight.bold))
                 ],
               ),
             ),
@@ -95,7 +93,7 @@ class HomeScreen extends StatelessWidget {
                                       names[index],
                                       style: GoogleFonts.passionOne(
                                         decoration: TextDecoration.none,
-                                        fontSize: 31,
+                                        fontSize: 25,
                                         color: ColorTheme.maincolor,
                                       ),
                                       textAlign: TextAlign.center,

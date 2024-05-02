@@ -12,12 +12,12 @@ class Translation extends StatelessWidget {
         leading: Icon(null),
         centerTitle: true,
         backgroundColor: Colors.transparent,
-        title: Text("TRANSLATION",  style: GoogleFonts.passionOne(
-            decoration: TextDecoration.none,
-            fontSize: 45,
-            color: ColorTheme.maincolor,fontWeight:FontWeight.bold
-        )),
-
+        title: Text("TRANSLATION",
+            style: GoogleFonts.passionOne(
+                decoration: TextDecoration.none,
+                fontSize: 40,
+                color: ColorTheme.maincolor,
+                fontWeight: FontWeight.w400)),
       ),
     );
   }

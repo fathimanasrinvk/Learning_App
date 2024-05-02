@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/presentation/alphabet%20screen/alphabet%20screen.dart';
+import 'package:gaming_app/presentation/game%20screen/game%20screen.dart';
+import 'package:gaming_app/presentation/word%20screen/word%20screen.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../translation screen/translation.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -12,7 +16,7 @@ class HomeScreen extends StatelessWidget {
       'LEARN WITH GAMES',
       'TRANSLATION'
     ];
-    var screen = [];
+    var screen = [AlphabetScreen(),WordScreen(),GameScreen(),Translation()];
     double size = constantsize(context);
     return Scaffold(
         body: Stack(children: [
@@ -36,16 +40,18 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Text(
                     "Hi, Maya👋",
-                    style: TextStyle(
-                        color: ColorTheme.maincolor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                    style: GoogleFonts.nunito(
+                      decoration: TextDecoration.none,
+                      fontSize: 20,
+                      color: ColorTheme.maincolor,fontWeight:FontWeight.bold
+                    )
                   ),
                   Text("Let’s start learning!",
-                      style: TextStyle(
-                          color: ColorTheme.maincolor,
+                      style: GoogleFonts.nunito(
+                          decoration: TextDecoration.none,
                           fontSize: 15,
-                          fontWeight: FontWeight.bold))
+                          color: ColorTheme.maincolor,fontWeight:FontWeight.bold
+                      ))
                 ],
               ),
             ),
@@ -70,7 +76,7 @@ class HomeScreen extends StatelessWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => AlphabetScreen()));
+                                        builder: (context) => screen[index]));
                               },
                               child: Container(
                                 decoration: BoxDecoration(

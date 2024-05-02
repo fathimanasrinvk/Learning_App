@@ -10,6 +10,11 @@ class ColorTheme {
   static Color red = const Color.fromARGB(255, 209, 0, 0);
   static Color green = const Color(0xFF00c254);
   static Color lightgrey = const Color(0xFFBBBBBB);
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 390b8248e3ad6378ffd927e2626a85b13c778ca0
 }
+double constantsize(BuildContext context) {
+  return MediaQuery.of(context).size.width * (1 / 411); }

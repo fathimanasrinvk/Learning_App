@@ -2,12 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/presentation/login_screen/view/login_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
-class RegistrationScreen extends StatelessWidget {
+class RegistrationScreen extends StatefulWidget {
+  @override
+  State<RegistrationScreen> createState() => _RegistrationScreenState();
+}
+
+class _RegistrationScreenState extends State<RegistrationScreen> {
   final phonecontroller = TextEditingController();
   final econtroller = TextEditingController();
   final pcontroller = TextEditingController();
+  final formkey=GlobalKey<FormState>();
+  late SharedPreferences preferences;
+  late String username;
+
 
 
   @override

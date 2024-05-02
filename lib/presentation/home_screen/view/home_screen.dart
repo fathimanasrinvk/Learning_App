@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
+import 'package:gaming_app/presentation/alphabet%20screen/alphabet%20screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -69,7 +70,7 @@ class HomeScreen extends StatelessWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => screen[index]));
+                                        builder: (context) => AlphabetScreen()));
                               },
                               child: Container(
                                 decoration: BoxDecoration(

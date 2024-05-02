@@ -12,7 +12,4 @@ class ColorTheme {
   static Color lightgrey = const Color(0xFFBBBBBB);
 
 
-
-
-
 }

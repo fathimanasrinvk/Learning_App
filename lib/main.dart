@@ -12,8 +12,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // home: HomeScreen()
-        home: LoginScreen()
+       home: HomeScreen()
+       // home: LoginScreen()
 
     );
   }

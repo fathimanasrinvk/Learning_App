@@ -18,6 +18,55 @@ class Translation extends StatelessWidget {
                 fontSize: 40,
                 color: ColorTheme.maincolor,
                 fontWeight: FontWeight.w400)),
+        bottom: PreferredSize(preferredSize: Size.fromHeight(size*50),
+            child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+            Container(
+              height: 35,width: 120,
+              decoration: BoxDecoration(
+              color: ColorTheme.white,
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(
+                width: 2,
+                color: ColorTheme.maincolor,
+              ),
+            ),child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+              Text("English",style: GoogleFonts.roboto(
+                decoration: TextDecoration.none,
+                fontSize: 15,
+                color: ColorTheme.maincolor,
+                fontWeight:FontWeight.w500
+              ),)
+            ],),),
+            Padding(
+              padding:  EdgeInsets.only(left: 10,right: 10),
+              child: Icon(Icons.arrow_right_alt,color: ColorTheme.maincolor,size: 25,),
+            ),
+            Container(
+              height: 35,width: 120,
+              decoration: BoxDecoration(
+                color: ColorTheme.white,
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                  width: 2,
+                  color: ColorTheme.maincolor,
+                ),
+              ),child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text("Malayalam",style: GoogleFonts.roboto(
+                    decoration: TextDecoration.none,
+                    fontSize: 15,
+                    color: ColorTheme.maincolor,
+                    fontWeight:FontWeight.w500
+                ),)
+              ],),)
+                        ],)),
       ),
     );
   }

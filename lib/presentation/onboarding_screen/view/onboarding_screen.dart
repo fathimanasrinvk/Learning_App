@@ -7,8 +7,8 @@ import 'package:introduction_screen/introduction_screen.dart';
 class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.sizeOf(context);
-    return SafeArea(
+    
+  return SafeArea(
       child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(

@@ -1,63 +1,99 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
+import 'package:gaming_app/presentation/registration_page/view/registration.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-
-
 
 class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return IntroductionScreen(
-      globalBackgroundColor: ColorTheme.maincolor, // Set the background color for the entire screen here
-      pages: [
-        PageViewModel(
-          titleWidget: Padding(
-            padding: const EdgeInsets.only(top: 150),
-            child: Image.asset("assets/1st.png",height: 280,width: 280,fit: BoxFit.contain,),
+    var size = MediaQuery.sizeOf(context);
+    return SafeArea(
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/onboarding/background.png"),
+            fit: BoxFit.cover,
           ),
-          body: "Manage Your Task",
-          decoration: PageDecoration(
-            bodyTextStyle: GoogleFonts.anton(color: ColorTheme.primarycolor,fontSize: 25,)
-    )
+        ),
+        child: IntroductionScreen(
+          globalBackgroundColor:
+              Colors.transparent, // Set background color to transparent
+          pages: [
+            PageViewModel(
+                title: "Learn More",
+                body:
+                    "Discover the joy of learning English with our app, where each word learned opens new doors to opportunities and connections.",
+                image: Image.asset("assets/onboarding/onboarding1.png"),
+                decoration: PageDecoration(
+                    titleTextStyle: GoogleFonts.nunito(
+                        color: ColorTheme.maincolor,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                    bodyTextStyle: GoogleFonts.nunito(
+                      color: ColorTheme.maincolor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ))),
+            PageViewModel(
+                title: "It’s gamified!",
+                body:
+                    "Level up your English with our immersive games, designed to strengthen your language skills and make learning a rewarding adventure.",
+                image: Image.asset("assets/onboarding/onboarding2.png"),
+                decoration: PageDecoration(
+                    titleTextStyle: GoogleFonts.nunito(
+                        color: ColorTheme.maincolor,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                    bodyTextStyle: GoogleFonts.nunito(
+                        color: ColorTheme.maincolor,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold))),
+            PageViewModel(
+                title: "Take learning beyond the classroom walls",
+                body:
+                    "Extend your learning journey with us beyond traditional classroom boundaries.",
+                image: Image.asset("assets/onboarding/onboarding3.png"),
+                decoration: PageDecoration(
+                    titleTextStyle: GoogleFonts.nunito(
+                        color: ColorTheme.maincolor,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                    bodyTextStyle: GoogleFonts.nunito(
+                      color: ColorTheme.maincolor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ))),
+          ],
+          next: Text(""),
+          showSkipButton: true,
+          skip: Text(
+            "Skip",
+            style: TextStyle(
+                color: ColorTheme.maincolor,
+                fontSize: 18,
+                fontWeight: FontWeight.bold),
           ),
-
-
-        PageViewModel(
-            titleWidget: Padding(
-              padding: const EdgeInsets.only(top: 60),
-              child: Image.asset("assets/3.png",height: 380,width: 380,fit: BoxFit.contain,),
-            ),
-            body: "Create Daily Routine",
-            decoration: PageDecoration(
-                bodyTextStyle: GoogleFonts.anton(color: ColorTheme.secondarycolor,fontSize: 25,)
-            )
+          done: Text(
+            "Start",
+            style: TextStyle(
+                color: ColorTheme.maincolor,
+                fontSize: 18,
+                fontWeight: FontWeight.bold),
+          ),
+          onDone: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => RegistrationScreen())),
+          onSkip: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => RegistrationScreen())),
+          dotsDecorator: DotsDecorator(
+            size: Size(10, 10),
+            activeSize: Size(30, 10),
+            color: ColorTheme.secondarycolor,
+            activeColor: ColorTheme.maincolor,
+            activeShape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(60)),
+          ),
         ),
-
-        PageViewModel(
-            titleWidget: Padding(
-              padding: const EdgeInsets.only(top: 60),
-              child: Image.asset("assets/4.png",height: 380,width: 380,fit: BoxFit.contain,),
-            ),
-            body: "Organize Your Task",
-            decoration: PageDecoration(
-                bodyTextStyle: GoogleFonts.anton(color: ColorTheme.secondarycolor,fontSize: 25,)
-            )
-        ),
-
-      ],
-      next: Text(""),
-      showSkipButton: true,
-      skip: Text("Skip",style: TextStyle(color: ColorTheme.secondarycolor ,fontSize: 15),),
-      done: Text("Lets's start",style: TextStyle(color: ColorTheme.secondarycolor,fontSize: 15),), // Specify the "Done" button widget here
-      // onDone: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => Splas_Note())),
-      // onSkip: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => Splas_Note())),
-      dotsDecorator: DotsDecorator(
-        size: Size(10, 10),
-        activeSize: Size(30, 10),
-        color:  Colors.grey,
-        activeColor:  ColorTheme.secondarycolor,
-        activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(60)),
       ),
     );
   }

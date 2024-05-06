@@ -1,12 +1,26 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
-import 'package:gaming_app/presentation/registration_page/view/registration.dart';
+import 'package:gaming_app/presentation/registration_page/view/registration_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class LoginScreen extends StatelessWidget {
+import '../../home_screen/home_screen.dart';
+
+class LoginScreen extends StatefulWidget {
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final econtroller = TextEditingController();
+
   final pcontroller = TextEditingController();
+
   final formkey = GlobalKey<FormState>();
+  late SharedPreferences preferences;
+  late bool newuser;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +42,7 @@ class LoginScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 35, right: 35, top: 100),
             child: TextFormField(
+              controller: econtroller,
               style: TextStyle(color: ColorTheme.maincolor),
               decoration: InputDecoration(
                 prefixIcon: Icon(
@@ -47,6 +62,7 @@ class LoginScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 35, right: 35, top: 30),
             child: TextFormField(
+              controller: pcontroller,
               decoration: InputDecoration(
                 prefixIcon: Icon(
                   Icons.lock,
@@ -72,7 +88,33 @@ class LoginScreen extends StatelessWidget {
                 color: ColorTheme.maincolor,
                 borderRadius: BorderRadius.circular(7)),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () async {
+                preferences = await SharedPreferences.getInstance();
+                List<String>? userListJson = preferences.getStringList('users');
+                if (userListJson != null && userListJson.isNotEmpty) {
+                  List<User> userList = userListJson
+                      .map((userJson) => User.fromJson(json.decode(userJson)))
+                      .toList();
+                  String enteredEmail = econtroller.text;
+                  String enteredPassword = pcontroller.text;
+                  User? user = userList.firstWhere(
+                      (user) => user.email == enteredEmail);
+                  if ( user.pword == enteredPassword) {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => HomeScreen()));
+                    econtroller.text = "";
+                    pcontroller.text = "";
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        backgroundColor: Colors.red,
+                        content: Text("email or passwrod is incorrect")));
+                  }
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      backgroundColor: Colors.red,
+                      content: Text("No users registered yet")));
+                }
+              },
               style: ElevatedButton.styleFrom(
                   backgroundColor: ColorTheme.maincolor,
                   shape: RoundedRectangleBorder(

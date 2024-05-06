@@ -5,7 +5,8 @@ import 'package:gaming_app/presentation/game%20screen/game%20screen.dart';
 import 'package:gaming_app/presentation/word%20screen/word%20screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../translation screen/translation.dart';
+import '../translation_screen/translation_screen.dart';
+
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -16,7 +17,7 @@ class HomeScreen extends StatelessWidget {
       'LEARN WITH GAMES',
       'TRANSLATION'
     ];
-    var screen = [AlphabetScreen(), WordScreen(), GameScreen(), Translation()];
+    var screen = [AlphabetScreen(), WordScreen(), GameScreen(), TranslationScreen()];
     double size = constantsize(context);
     return Scaffold(
         body: Stack(children: [

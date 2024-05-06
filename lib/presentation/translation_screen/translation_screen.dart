@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Translation extends StatelessWidget {
+class TranslationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double size = constantsize(context);

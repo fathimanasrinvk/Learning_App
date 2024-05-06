@@ -1,12 +1,9 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/presentation/login_screen/view/login_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../home_screen/home_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   @override
@@ -15,9 +12,10 @@ class RegistrationScreen extends StatefulWidget {
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
   final phonecontroller = TextEditingController();
+  final namecontroller = TextEditingController();
   final econtroller = TextEditingController();
   final pcontroller = TextEditingController();
-  final formkey=GlobalKey<FormState>();
+  final formkey = GlobalKey<FormState>();
   late SharedPreferences preferences;
   late bool newuser;
 
@@ -26,27 +24,58 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return Scaffold(
         backgroundColor: ColorTheme.secondarycolor,
         body: SingleChildScrollView(
-            child: Form(key:formkey,
-              child: Center(
-                  child: Column(children: [
-                        SizedBox(
+            child: Form(
+          key: formkey,
+          child: Center(
+              child: Column(children: [
+            SizedBox(
               height: 150,
-                        ),
-                        Text(
+            ),
+            Text(
               "Welcome To SpeakUp",
               style: GoogleFonts.nunito(
                   fontWeight: FontWeight.w700,
                   color: ColorTheme.maincolor,
                   fontSize: 24),
-                        ),
-                        Padding(
+            ),
+            Padding(
               padding: const EdgeInsets.only(left: 35, right: 35, top: 100),
               child: TextFormField(
+                controller: namecontroller,
+                validator: (name) {
+                  if (name!.isEmpty) {
+                    return "Enter a valid Username";
+                  } else {
+                    return null;
+                  }
+                },
+                style: TextStyle(color: ColorTheme.maincolor),
+                decoration: InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.person,
+                    color: ColorTheme.maincolor,
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                  hintText: 'Username',
+                  contentPadding: EdgeInsets.symmetric(horizontal: 20.0),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(7),
+                      borderSide: BorderSide.none),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 35, right: 35, top: 30),
+              child: TextFormField(
                 controller: econtroller,
-                validator: (email){
-                  if(email!.isEmpty || !email.contains('@'))
-                  { return "Enter a valid E mail ID"; }
-                  else{ return null; } },
+                validator: (email) {
+                  if (email!.isEmpty || !email.contains('@')) {
+                    return "Enter a valid E mail ID";
+                  } else {
+                    return null;
+                  }
+                },
                 style: TextStyle(color: ColorTheme.maincolor),
                 decoration: InputDecoration(
                   prefixIcon: Icon(
@@ -62,15 +91,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       borderSide: BorderSide.none),
                 ),
               ),
-                        ),
-                        Padding(
+            ),
+            Padding(
               padding: const EdgeInsets.only(left: 35, right: 35, top: 30),
               child: TextFormField(
                 controller: phonecontroller,
-                validator: (Phone){
-                if(Phone?.length!=10 && int.tryParse(Phone!) == null)
-                  { return "Enter a valid Mobile Number"; }
-                  else{ return null; } },
+                validator: (Phone) {
+                  if (Phone?.length != 10 && int.tryParse(Phone!) == null) {
+                    return "Enter a valid Mobile Number";
+                  } else {
+                    return null;
+                  }
+                },
                 decoration: InputDecoration(
                   prefixIcon: Icon(
                     Icons.phone,
@@ -86,15 +118,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 ),
                 style: TextStyle(color: ColorTheme.maincolor),
               ),
-                        ),
-                        Padding(
+            ),
+            Padding(
               padding: const EdgeInsets.only(left: 35, right: 35, top: 30),
               child: TextFormField(
                 controller: pcontroller,
-                validator: (password){
-                  if(password!.isEmpty||password.length<6)
-                  { return "Enter Minimum 6 Char"; }
-                  else{ return null;} },
+                validator: (password) {
+                  if (password!.isEmpty || password.length < 6) {
+                    return "Enter Minimum 6 Char";
+                  } else {
+                    return null;
+                  }
+                },
                 decoration: InputDecoration(
                   prefixIcon: Icon(
                     Icons.lock,
@@ -110,31 +145,45 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 ),
                 style: TextStyle(color: ColorTheme.maincolor),
               ),
-                        ),
-                        SizedBox(
+            ),
+            SizedBox(
               height: 40,
-                        ),
-                        Container(
+            ),
+            Container(
               width: 250,
               decoration: BoxDecoration(
                   color: ColorTheme.maincolor,
                   borderRadius: BorderRadius.circular(7)),
               child: ElevatedButton(
-                onPressed: () async{
+                onPressed: () async {
                   preferences = await SharedPreferences.getInstance();
-                  var isValid=formkey.currentState!.validate();
-                  int Phone= int.parse(phonecontroller.text);
-                  String email= econtroller.text;
-                  String pword= pcontroller.text;
-                  if (isValid==true){
-                    _addUserToSharedPreferences(User(email,Phone,pword));
-                    preferences.setBool("newuser", false);
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder:(context)=>HomeScreen()));
-                    phonecontroller.text="";
-                    econtroller.text="";
-                    pcontroller.text="";
-                  }
+                  var isValid = formkey.currentState!.validate();
+                  int Phone = int.parse(phonecontroller.text);
+                  String email = econtroller.text;
+                  String pword = pcontroller.text;
+                  String name = namecontroller.text;
+                  List<String>? userListJson =
+                      preferences.getStringList('users');
+                  List<User> userList = userListJson?.map((userJson) =>
+                      User.fromJson(json.decode(userJson))).toList() ?? [];
+                  if (userList.any((user) => user.name == name)) {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          backgroundColor: Colors.red,
+                          content: Text("Username already exists")));
+                    } else {
+                      if (isValid == true) {
+                        addUserToSharedPreferences(
+                            User(name, email, Phone, pword));
+                        preferences.setBool("newuser", false);
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => LoginScreen()));
+                        namecontroller.text = "";
+                        phonecontroller.text = "";
+                        econtroller.text = "";
+                        pcontroller.text = "";
+                      }
+                    }
+
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: ColorTheme.maincolor,
@@ -147,9 +196,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   ),
                 ),
               ),
-                        ),
-                        SizedBox(height: 200),
-                        TextButton(
+            ),
+            SizedBox(height: 130),
+            TextButton(
               onPressed: () {
                 Navigator.of(context).pushReplacement(
                     MaterialPageRoute(builder: (context) => LoginScreen()));
@@ -175,39 +224,32 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   ],
                 ),
               ),
-                        )
-                      ])),
-            )));
+            )
+          ])),
+        )));
   }
-  _addUserToSharedPreferences(User user) async {
+
+  addUserToSharedPreferences(User user) async {
     final preferences = await SharedPreferences.getInstance();
     List<String> userList = preferences.getStringList('users') ?? [];
     userList.add(json.encode(user.toJson()));
     await preferences.setStringList('users', userList);
   }
 }
+
 class User {
+  final String name;
   final String email;
   final int phone;
   final String pword;
 
-  User(this.email, this.phone, this.pword);
+  User(this.name, this.email, this.phone, this.pword);
 
   Map<String, dynamic> toJson() {
-    return {
-      'email': email,
-      'phone': phone,
-      'password': pword
-    };
+    return {'name': name, 'email': email, 'phone': phone, 'password': pword};
   }
 
   factory User.fromJson(Map<String, dynamic> json) {
-    return User(
-      json['email'],
-      json['phone'],
-      json['password']
-    );
+    return User(json['name'], json['email'], json['phone'], json['password']);
   }
 }
-
-

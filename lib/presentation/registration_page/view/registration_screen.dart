@@ -164,11 +164,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   String name = namecontroller.text;
                   List<String>? userListJson =
                       preferences.getStringList('users');
-                  if (userListJson != null && userListJson.isNotEmpty) {
-                    List<User> userList = userListJson
-                        .map((userJson) => User.fromJson(json.decode(userJson)))
-                        .toList();
-                    if (userList.any((user) => user.name == name)) {
+                  List<User> userList = userListJson?.map((userJson) =>
+                      User.fromJson(json.decode(userJson))).toList() ?? [];
+                  if (userList.any((user) => user.name == name)) {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           backgroundColor: Colors.red,
                           content: Text("Username already exists")));
@@ -185,11 +183,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         pcontroller.text = "";
                       }
                     }
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        backgroundColor: Colors.red,
-                        content: Text("No users registered yet")));
-                  }
+
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: ColorTheme.maincolor,

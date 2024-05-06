@@ -9,6 +9,8 @@ import '../translation_screen/translation_screen.dart';
 
 
 class HomeScreen extends StatelessWidget {
+  final String name;
+  HomeScreen ({required this.name});
   @override
   Widget build(BuildContext context) {
     var names = [
@@ -39,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Hi, Maya👋",
+                  Text("Hi, $name👋",
                       style: GoogleFonts.nunito(
                           decoration: TextDecoration.none,
                           fontSize: 20,

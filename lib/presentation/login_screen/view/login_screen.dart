@@ -14,10 +14,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final econtroller = TextEditingController();
-
+  final namecontroller = TextEditingController();
   final pcontroller = TextEditingController();
-
   final formkey = GlobalKey<FormState>();
   late SharedPreferences preferences;
   late bool newuser;
@@ -42,16 +40,16 @@ class _LoginScreenState extends State<LoginScreen> {
           Padding(
             padding: const EdgeInsets.only(left: 35, right: 35, top: 100),
             child: TextFormField(
-              controller: econtroller,
+              controller: namecontroller,
               style: TextStyle(color: ColorTheme.maincolor),
               decoration: InputDecoration(
                 prefixIcon: Icon(
-                  Icons.email,
+                  Icons.person,
                   color: ColorTheme.maincolor,
                 ),
                 filled: true,
                 fillColor: Colors.white,
-                hintText: 'Email',
+                hintText: 'Username',
                 contentPadding: EdgeInsets.symmetric(horizontal: 20.0),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(7),
@@ -89,25 +87,29 @@ class _LoginScreenState extends State<LoginScreen> {
                 borderRadius: BorderRadius.circular(7)),
             child: ElevatedButton(
               onPressed: () async {
-                preferences = await SharedPreferences.getInstance();
+                SharedPreferences preferences = await SharedPreferences.getInstance();
                 List<String>? userListJson = preferences.getStringList('users');
                 if (userListJson != null && userListJson.isNotEmpty) {
                   List<User> userList = userListJson
                       .map((userJson) => User.fromJson(json.decode(userJson)))
                       .toList();
-                  String enteredEmail = econtroller.text;
+                  String enteredName = namecontroller.text;
                   String enteredPassword = pcontroller.text;
-                  User? user = userList.firstWhere(
-                      (user) => user.email == enteredEmail);
-                  if ( user.pword == enteredPassword) {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => HomeScreen()));
-                    econtroller.text = "";
+                  User? user;
+                  try {
+                    user = userList.firstWhere((user) => user.name == enteredName);
+                  } catch (e) {
+                    user = null;
+                  }
+                  if (user != null && user.pword == enteredPassword) {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => HomeScreen(name: enteredName)));
+                    namecontroller.text = "";
                     pcontroller.text = "";
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         backgroundColor: Colors.red,
-                        content: Text("email or passwrod is incorrect")));
+                        content: Text("Username or password is incorrect")));
                   }
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(

@@ -14,7 +14,7 @@ class AlphabetScreen extends StatelessWidget {
     return Scaffold(
         body: CustomScrollView(slivers: [
       SliverPadding(
-        padding: EdgeInsets.only(top: 100),
+        padding: const EdgeInsets.only(top: 100),
         sliver: SliverList(
             delegate: SliverChildListDelegate([
           Text("CAPITAL LETTERS",
@@ -27,7 +27,7 @@ class AlphabetScreen extends StatelessWidget {
         ])),
       ),
       SliverPadding(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           sliver: SliverList(
               delegate: SliverChildListDelegate([
             Wrap(
@@ -36,7 +36,7 @@ class AlphabetScreen extends StatelessWidget {
               runSpacing: 5, // Adjust the spacing between rows
               children: capitalAlphabets.map((letter) {
                 return Padding(
-                  padding: EdgeInsets.only(left: 10, right: 10),
+                  padding:const  EdgeInsets.only(left: 10, right: 10),
                   child: Text(letter,
                       style: GoogleFonts.peddana(
                           decoration: TextDecoration.none,
@@ -72,7 +72,7 @@ class AlphabetScreen extends StatelessWidget {
               runSpacing: 5, // Adjust the spacing between rows
               children: smallAlphabets.map((letter) {
                 return Padding(
-                  padding: EdgeInsets.only(left: 10, right: 10),
+                  padding:const  EdgeInsets.only(left: 10, right: 10),
                   child: Text(letter,
                       style: GoogleFonts.peddana(
                           decoration: TextDecoration.none,

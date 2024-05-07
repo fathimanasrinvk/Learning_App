@@ -31,6 +31,11 @@ class TensQuizScoreScreen extends StatelessWidget {
             height: size.height * .25,
           ),
           Container(
+            height: size.height * .4,
+            width: size.width * .70,
+            decoration: BoxDecoration(
+                color: ColorTheme.white,
+                borderRadius: BorderRadius.circular(20)),
             child: Column(
               children: [
                 SizedBox(
@@ -49,11 +54,6 @@ class TensQuizScoreScreen extends StatelessWidget {
                 )
               ],
             ),
-            height: size.height * .4,
-            width: size.width * .70,
-            decoration: BoxDecoration(
-                color: ColorTheme.white,
-                borderRadius: BorderRadius.circular(20)),
           )
         ],
       )),

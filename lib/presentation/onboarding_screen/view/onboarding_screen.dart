@@ -17,7 +17,6 @@ class OnboardingScreen extends StatelessWidget {
         ),
         child: IntroductionScreen(
           globalBackgroundColor: Colors.transparent,
-          // Set background color to transparent
           pages: [
             PageViewModel(
                 title: "Learn More",

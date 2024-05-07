@@ -32,8 +32,8 @@ class AlphabetScreen extends StatelessWidget {
               delegate: SliverChildListDelegate([
             Wrap(
               alignment: WrapAlignment.center,
-              spacing: 8.0, // Adjust the spacing between letters
-              runSpacing: 5, // Adjust the spacing between rows
+              spacing: 8.0,
+              runSpacing: 5,
               children: capitalAlphabets.map((letter) {
                 return Padding(
                   padding:const  EdgeInsets.only(left: 10, right: 10),
@@ -43,7 +43,7 @@ class AlphabetScreen extends StatelessWidget {
                           fontSize: 38,
                           color: ColorTheme.maincolor,
                           fontWeight:
-                              FontWeight.w400) // Adjust font size as needed
+                              FontWeight.w400)
                       ),
                 );
               }).toList(),
@@ -68,8 +68,8 @@ class AlphabetScreen extends StatelessWidget {
               delegate: SliverChildListDelegate([
             Wrap(
               alignment: WrapAlignment.center,
-              spacing: 8.0, // Adjust the spacing between letters
-              runSpacing: 5, // Adjust the spacing between rows
+              spacing: 8.0,
+              runSpacing: 5,
               children: smallAlphabets.map((letter) {
                 return Padding(
                   padding:const  EdgeInsets.only(left: 10, right: 10),
@@ -79,7 +79,7 @@ class AlphabetScreen extends StatelessWidget {
                           fontSize: 40,
                           color: ColorTheme.maincolor,
                           fontWeight: FontWeight
-                              .w400) // Adj // Adjust font size as needed
+                              .w400)
                       ),
                 );
               }).toList(),

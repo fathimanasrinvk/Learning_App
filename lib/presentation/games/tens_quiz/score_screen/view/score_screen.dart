@@ -26,6 +26,16 @@ class TensQuizScoreScreen extends StatelessWidget {
             height: size.height * .25,
           ),
           Container(
+            child: Column(
+              children: [
+                SizedBox(height: size.height *.027,
+                ),
+                Image.asset("assets/images/congrats.png"),
+                SizedBox(height: size.height *.02,
+                ),
+                Text("Your Score is ",style: TextStyle(color: ColorTheme.maincolor,fontWeight: FontWeight.bold,fontSize: 22),)
+              ],
+            ),
             height: size.height * .4,
             width: size.width * .70,
             decoration: BoxDecoration(

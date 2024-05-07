@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
+import 'package:gaming_app/presentation/games/word_puzzle/score_screen/view/score_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: PuzzleScreen(),
-  ));
-}
-
 class PuzzleScreen extends StatelessWidget {
+  const PuzzleScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -45,7 +41,7 @@ class PuzzleScreen extends StatelessWidget {
                 height: 200,
                 width: 200,
                 decoration: BoxDecoration(
-                  image: DecorationImage(
+                  image: const DecorationImage(
                     image: AssetImage("assets/images/abcd.jpeg"),
                     fit: BoxFit.cover,
                   ),
@@ -93,15 +89,18 @@ class PuzzleScreen extends StatelessWidget {
                     size.width * 0.2, 0, size.width * 0.2, 0),
                 child: TextField(
                   style: TextStyle(color: ColorTheme.maincolor),
-                  decoration: InputDecoration(),
+                  decoration: const InputDecoration(),
                 ),
               ),
               SizedBox(height: size.height * 0.08),
-              Container(
+              SizedBox(
                 height: size.height * .05,
                 width: size.width * .20,
                 child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const WordPuzzleScoreScreen()));
+                    },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: ColorTheme.maincolor,
                         shape: RoundedRectangleBorder(

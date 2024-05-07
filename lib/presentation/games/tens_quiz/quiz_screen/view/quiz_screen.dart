@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
+import 'package:gaming_app/presentation/games/tens_quiz/score_screen/view/score_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 
 class TensQuizScreen extends StatelessWidget {
   const TensQuizScreen({super.key});
@@ -12,7 +12,9 @@ class TensQuizScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
           icon: Icon(
             Icons.arrow_back_rounded,
             color: ColorTheme.maincolor,
@@ -68,7 +70,10 @@ class TensQuizScreen extends StatelessWidget {
             height: size.height * .05,
             width: size.width * .20,
             child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const TensQuizScoreScreen()));
+                },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: ColorTheme.maincolor,
                     shape: RoundedRectangleBorder(

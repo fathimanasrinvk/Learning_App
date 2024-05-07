@@ -1,13 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
-
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: TensQuizScoreScreen(),
-  ));
-}
-
 class TensQuizScoreScreen extends StatelessWidget {
   const TensQuizScoreScreen({super.key});
 

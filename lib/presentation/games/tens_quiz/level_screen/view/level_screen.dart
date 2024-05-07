@@ -15,6 +15,7 @@ class LevelScreenTensQuiz extends StatelessWidget {
             Text(
               "Choose Your Level",
               style: GoogleFonts.poppins(
+
                   color: ColorTheme.maincolor,
                   fontSize: 25,
                   fontWeight: FontWeight.bold),

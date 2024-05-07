@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/presentation/onboarding_screen/view/onboarding_screen.dart';
-import 'package:introduction_screen/introduction_screen.dart';
 
 
 class SplashScreen extends StatefulWidget {

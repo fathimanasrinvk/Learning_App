@@ -23,56 +23,56 @@ class HomeScreen extends StatelessWidget {
     double size = constantsize(context);
     return Scaffold(
         body: Stack(children: [
-      // Background image
-      Positioned.fill(
-        child: Image.asset(
-          "assets/images/home page.PNG",
-          fit: BoxFit.fill,
-        ),
-      ),
-      Scaffold(
-          backgroundColor: Colors.transparent,
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            leadingWidth: double.infinity,
-            leading: Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Hi, $name👋",
-                      style: GoogleFonts.nunito(
-                          decoration: TextDecoration.none,
-                          fontSize: 20,
-                          color: ColorTheme.maincolor,
-                          fontWeight: FontWeight.bold)),
-                  Text("Let’s start learning!",
-                      style: GoogleFonts.nunito(
-                          decoration: TextDecoration.none,
-                          fontSize: 15,
-                          color: ColorTheme.maincolor,
-                          fontWeight: FontWeight.bold))
-                ],
-              ),
+          // Background image
+          Positioned.fill(
+            child: Image.asset(
+              "assets/images/home page.PNG",
+              fit: BoxFit.fill,
             ),
           ),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsets.all(20),
-                child: GridView(
-                    shrinkWrap: true,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 60,
-                        crossAxisSpacing: 20,
-                        childAspectRatio: .9),
-                    children: List.generate(
-                        4,
-                        (index) => InkWell(
+          Scaffold(
+              backgroundColor: Colors.transparent,
+              appBar: AppBar(
+                backgroundColor: Colors.transparent,
+                leadingWidth: double.infinity,
+                leading: Padding(
+                  padding: EdgeInsets.only(left: 10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Hi, $name👋",
+                          style: GoogleFonts.nunito(
+                              decoration: TextDecoration.none,
+                              fontSize: 20,
+                              color: ColorTheme.maincolor,
+                              fontWeight: FontWeight.bold)),
+                      Text("Let’s start learning!",
+                          style: GoogleFonts.nunito(
+                              decoration: TextDecoration.none,
+                              fontSize: 15,
+                              color: ColorTheme.maincolor,
+                              fontWeight: FontWeight.bold))
+                    ],
+                  ),
+                ),
+              ),
+              body: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(20),
+                    child: GridView(
+                        shrinkWrap: true,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 60,
+                            crossAxisSpacing: 20,
+                            childAspectRatio: .9),
+                        children: List.generate(
+                            4,
+                                (index) => InkWell(
                               onTap: () {
                                 Navigator.push(
                                     context,
@@ -105,9 +105,9 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                             ))),
-              ),
-            ],
-          ))
-    ]));
+                  ),
+                ],
+              ))
+        ]));
   }
 }

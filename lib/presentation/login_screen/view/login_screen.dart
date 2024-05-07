@@ -27,136 +27,136 @@ class _LoginScreenState extends State<LoginScreen> {
         body: SingleChildScrollView(
             child: Center(
                 child: Column(children: [
-          SizedBox(
-            height: 150,
-          ),
-          Text(
-            "Welcome Back !!",
-            style: GoogleFonts.nunito(
-                fontWeight: FontWeight.w700,
-                color: ColorTheme.maincolor,
-                fontSize: 24),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 35, right: 35, top: 100),
-            child: TextFormField(
-              controller: namecontroller,
-              style: TextStyle(color: ColorTheme.maincolor),
-              decoration: InputDecoration(
-                prefixIcon: Icon(
-                  Icons.person,
-                  color: ColorTheme.maincolor,
-                ),
-                filled: true,
-                fillColor: Colors.white,
-                hintText: 'Username',
-                contentPadding: EdgeInsets.symmetric(horizontal: 20.0),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(7),
-                    borderSide: BorderSide.none),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 35, right: 35, top: 30),
-            child: TextFormField(
-              controller: pcontroller,
-              decoration: InputDecoration(
-                prefixIcon: Icon(
-                  Icons.lock,
-                  color: ColorTheme.maincolor,
-                ),
-                filled: true,
-                fillColor: Colors.white,
-                hintText: 'Password',
-                contentPadding: EdgeInsets.symmetric(horizontal: 20.0),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(7),
-                    borderSide: BorderSide.none),
-              ),
-              style: TextStyle(color: ColorTheme.maincolor),
-            ),
-          ),
-          SizedBox(
-            height: 40,
-          ),
-          Container(
-            width: 250,
-            decoration: BoxDecoration(
-                color: ColorTheme.maincolor,
-                borderRadius: BorderRadius.circular(7)),
-            child: ElevatedButton(
-              onPressed: () async {
-                SharedPreferences preferences = await SharedPreferences.getInstance();
-                List<String>? userListJson = preferences.getStringList('users');
-                if (userListJson != null && userListJson.isNotEmpty) {
-                  List<User> userList = userListJson
-                      .map((userJson) => User.fromJson(json.decode(userJson)))
-                      .toList();
-                  String enteredName = namecontroller.text;
-                  String enteredPassword = pcontroller.text;
-                  User? user;
-                  try {
-                    user = userList.firstWhere((user) => user.name == enteredName);
-                  } catch (e) {
-                    user = null;
-                  }
-                  if (user != null && user.pword == enteredPassword) {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => HomeScreen(name: enteredName)));
-                    namecontroller.text = "";
-                    pcontroller.text = "";
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        backgroundColor: Colors.red,
-                        content: Text("Username or password is incorrect")));
-                  }
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      backgroundColor: Colors.red,
-                      content: Text("No users registered yet")));
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: ColorTheme.maincolor,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(7))),
-              child: Text(
-                "Login",
-                style: TextStyle(
-                  color: ColorTheme.primarycolor,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: 280),
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => RegistrationScreen()));
-            },
-            child: RichText(
-              text: TextSpan(
-                children: <TextSpan>[
-                  TextSpan(
-                    text: "Don't have account ?  ",
-                    style: GoogleFonts.lato(
-                        decoration: TextDecoration.none,
-                        fontSize: 14,
-                        color: Colors.black),
+                  SizedBox(
+                    height: 150,
                   ),
-                  TextSpan(
-                    text: " Sign Up",
-                    style: GoogleFonts.lato(
+                  Text(
+                    "Welcome Back !!",
+                    style: GoogleFonts.nunito(
+                        fontWeight: FontWeight.w700,
                         color: ColorTheme.maincolor,
-                        decoration: TextDecoration.none,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
+                        fontSize: 24),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 35, right: 35, top: 100),
+                    child: TextFormField(
+                      controller: namecontroller,
+                      style: TextStyle(color: ColorTheme.maincolor),
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(
+                          Icons.person,
+                          color: ColorTheme.maincolor,
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        hintText: 'Username',
+                        contentPadding: EdgeInsets.symmetric(horizontal: 20.0),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(7),
+                            borderSide: BorderSide.none),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 35, right: 35, top: 30),
+                    child: TextFormField(
+                      controller: pcontroller,
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(
+                          Icons.lock,
+                          color: ColorTheme.maincolor,
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        hintText: 'Password',
+                        contentPadding: EdgeInsets.symmetric(horizontal: 20.0),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(7),
+                            borderSide: BorderSide.none),
+                      ),
+                      style: TextStyle(color: ColorTheme.maincolor),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  Container(
+                    width: 250,
+                    decoration: BoxDecoration(
+                        color: ColorTheme.maincolor,
+                        borderRadius: BorderRadius.circular(7)),
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        SharedPreferences preferences = await SharedPreferences.getInstance();
+                        List<String>? userListJson = preferences.getStringList('users');
+                        if (userListJson != null && userListJson.isNotEmpty) {
+                          List<User> userList = userListJson
+                              .map((userJson) => User.fromJson(json.decode(userJson)))
+                              .toList();
+                          String enteredName = namecontroller.text;
+                          String enteredPassword = pcontroller.text;
+                          User? user;
+                          try {
+                            user = userList.firstWhere((user) => user.name == enteredName);
+                          } catch (e) {
+                            user = null;
+                          }
+                          if (user != null && user.pword == enteredPassword) {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => HomeScreen(name: enteredName)));
+                            namecontroller.text = "";
+                            pcontroller.text = "";
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                backgroundColor: Colors.red,
+                                content: Text("Username or password is incorrect")));
+                          }
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              backgroundColor: Colors.red,
+                              content: Text("No users registered yet")));
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: ColorTheme.maincolor,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(7))),
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                          color: ColorTheme.primarycolor,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 280),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => RegistrationScreen()));
+                    },
+                    child: RichText(
+                      text: TextSpan(
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: "Don't have account ?  ",
+                            style: GoogleFonts.lato(
+                                decoration: TextDecoration.none,
+                                fontSize: 14,
+                                color: Colors.black),
+                          ),
+                          TextSpan(
+                            text: " Sign Up",
+                            style: GoogleFonts.lato(
+                                color: ColorTheme.maincolor,
+                                decoration: TextDecoration.none,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                    ),
                   )
-                ],
-              ),
-            ),
-          )
-        ]))));
+                ]))));
   }
 }

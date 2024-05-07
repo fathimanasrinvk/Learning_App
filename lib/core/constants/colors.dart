@@ -11,5 +11,7 @@ class ColorTheme {
   static Color green = const Color(0xFF00c254);
   static Color lightgrey = const Color(0xFFBBBBBB);
 }
+
 double constantsize(BuildContext context) {
-  return MediaQuery.of(context).size.width * (1 / 411); }
+  return MediaQuery.of(context).size.width * (1 / 411);
+}

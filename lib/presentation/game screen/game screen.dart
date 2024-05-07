@@ -20,10 +20,11 @@ class GameScreen extends StatelessWidget {
                   fontWeight: FontWeight.w400)),
         ),
         body: Padding(
-          padding: EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 20),
+          padding:
+              const EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 20),
           child: GridView(
               shrinkWrap: true,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   mainAxisSpacing: 40,
                   crossAxisSpacing: 20,

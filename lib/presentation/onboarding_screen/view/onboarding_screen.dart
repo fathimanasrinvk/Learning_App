@@ -7,18 +7,17 @@ import 'package:introduction_screen/introduction_screen.dart';
 class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    
-  return SafeArea(
+    return SafeArea(
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/onboarding/background.png"),
             fit: BoxFit.cover,
           ),
         ),
         child: IntroductionScreen(
-          globalBackgroundColor:
-              Colors.transparent, // Set background color to transparent
+          globalBackgroundColor: Colors.transparent,
+          // Set background color to transparent
           pages: [
             PageViewModel(
                 title: "Learn More",
@@ -65,7 +64,7 @@ class OnboardingScreen extends StatelessWidget {
                       fontSize: 15,
                     ))),
           ],
-          next: Text(""),
+          next: const Text(""),
           showSkipButton: true,
           skip: Text(
             "Skip",

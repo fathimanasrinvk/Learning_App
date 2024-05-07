@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
+import 'package:gaming_app/presentation/games/word_puzzle/puzzle_screen/view/puzzle_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
 class LevelScreenWordPuzzle extends StatelessWidget {
+  const LevelScreenWordPuzzle({super.key});
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
@@ -22,11 +25,14 @@ class LevelScreenWordPuzzle extends StatelessWidget {
             SizedBox(
               height: size.height * .1,
             ),
-            Container(
+            SizedBox(
                 height: size.height * .15,
                 width: size.width * .750,
                 child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => PuzzleScreen()));
+                    },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: ColorTheme.maincolor,
                         shape: RoundedRectangleBorder(

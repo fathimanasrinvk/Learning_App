@@ -5,9 +5,8 @@ import 'package:gaming_app/presentation/games/gk/level_screen/view/level_screen.
 import 'package:gaming_app/presentation/games/hangman/level_screen/view/level_screen.dart';
 import 'package:gaming_app/presentation/games/tens_quiz/level_screen/view/level_screen.dart';
 import 'package:gaming_app/presentation/games/word_puzzle/level_screen/view/level_screen.dart';
+import 'package:gaming_app/presentation/home_screen/home_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-
 
 class GameScreen extends StatelessWidget {
   var images = [
@@ -31,7 +30,19 @@ class GameScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: Icon(null),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => HomeScreen(
+                      name: '',
+                    )));
+          },
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: ColorTheme.maincolor,
+            size: 30,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         title: Text("GAMES",
@@ -65,10 +76,10 @@ class GameScreen extends StatelessWidget {
                       5,
                       (index) => InkWell(
                             onTap: () {
-                               Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>screens[index]));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => screens[index]));
                             },
                             child: Container(
                               decoration: BoxDecoration(

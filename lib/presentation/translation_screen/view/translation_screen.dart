@@ -22,7 +22,6 @@ class _TranslationScreenState extends State<TranslationScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: Icon(null),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         title: Padding(
@@ -38,7 +37,6 @@ class _TranslationScreenState extends State<TranslationScreen> {
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 50),
@@ -140,7 +138,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
                 padding: const EdgeInsets.all(20),
                 child: TextFormField(
                   controller: tcontroller,
-                  maxLines: 10,
+                  maxLines: 6,
                   decoration: InputDecoration(
                       hintStyle: TextStyle(color: ColorTheme.maincolor),
                       hintText: ' Enter your text',
@@ -157,6 +155,27 @@ class _TranslationScreenState extends State<TranslationScreen> {
                 style: TextStyle(
                   color: ColorTheme.primarycolor,
                 ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 240,top: 40),
+              child: Text(
+                'മലയാളം',
+                style: TextStyle(
+                    fontSize: 18,
+                    color: ColorTheme.maincolor,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: TextFormField(
+                controller: tcontroller,
+                maxLines: 5,
+                decoration: InputDecoration(
+                    hintStyle: TextStyle(color: ColorTheme.maincolor),
+                    hintText: ' Enter your text',
+                    border: OutlineInputBorder(borderSide: BorderSide.none)),
               ),
             )
           ],

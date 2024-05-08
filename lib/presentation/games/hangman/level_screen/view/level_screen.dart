@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
-import 'package:gaming_app/presentation/games/word_puzzle/puzzle_screen/view/puzzle_screen.dart';
+import 'package:gaming_app/presentation/games/tens_quiz/quiz_screen/view/quiz_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
-class LevelScreenWordPuzzle extends StatelessWidget {
-  const LevelScreenWordPuzzle({super.key});
+class LevelScreenHangman extends StatelessWidget {
+  const LevelScreenHangman({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +24,13 @@ class LevelScreenWordPuzzle extends StatelessWidget {
             SizedBox(
               height: size.height * .1,
             ),
-            SizedBox(
+            Container(
                 height: size.height * .15,
                 width: size.width * .750,
                 child: ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const PuzzleScreen()));
+                      // Navigator.of(context).push(MaterialPageRoute(
+                      //     builder: (context) => const TensQuizScreen()));
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: ColorTheme.maincolor,

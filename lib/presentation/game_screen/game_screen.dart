@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+void main() {
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: GameScreen(),
+  ));
+}
+
 class GameScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    double size = constantsize(context);
+    var size = MediaQuery.sizeOf(context);
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -13,37 +20,23 @@ class GameScreen extends StatelessWidget {
           centerTitle: true,
           backgroundColor: Colors.transparent,
           title: Text("GAMES",
-              style: GoogleFonts.passionOne(
+              style: GoogleFonts.poppins(
                   decoration: TextDecoration.none,
                   fontSize: 40,
                   color: ColorTheme.maincolor,
                   fontWeight: FontWeight.w400)),
         ),
-        body: Padding(
-          padding:
-              const EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 20),
-          child: GridView(
-              shrinkWrap: true,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 40,
-                  crossAxisSpacing: 20,
-                  childAspectRatio: .9),
-              children: List.generate(
-                  5,
-                  (index) => InkWell(
-                        onTap: () {},
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: ColorTheme.white,
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                              width: 3,
-                              color: ColorTheme.maincolor,
-                            ),
-                          ),
-                        ),
-                      ))),
+        body: Center(
+          child: Column(
+            children: [
+              Container(
+                height: size.height * .9,
+                width: size.width,
+                color: ColorTheme.maincolor,
+                
+              )
+            ],
+          ),
         ));
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
+import 'package:gaming_app/presentation/game_screen/game_screen.dart';
 import 'package:gaming_app/presentation/games/word_puzzle/puzzle_screen/view/puzzle_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,7 +12,16 @@ class LevelScreenWordPuzzle extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar( leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>GameScreen()));
+          },
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: ColorTheme.maincolor,
+            size: 30,
+          ),
+        ),),
       body: Center(
         child: Column(
           children: [

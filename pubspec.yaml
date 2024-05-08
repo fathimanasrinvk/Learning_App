@@ -36,6 +36,7 @@ dependencies:
   introduction_screen:
   shared_preferences:
   provider:
+  flutter_staggered_grid_view:
 
 dev_dependencies:
   flutter_test:

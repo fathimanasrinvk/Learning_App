@@ -35,15 +35,14 @@ class _TranslationScreenState extends State<TranslationScreen> {
                   fontWeight: FontWeight.w400)),
         ),
       ),
-
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 50),
-          child: Row(
+            Padding(
+              padding: const EdgeInsets.only(top: 50),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
@@ -108,37 +107,45 @@ class _TranslationScreenState extends State<TranslationScreen> {
                   )
                 ],
               ),
-        ),
+            ),
             Padding(
-              padding: const EdgeInsets.only(top: 30,left: 35),
+              padding: const EdgeInsets.only(top: 30, left: 30),
               child: Row(
                 children: [
-                  Text('English',style: TextStyle(fontSize: 18,color: ColorTheme.maincolor,fontWeight: FontWeight.bold),),
-                  SizedBox(width: 230,),
+                  Text(
+                    'English',
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: ColorTheme.maincolor,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    width: 230,
+                  ),
                   IconButton(
-                  icon: Icon(Icons.cancel_outlined,color: ColorTheme.maincolor,),
+                    icon: Icon(
+                      Icons.cancel_outlined,
+                      color: ColorTheme.maincolor,
+                    ),
                     onPressed: () {
                       setState(() {
                         tcontroller.clear();
                       });
-                  },),
+                    },
+                  ),
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(20),
-              child: TextFormField(
-                controller: tcontroller,
-                maxLines: 10,
-                decoration: InputDecoration(
-                  hintStyle: TextStyle(color: ColorTheme.maincolor),
-                  hintText: ' Enter your text' ,
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide.none
-                  )
-              ),
-              )
-            ),
+                padding: const EdgeInsets.all(20),
+                child: TextFormField(
+                  controller: tcontroller,
+                  maxLines: 10,
+                  decoration: InputDecoration(
+                      hintStyle: TextStyle(color: ColorTheme.maincolor),
+                      hintText: ' Enter your text',
+                      border: OutlineInputBorder(borderSide: BorderSide.none)),
+                )),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   backgroundColor: ColorTheme.maincolor,

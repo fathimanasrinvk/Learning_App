@@ -139,9 +139,19 @@ class _TranslationScreenState extends State<TranslationScreen> {
               ),
               )
             ),
-
-
-
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: ColorTheme.maincolor,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(7))),
+              onPressed: () {},
+              child: Text(
+                "Translate",
+                style: TextStyle(
+                  color: ColorTheme.primarycolor,
+                ),
+              ),
+            )
           ],
         ),
       ),

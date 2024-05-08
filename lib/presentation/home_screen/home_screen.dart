@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
-import 'package:gaming_app/presentation/word%20screen/word%20screen.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../alphabet_screen/alphabet_screen.dart';
-import '../game_screen/game_screen.dart';
-import '../translation_screen/translation_screen.dart';
+import '../alphabet_screen/view/alphabet_screen.dart';
+import '../game_screen/view/game_screen.dart';
+import '../translation_screen/view/translation_screen.dart';
+import '../word_screen/view/word_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final String name;

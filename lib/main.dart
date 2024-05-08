@@ -5,7 +5,7 @@ import 'package:gaming_app/presentation/login_screen/view/login_screen.dart';
 import 'package:gaming_app/presentation/onboarding_screen/view/onboarding_screen.dart';
 import 'package:gaming_app/presentation/registration_page/view/registration_screen.dart';
 import 'package:gaming_app/presentation/splash_screen/view/splash_screen.dart';
-import 'package:gaming_app/presentation/translation_screen/translation_screen.dart';
+import 'package:gaming_app/presentation/translation_screen/view/translation_screen.dart';
 
 void main(){
   runApp(MyApp());

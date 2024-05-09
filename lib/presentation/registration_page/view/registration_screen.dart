@@ -42,6 +42,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               padding: const EdgeInsets.only(left: 35, right: 35, top: 100),
               child: TextFormField(
                 controller: namecontroller,
+                textInputAction: TextInputAction.next,
                 validator: (name) {
                   if (name!.isEmpty) {
                     return "Enter a valid Username";
@@ -69,6 +70,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               padding: const EdgeInsets.only(left: 35, right: 35, top: 30),
               child: TextFormField(
                 controller: econtroller,
+                textInputAction: TextInputAction.next,
                 validator: (email) {
                   if (email!.isEmpty || !email.contains('@')) {
                     return "Enter a valid E mail ID";
@@ -96,11 +98,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               padding: const EdgeInsets.only(left: 35, right: 35, top: 30),
               child: TextFormField(
                 controller: phonecontroller,
+                textInputAction: TextInputAction.next,
                 validator: (Phone) {
-                  if (Phone?.length != 10 && int.tryParse(Phone!) == null) {
-                    return "Enter a valid Mobile Number";
-                  } else {
+                  if (Phone?.length == 10 && int.tryParse(Phone!) != null) {
                     return null;
+                  } else {
+                    return "Enter a valid Mobile Number";
                   }
                 },
                 decoration: InputDecoration(
@@ -123,6 +126,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               padding: const EdgeInsets.only(left: 35, right: 35, top: 30),
               child: TextFormField(
                 controller: pcontroller,
+                textInputAction: TextInputAction.next,
                 validator: (password) {
                   if (password!.isEmpty || password.length < 6) {
                     return "Enter Minimum 6 Char";

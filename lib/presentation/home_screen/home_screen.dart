@@ -31,88 +31,81 @@ class HomeScreen extends StatelessWidget {
       // Background image
       Positioned.fill(
         child: Image.asset(
-          "assets/images/home page.PNG",
+          "assets/images/home screen background.PNG",
           fit: BoxFit.fill,
         ),
       ),
       Scaffold(
           backgroundColor: Colors.transparent,
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            leadingWidth: double.infinity,
-            leading: Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Hi, $name👋",
-                      style: GoogleFonts.nunito(
-                          decoration: TextDecoration.none,
-                          fontSize: 20,
-                          color: ColorTheme.maincolor,
-                          fontWeight: FontWeight.bold)),
-                  Text("Let’s start learning!",
-                      style: GoogleFonts.nunito(
-                          decoration: TextDecoration.none,
-                          fontSize: 15,
-                          color: ColorTheme.maincolor,
-                          fontWeight: FontWeight.bold))
-                ],
-              ),
-            ),
-          ),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsets.all(20),
-                child: GridView(
-                    shrinkWrap: true,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 60,
-                            crossAxisSpacing: 20,
-                            childAspectRatio: .9),
-                    children: List.generate(
-                        4,
-                        (index) => InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => screen[index]));
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: ColorTheme.white,
-                                  borderRadius: BorderRadius.circular(20),
-                                  border: Border.all(
-                                    width: 3,
-                                    color: ColorTheme.maincolor,
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(height: 35),
+                Padding(
+                  padding:  EdgeInsets.only(left: 45,right: 45),
+                  child: Container(alignment: Alignment.centerLeft,
+                    child: Text("Hi, $name👋",
+                        style: GoogleFonts.nunito(
+                            decoration: TextDecoration.none,
+                            fontSize: 20,
+                            color: ColorTheme.maincolor,
+                            fontWeight: FontWeight.bold),
+                    maxLines: 1),
+                  ),
+                ),
+                Padding(
+                padding:  EdgeInsets.only(left: 45,right: 45),
+                child: Container(alignment: Alignment.centerLeft,
+                child: Text("Let’s start learning!",
+                    style: GoogleFonts.nunito(
+                        decoration: TextDecoration.none,
+                        fontSize: 15,
+                        color: ColorTheme.maincolor,
+                        fontWeight: FontWeight.bold)))),
+                SizedBox(height: 65),
+                Padding(
+                  padding: EdgeInsets.all(20),
+                  child: ListView(
+                      shrinkWrap: true,
+                      children: List.generate(
+                          4,
+                          (index) => InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => screen[index]));
+                                },
+                                child: Padding(
+                                  padding:  EdgeInsets.only(top: 10,bottom: 10,left: 25,right: 25),
+                                  child: Container(
+                                    height: 83,width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFFD9E1FF),
+                                      borderRadius: BorderRadius.circular(5),
+            
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          names[index],
+                                          style: GoogleFonts.passionOne(
+                                            decoration: TextDecoration.none,
+                                            fontSize: 30,
+                                            color: ColorTheme.maincolor,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      names[index],
-                                      style: GoogleFonts.passionOne(
-                                        decoration: TextDecoration.none,
-                                        fontSize: 25,
-                                        color: ColorTheme.maincolor,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ))),
-              ),
-            ],
+                              ))),
+                ),
+              ],
+            ),
           ))
     ]));
   }

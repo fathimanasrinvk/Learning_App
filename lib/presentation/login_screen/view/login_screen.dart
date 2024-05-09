@@ -39,6 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: const EdgeInsets.only(left: 35, right: 35, top: 100),
             child: TextFormField(
               controller: namecontroller,
+              textInputAction: TextInputAction.next,
               style: TextStyle(color: ColorTheme.maincolor),
               decoration: InputDecoration(
                 prefixIcon: Icon(
@@ -59,6 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: const EdgeInsets.only(left: 35, right: 35, top: 30),
             child: TextFormField(
               controller: pcontroller,
+              textInputAction: TextInputAction.next,
               decoration: InputDecoration(
                 prefixIcon: Icon(
                   Icons.lock,

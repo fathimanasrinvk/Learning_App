@@ -26,7 +26,7 @@ class GameScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    double size = constantsize(context);
     return Scaffold(
       backgroundColor:Colors.white,
       appBar: AppBar(
@@ -38,7 +38,7 @@ class GameScreen extends StatelessWidget {
         title: Text("GAMES",
             style: GoogleFonts.poppins(
                 decoration: TextDecoration.none,
-                fontSize: 30,
+                fontSize: size*30,
                 color: ColorTheme.maincolor,
 
 
@@ -51,17 +51,17 @@ class GameScreen extends StatelessWidget {
                 MainAxisAlignment.center, // Align the column center
             children: [
               SizedBox(
-                height: size.height * .09,
+                height: size*70,
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(
-                    size.width * .04, 0, size.width * .04, 0),
+                    size*20, 0, size*20, 0),
                 child: GridView(
                   shrinkWrap: true,
-                  gridDelegate:const  SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    mainAxisSpacing: 40,
-                    crossAxisSpacing: 20,
+                    mainAxisSpacing: size*40,
+                    crossAxisSpacing: size*20,
                     childAspectRatio: 1 / .9,
                   ),
                   children: List.generate(
@@ -75,7 +75,7 @@ class GameScreen extends StatelessWidget {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(size*20),
                                   image: DecorationImage(
                                       image: AssetImage(images[index]),
                                       fit: BoxFit.fill)),

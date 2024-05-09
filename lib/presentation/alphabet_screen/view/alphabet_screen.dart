@@ -11,36 +11,37 @@ class AlphabetScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double size = constantsize(context);
     return Scaffold(
         body: CustomScrollView(slivers: [
       SliverPadding(
-        padding: const EdgeInsets.only(top: 100),
+        padding:  EdgeInsets.only(top: size*100),
         sliver: SliverList(
             delegate: SliverChildListDelegate([
           Text("CAPITAL LETTERS",
               textAlign: TextAlign.center,
               style: GoogleFonts.passionOne(
                   decoration: TextDecoration.none,
-                  fontSize: 35,
+                  fontSize: size*35,
                   color: ColorTheme.maincolor,
                   fontWeight: FontWeight.w400))
         ])),
       ),
       SliverPadding(
-          padding: const EdgeInsets.all(20),
+          padding:  EdgeInsets.all(size*20),
           sliver: SliverList(
               delegate: SliverChildListDelegate([
             Wrap(
               alignment: WrapAlignment.center,
-              spacing: 8.0,
-              runSpacing: 5,
+              spacing: size*8,
+              runSpacing: size*5,
               children: capitalAlphabets.map((letter) {
                 return Padding(
-                  padding:const  EdgeInsets.only(left: 10, right: 10),
+                  padding:  EdgeInsets.only(left: size*10, right: size*10),
                   child: Text(letter,
                       style: GoogleFonts.peddana(
                           decoration: TextDecoration.none,
-                          fontSize: 38,
+                          fontSize: size*38,
                           color: ColorTheme.maincolor,
                           fontWeight:
                               FontWeight.w400)
@@ -50,33 +51,33 @@ class AlphabetScreen extends StatelessWidget {
             ),
           ]))),
       SliverPadding(
-        padding: EdgeInsets.only(top: 50),
+        padding: EdgeInsets.only(top: size*50),
         sliver: SliverList(
             delegate: SliverChildListDelegate([
           Text("SMALL LETTERS",
               textAlign: TextAlign.center,
               style: GoogleFonts.passionOne(
                   decoration: TextDecoration.none,
-                  fontSize: 35,
+                  fontSize: size*35,
                   color: ColorTheme.maincolor,
                   fontWeight: FontWeight.w400))
         ])),
       ),
       SliverPadding(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.all(size*10),
           sliver: SliverList(
               delegate: SliverChildListDelegate([
             Wrap(
               alignment: WrapAlignment.center,
-              spacing: 8.0,
-              runSpacing: 5,
+              spacing: size*8,
+              runSpacing: size*5,
               children: smallAlphabets.map((letter) {
                 return Padding(
-                  padding:const  EdgeInsets.only(left: 10, right: 10),
+                  padding:  EdgeInsets.only(left: size*10, right: size*10),
                   child: Text(letter,
                       style: GoogleFonts.peddana(
                           decoration: TextDecoration.none,
-                          fontSize: 40,
+                          fontSize: size*40,
                           color: ColorTheme.maincolor,
                           fontWeight: FontWeight
                               .w400)

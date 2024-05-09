@@ -21,6 +21,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double size = constantsize(context);
     return Scaffold(
         backgroundColor: ColorTheme.secondarycolor,
         body: SingleChildScrollView(
@@ -28,18 +29,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           key: formkey,
           child: Center(
               child: Column(children: [
-            const SizedBox(
-              height: 150,
+             SizedBox(
+              height: size*150,
             ),
             Text(
               "Welcome To SpeakUp",
               style: GoogleFonts.nunito(
                   fontWeight: FontWeight.w700,
                   color: ColorTheme.maincolor,
-                  fontSize: 24),
+                  fontSize: size*24),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 35, right: 35, top: 100),
+              padding:  EdgeInsets.only(left: size*35, right: size*35, top: size*100),
               child: TextFormField(
                 controller: namecontroller,
                 textInputAction: TextInputAction.next,
@@ -59,15 +60,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   filled: true,
                   fillColor: Colors.white,
                   hintText: 'Username',
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  contentPadding:  EdgeInsets.symmetric(horizontal: size*20),
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(7),
+                      borderRadius: BorderRadius.circular(size*7),
                       borderSide: BorderSide.none),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 35, right: 35, top: 30),
+              padding:  EdgeInsets.only(left: size*35, right: size*35, top: size*30),
               child: TextFormField(
                 controller: econtroller,
                 textInputAction: TextInputAction.next,
@@ -87,15 +88,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   filled: true,
                   fillColor: Colors.white,
                   hintText: 'Email',
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  contentPadding:  EdgeInsets.symmetric(horizontal: size*20),
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(7),
+                      borderRadius: BorderRadius.circular(size*7),
                       borderSide: BorderSide.none),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 35, right: 35, top: 30),
+              padding:  EdgeInsets.only(left: size*35, right: size*35, top: size*30),
               child: TextFormField(
                 controller: phonecontroller,
                 textInputAction: TextInputAction.next,
@@ -114,16 +115,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   filled: true,
                   fillColor: Colors.white,
                   hintText: 'Phone Number',
-                  contentPadding: EdgeInsets.symmetric(horizontal: 20.0),
+                  contentPadding: EdgeInsets.symmetric(horizontal: size*20),
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(7),
+                      borderRadius: BorderRadius.circular(size*7),
                       borderSide: BorderSide.none),
                 ),
                 style: TextStyle(color: ColorTheme.maincolor),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 35, right: 35, top: 30),
+              padding:  EdgeInsets.only(left: size*35, right: size*35, top: size*30),
               child: TextFormField(
                 controller: pcontroller,
                 textInputAction: TextInputAction.next,
@@ -142,22 +143,22 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   filled: true,
                   fillColor: Colors.white,
                   hintText: 'Password',
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  contentPadding:  EdgeInsets.symmetric(horizontal: size*20),
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(7),
+                      borderRadius: BorderRadius.circular(size*7),
                       borderSide: BorderSide.none),
                 ),
                 style: TextStyle(color: ColorTheme.maincolor),
               ),
             ),
-            const SizedBox(
-              height: 40,
+             SizedBox(
+              height: size*40,
             ),
             Container(
-              width: 250,
+              width: size*250,
               decoration: BoxDecoration(
                   color: ColorTheme.maincolor,
-                  borderRadius: BorderRadius.circular(7)),
+                  borderRadius: BorderRadius.circular(size*7)),
               child: ElevatedButton(
                 onPressed: () async {
                   preferences = await SharedPreferences.getInstance();
@@ -194,7 +195,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 style: ElevatedButton.styleFrom(
                     backgroundColor: ColorTheme.maincolor,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(7))),
+                        borderRadius: BorderRadius.circular(size*7))),
                 child: Text(
                   "Register",
                   style: TextStyle(
@@ -203,7 +204,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 130),
+            SizedBox(height: size*130),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pushReplacement(
@@ -216,7 +217,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       text: "Already  have account ?  ",
                       style: GoogleFonts.lato(
                           decoration: TextDecoration.none,
-                          fontSize: 14,
+                          fontSize: size*14,
                           color: Colors.black),
                     ),
                     TextSpan(
@@ -224,7 +225,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       style: GoogleFonts.lato(
                           color: ColorTheme.maincolor,
                           decoration: TextDecoration.none,
-                          fontSize: 18,
+                          fontSize: size*18,
                           fontWeight: FontWeight.bold),
                     )
                   ],

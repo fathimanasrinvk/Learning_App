@@ -20,23 +20,24 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double size = constantsize(context);
     return Scaffold(
         backgroundColor: ColorTheme.secondarycolor,
         body: SingleChildScrollView(
             child: Center(
                 child: Column(children: [
-          const SizedBox(
-            height: 150,
+           SizedBox(
+            height: size*150,
           ),
           Text(
             "Welcome Back !!",
             style: GoogleFonts.nunito(
                 fontWeight: FontWeight.w700,
                 color: ColorTheme.maincolor,
-                fontSize: 24),
+                fontSize: size*24),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 35, right: 35, top: 100),
+            padding:  EdgeInsets.only(left: size*35, right: size*35, top: size*100),
             child: TextFormField(
               controller: namecontroller,
               textInputAction: TextInputAction.next,
@@ -49,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 filled: true,
                 fillColor: Colors.white,
                 hintText: 'Username',
-                contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
+                contentPadding:  EdgeInsets.symmetric(horizontal: size*20),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(7),
                     borderSide: BorderSide.none),
@@ -57,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 35, right: 35, top: 30),
+            padding:  EdgeInsets.only(left: size*35, right: size*35, top: size*30),
             child: TextFormField(
               controller: pcontroller,
               textInputAction: TextInputAction.next,
@@ -69,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 filled: true,
                 fillColor: Colors.white,
                 hintText: 'Password',
-                contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
+                contentPadding:  EdgeInsets.symmetric(horizontal: size*20),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(7),
                     borderSide: BorderSide.none),
@@ -77,14 +78,14 @@ class _LoginScreenState extends State<LoginScreen> {
               style: TextStyle(color: ColorTheme.maincolor),
             ),
           ),
-          const SizedBox(
-            height: 40,
+           SizedBox(
+            height: size*40,
           ),
           Container(
-            width: 250,
+            width: size*250,
             decoration: BoxDecoration(
                 color: ColorTheme.maincolor,
-                borderRadius: BorderRadius.circular(7)),
+                borderRadius: BorderRadius.circular(size*7)),
             child: ElevatedButton(
               onPressed: () async {
                 SharedPreferences preferences =
@@ -131,7 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           ),
-          const SizedBox(height: 280),
+           SizedBox(height: size*280),
           TextButton(
             onPressed: () {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -144,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     text: "Don't have account ?  ",
                     style: GoogleFonts.lato(
                         decoration: TextDecoration.none,
-                        fontSize: 14,
+                        fontSize: size*14,
                         color: Colors.black),
                   ),
                   TextSpan(
@@ -152,7 +153,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: GoogleFonts.lato(
                         color: ColorTheme.maincolor,
                         decoration: TextDecoration.none,
-                        fontSize: 18,
+                        fontSize: size*18,
                         fontWeight: FontWeight.bold),
                   )
                 ],

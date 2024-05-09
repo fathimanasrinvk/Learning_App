@@ -26,11 +26,11 @@ class _TranslationScreenState extends State<TranslationScreen> {
         leading: Icon(null),
         backgroundColor: Colors.transparent,
         title: Padding(
-          padding: const EdgeInsets.only(top: 30),
+          padding:  EdgeInsets.only(top: size*30),
           child: Text("TRANSLATION",
               style: GoogleFonts.passionOne(
                   decoration: TextDecoration.none,
-                  fontSize: 40,
+                  fontSize: size*40,
                   color: ColorTheme.maincolor,
                   fontWeight: FontWeight.w400)),
         ),
@@ -40,18 +40,18 @@ class _TranslationScreenState extends State<TranslationScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 20),
+              padding:  EdgeInsets.only(top: size*20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    height: 35,
-                    width: 120,
+                    height: size*35,
+                    width: size*120,
                     decoration: BoxDecoration(
                       color: ColorTheme.white,
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(size*20),
                       border: Border.all(
-                        width: 2,
+                        width: size*2,
                         color: ColorTheme.maincolor,
                       ),
                     ),
@@ -63,7 +63,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
                           "English",
                           style: GoogleFonts.roboto(
                               decoration: TextDecoration.none,
-                              fontSize: 15,
+                              fontSize: size*15,
                               color: ColorTheme.maincolor,
                               fontWeight: FontWeight.w500),
                         )
@@ -71,21 +71,21 @@ class _TranslationScreenState extends State<TranslationScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
+                    padding:  EdgeInsets.only(left: size*10, right: size*10),
                     child: Icon(
                       Icons.arrow_right_alt,
                       color: ColorTheme.maincolor,
-                      size: 25,
+                      size: size*25,
                     ),
                   ),
                   Container(
-                    height: 35,
-                    width: 120,
+                    height: size*35,
+                    width: size*120,
                     decoration: BoxDecoration(
                       color: ColorTheme.white,
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(size*20),
                       border: Border.all(
-                        width: 2,
+                        width: size*2,
                         color: ColorTheme.maincolor,
                       ),
                     ),
@@ -97,7 +97,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
                           "Malayalam",
                           style: GoogleFonts.roboto(
                               decoration: TextDecoration.none,
-                              fontSize: 15,
+                              fontSize: size*15,
                               color: ColorTheme.maincolor,
                               fontWeight: FontWeight.w500),
                         )
@@ -108,14 +108,14 @@ class _TranslationScreenState extends State<TranslationScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 30, left: 20,right: 20),
+              padding:  EdgeInsets.only(top: size*30, left: size*20,right: size*20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     'English',
                     style: TextStyle(
-                        fontSize: 18,
+                        fontSize: size*18,
                         color: ColorTheme.maincolor,
                         fontWeight: FontWeight.bold),
                   ),
@@ -131,22 +131,22 @@ class _TranslationScreenState extends State<TranslationScreen> {
               ),
             ),
             Padding(
-                padding: const EdgeInsets.all(20),
+                padding:  EdgeInsets.all(size*20),
                 child: TextFormField(
                   controller: tcontroller,
                   maxLines: 6,
                   decoration: InputDecoration(
                       hintStyle: TextStyle(color: ColorTheme.maincolor),
                       hintText: ' Enter your text',
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(size*10),
                           borderSide: BorderSide(color: ColorTheme.maincolor,
-                      width: 5))),
+                      width: size*5))),
                 )),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   backgroundColor: ColorTheme.maincolor,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(7))),
+                      borderRadius: BorderRadius.circular(size*7))),
               onPressed: () {},
               child: Text(
                 "Translate",
@@ -156,13 +156,13 @@ class _TranslationScreenState extends State<TranslationScreen> {
               ),
             ),
             Padding(
-              padding:  EdgeInsets.only(top: 40,left: 20),
+              padding:  EdgeInsets.only(top: size*40,left: size*20),
               child: Row( mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
                     'മലയാളം',
                     style: TextStyle(
-                        fontSize: 18,
+                        fontSize: size*18,
                         color: ColorTheme.maincolor,
                         fontWeight: FontWeight.bold),
                   ),
@@ -170,16 +170,16 @@ class _TranslationScreenState extends State<TranslationScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(20),
+              padding:  EdgeInsets.all(size*20),
               child: TextFormField(
                 controller: tcontroller,
                 maxLines: 6,
                 decoration: InputDecoration(
                     hintStyle: TextStyle(color: ColorTheme.maincolor),
                     hintText: ' Enter your text',
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(size*10),
                         borderSide: BorderSide(color: ColorTheme.maincolor,
-                            width: 5))),
+                            width: size*5))),
               ),
             )
           ],

@@ -40,31 +40,31 @@ class HomeScreen extends StatelessWidget {
           body: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: 35),
+                SizedBox(height: size*35),
                 Padding(
-                  padding:  EdgeInsets.only(left: 45,right: 45),
+                  padding:  EdgeInsets.only(left: size*45,right: size*45),
                   child: Container(alignment: Alignment.centerLeft,
                     child: Text("Hi, $name👋",
                         style: GoogleFonts.nunito(
                             decoration: TextDecoration.none,
-                            fontSize: 20,
+                            fontSize: size*20,
                             color: ColorTheme.maincolor,
                             fontWeight: FontWeight.bold),
                     maxLines: 1),
                   ),
                 ),
                 Padding(
-                padding:  EdgeInsets.only(left: 45,right: 45),
+                padding:  EdgeInsets.only(left: size*45,right: size*45),
                 child: Container(alignment: Alignment.centerLeft,
                 child: Text("Let’s start learning!",
                     style: GoogleFonts.nunito(
                         decoration: TextDecoration.none,
-                        fontSize: 15,
+                        fontSize: size*15,
                         color: ColorTheme.maincolor,
                         fontWeight: FontWeight.bold)))),
-                SizedBox(height: 65),
+                SizedBox(height: size*65),
                 Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: EdgeInsets.all(size*20),
                   child: ListView(
                       shrinkWrap: true,
                       children: List.generate(
@@ -77,13 +77,13 @@ class HomeScreen extends StatelessWidget {
                                           builder: (context) => screen[index]));
                                 },
                                 child: Padding(
-                                  padding:  EdgeInsets.only(top: 10,bottom: 10,left: 25,right: 25),
+                                  padding:  EdgeInsets.only(top: size*10,bottom: size*10,left: size*25,right: size*25),
                                   child: Container(
-                                    height: 83,width: double.infinity,
+                                    height: size*83,width: double.infinity,
                                     decoration: BoxDecoration(
                                       color: Color(0xFFD9E1FF),
-                                      borderRadius: BorderRadius.circular(5),
-            
+                                      borderRadius: BorderRadius.circular(size*5),
+
                                     ),
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -93,7 +93,7 @@ class HomeScreen extends StatelessWidget {
                                           names[index],
                                           style: GoogleFonts.passionOne(
                                             decoration: TextDecoration.none,
-                                            fontSize: 30,
+                                            fontSize: size*30,
                                             color: ColorTheme.maincolor,
                                           ),
                                           textAlign: TextAlign.center,

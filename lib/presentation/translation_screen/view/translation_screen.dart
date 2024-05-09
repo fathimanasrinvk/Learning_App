@@ -23,6 +23,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
+        leading: Icon(null),
         backgroundColor: Colors.transparent,
         title: Padding(
           padding: const EdgeInsets.only(top: 30),
@@ -39,7 +40,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 50),
+              padding: const EdgeInsets.only(top: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -107,8 +108,9 @@ class _TranslationScreenState extends State<TranslationScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 30, left: 30),
+              padding: const EdgeInsets.only(top: 30, left: 20,right: 20),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     'English',
@@ -117,20 +119,14 @@ class _TranslationScreenState extends State<TranslationScreen> {
                         color: ColorTheme.maincolor,
                         fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(
-                    width: 230,
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.cancel_outlined,
-                      color: ColorTheme.maincolor,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        tcontroller.clear();
-                      });
-                    },
-                  ),
+                  InkWell(child: Icon(
+                    Icons.cancel_outlined,
+                    color: ColorTheme.maincolor,
+                  ),onTap: () {
+                    setState(() {
+                      tcontroller.clear();
+                    });
+                  },)
                 ],
               ),
             ),
@@ -142,7 +138,9 @@ class _TranslationScreenState extends State<TranslationScreen> {
                   decoration: InputDecoration(
                       hintStyle: TextStyle(color: ColorTheme.maincolor),
                       hintText: ' Enter your text',
-                      border: OutlineInputBorder(borderSide: BorderSide.none)),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(color: ColorTheme.maincolor,
+                      width: 5))),
                 )),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -158,24 +156,30 @@ class _TranslationScreenState extends State<TranslationScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 240,top: 40),
-              child: Text(
-                'മലയാളം',
-                style: TextStyle(
-                    fontSize: 18,
-                    color: ColorTheme.maincolor,
-                    fontWeight: FontWeight.bold),
+              padding:  EdgeInsets.only(top: 40,left: 20),
+              child: Row( mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    'മലയാളം',
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: ColorTheme.maincolor,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(20),
               child: TextFormField(
                 controller: tcontroller,
-                maxLines: 5,
+                maxLines: 6,
                 decoration: InputDecoration(
                     hintStyle: TextStyle(color: ColorTheme.maincolor),
                     hintText: ' Enter your text',
-                    border: OutlineInputBorder(borderSide: BorderSide.none)),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(color: ColorTheme.maincolor,
+                            width: 5))),
               ),
             )
           ],

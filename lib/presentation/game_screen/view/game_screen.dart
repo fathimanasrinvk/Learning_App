@@ -10,11 +10,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class GameScreen extends StatelessWidget {
   var images = [
-    "assets/games/boogle.png",
-    "assets/games/hangman.png",
-    "assets/games/word_puzzle.png",
-    "assets/games/tens_quiz.png",
-    "assets/games/gk.png"
+    "assets/images/boggle.jpeg",
+    "assets/images/img.png",
+    "assets/images/wrdpzzle.png",
+    "assets/images/tensequiz.png",
+    "assets/images/img_1.png"
   ];
   var screens = [
     LevelScreenBoggle(),
@@ -28,21 +28,11 @@ class GameScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor:Colors.white,
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => HomeScreen(
-                      name: '',
-                    )));
-          },
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            color: ColorTheme.maincolor,
-            size: 30,
+        leading:Icon(
+           null
           ),
-        ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         title: Text("GAMES",
@@ -50,6 +40,8 @@ class GameScreen extends StatelessWidget {
                 decoration: TextDecoration.none,
                 fontSize: 30,
                 color: ColorTheme.maincolor,
+
+
                 fontWeight: FontWeight.bold)),
       ),
       body: SingleChildScrollView(
@@ -59,14 +51,14 @@ class GameScreen extends StatelessWidget {
                 MainAxisAlignment.center, // Align the column center
             children: [
               SizedBox(
-                height: size.height * .06,
+                height: size.height * .09,
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(
                     size.width * .04, 0, size.width * .04, 0),
                 child: GridView(
                   shrinkWrap: true,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate:const  SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     mainAxisSpacing: 40,
                     crossAxisSpacing: 20,

@@ -11,16 +11,9 @@ class PuzzleScreen extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            color: ColorTheme.maincolor,
-            size: 30,
+        leading:Icon(
+            null
           ),
-        ),
       ),
       body: SingleChildScrollView(
         child: Center(

@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
           body: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: 35),
+                SizedBox(height: 55),
                 Padding(
                   padding:  EdgeInsets.only(left: 45,right: 45),
                   child: Container(alignment: Alignment.centerLeft,

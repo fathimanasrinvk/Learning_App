@@ -48,7 +48,7 @@ class GameScreen extends StatelessWidget {
         title: Text("GAMES",
             style: GoogleFonts.poppins(
                 decoration: TextDecoration.none,
-                fontSize: 40,
+                fontSize: 30,
                 color: ColorTheme.maincolor,
                 fontWeight: FontWeight.bold)),
       ),

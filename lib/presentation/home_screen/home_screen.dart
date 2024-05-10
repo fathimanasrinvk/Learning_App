@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
       TranslationScreen()
     ];
     double size = constantsize(context);
-    return Scaffold(extendBody: true,
+    return Scaffold(
         body: Stack(children: [
           // Background image
           Positioned.fill(

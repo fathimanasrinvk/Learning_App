@@ -199,7 +199,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         child: Text(
                           "Register",
                           style: TextStyle(
-                              color: ColorTheme.primarycolor, fontSize: size*30
+                              color: ColorTheme.primarycolor, fontSize: size*20
                           ),
                         ),
                       ),

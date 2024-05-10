@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
-import 'package:gaming_app/presentation/game_screen/view/game_screen.dart';
+import 'package:gaming_app/presentation/games/hangman/hangman_game_screen/view/hangman_game_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LevelScreenHangman extends StatelessWidget {
@@ -11,10 +11,7 @@ class LevelScreenHangman extends StatelessWidget {
     var size = MediaQuery.sizeOf(context);
     return Scaffold(
       body: Padding(
-        padding:  EdgeInsets.only(
-            top: size.height*0.1
-
-        ),
+        padding: EdgeInsets.only(top: size.height * 0.1),
         child: Center(
           child: Column(
             children: [
@@ -33,8 +30,8 @@ class LevelScreenHangman extends StatelessWidget {
                   width: size.width * .750,
                   child: ElevatedButton(
                       onPressed: () {
-                        // Navigator.of(context).push(MaterialPageRoute(
-                        //     builder: (context) => const TensQuizScreen()));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const HangmanGameScreen()));
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: ColorTheme.maincolor,

@@ -10,20 +10,8 @@ class TensQuizScoreScreen extends StatelessWidget {
     var size = MediaQuery.sizeOf(context);
     return Scaffold(
       backgroundColor: ColorTheme.maincolor,
-      appBar: AppBar(
-        backgroundColor: ColorTheme.maincolor,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => LevelScreenTensQuiz()));
-          },
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            color: ColorTheme.white,
-            size: 30,
-          ),
-        ),
-      ),
+      appBar:
+          AppBar(backgroundColor: ColorTheme.maincolor, leading: Icon(null)),
       body: Center(
           child: Column(
         children: [

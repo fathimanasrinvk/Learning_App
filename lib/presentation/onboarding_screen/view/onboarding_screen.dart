@@ -24,11 +24,11 @@ class OnboardingScreen extends StatelessWidget {
                     "Discover the joy of learning English with our app, where each word learned opens new doors to opportunities and connections.",
                 image: Image.asset("assets/onboarding/onboarding1.png"),
                 decoration: PageDecoration(
-                    titleTextStyle: GoogleFonts.nunito(
+                    titleTextStyle: GoogleFonts.poppins(
                         color: ColorTheme.maincolor,
-                        fontSize: 20,
+                        fontSize: 25,
                         fontWeight: FontWeight.bold),
-                    bodyTextStyle: GoogleFonts.nunito(
+                    bodyTextStyle: GoogleFonts.poppins(
                       color: ColorTheme.maincolor,
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
@@ -39,11 +39,11 @@ class OnboardingScreen extends StatelessWidget {
                     "Level up your English with our immersive games, designed to strengthen your language skills and make learning a rewarding adventure.",
                 image: Image.asset("assets/onboarding/onboarding2.png"),
                 decoration: PageDecoration(
-                    titleTextStyle: GoogleFonts.nunito(
+                    titleTextStyle: GoogleFonts.poppins(
                         color: ColorTheme.maincolor,
-                        fontSize: 20,
+                        fontSize: 25,
                         fontWeight: FontWeight.bold),
-                    bodyTextStyle: GoogleFonts.nunito(
+                    bodyTextStyle: GoogleFonts.poppins(
                         color: ColorTheme.maincolor,
                         fontSize: 15,
                         fontWeight: FontWeight.bold))),
@@ -53,11 +53,11 @@ class OnboardingScreen extends StatelessWidget {
                     "Extend your learning journey with us beyond traditional classroom boundaries.",
                 image: Image.asset("assets/onboarding/onboarding3.png"),
                 decoration: PageDecoration(
-                    titleTextStyle: GoogleFonts.nunito(
+                    titleTextStyle: GoogleFonts.poppins(
                         color: ColorTheme.maincolor,
-                        fontSize: 20,
+                        fontSize: 25,
                         fontWeight: FontWeight.bold),
-                    bodyTextStyle: GoogleFonts.nunito(
+                    bodyTextStyle: GoogleFonts.poppins(
                       color: ColorTheme.maincolor,
                       fontWeight: FontWeight.bold,
                       fontSize: 15,

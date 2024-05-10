@@ -33,10 +33,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             ),
             Text(
               "Welcome To SpeakUp",
-              style: GoogleFonts.nunito(
-                  fontWeight: FontWeight.w700,
+              style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.bold,
                   color: ColorTheme.maincolor,
-                  fontSize: 24),
+                  fontSize: 25),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 35, right: 35, top: 100),

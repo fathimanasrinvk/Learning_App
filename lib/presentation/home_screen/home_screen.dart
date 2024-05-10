@@ -47,13 +47,13 @@ class HomeScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Hi, $name👋",
-                      style: GoogleFonts.nunito(
+                      style: GoogleFonts.poppins(
                           decoration: TextDecoration.none,
                           fontSize: 20,
                           color: ColorTheme.maincolor,
                           fontWeight: FontWeight.bold)),
                   Text("Let’s start learning!",
-                      style: GoogleFonts.nunito(
+                      style: GoogleFonts.poppins(
                           decoration: TextDecoration.none,
                           fontSize: 15,
                           color: ColorTheme.maincolor,

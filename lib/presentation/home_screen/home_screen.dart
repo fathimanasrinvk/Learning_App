@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
       TranslationScreen()
     ];
     double size = constantsize(context);
-    return Scaffold(
+    return Scaffold(extendBody: true,
         body: Stack(children: [
           // Background image
           Positioned.fill(
@@ -90,19 +90,15 @@ class HomeScreen extends StatelessWidget {
                                     color: Color(0xFFD9E1FF),
                                     borderRadius: BorderRadius.circular(size * 5),
                                   ),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        names[index],
-                                        style: GoogleFonts.passionOne(
-                                          decoration: TextDecoration.none,
-                                          fontSize: size * 30,
-                                          color: ColorTheme.maincolor,
-                                        ),
-                                      )
-                                    ],
+                                  child: Center(
+                                    child: Text(
+                                      names[index],
+                                      style: GoogleFonts.passionOne(
+                                        decoration: TextDecoration.none,
+                                        fontSize: size * 30,
+                                        color: ColorTheme.maincolor,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),

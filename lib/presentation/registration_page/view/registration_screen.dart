@@ -55,7 +55,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 decoration: InputDecoration(
                   prefixIcon: Icon(
                     Icons.person,
-                    color: ColorTheme.maincolor,
+                    color: ColorTheme.maincolor
                   ),
                   filled: true,
                   fillColor: Colors.white,
@@ -199,7 +199,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 child: Text(
                   "Register",
                   style: TextStyle(
-                    color: ColorTheme.primarycolor,
+                    color: ColorTheme.primarycolor, fontSize: size*30
                   ),
                 ),
               ),

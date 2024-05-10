@@ -12,9 +12,7 @@ class LevelScreenTensQuiz extends StatelessWidget {
     var size = MediaQuery.sizeOf(context);
     return Scaffold(
       body: Padding(
-        padding:  EdgeInsets.only(
-            top: size.height*0.1
-        ),
+        padding: EdgeInsets.only(top: size.height * 0.1),
         child: Center(
           child: Column(
             children: [
@@ -34,7 +32,7 @@ class LevelScreenTensQuiz extends StatelessWidget {
                   child: ElevatedButton(
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const TensQuizScreen()));
+                            builder: (context) => const TenseQuizScreen()));
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: ColorTheme.maincolor,

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
-import 'package:gaming_app/presentation/games/word_puzzle/score_screen/view/score_screen.dart';
+import 'package:gaming_app/presentation/games/hangman/score_screen/view/score_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PuzzleScreen extends StatelessWidget {
-  const PuzzleScreen({super.key});
+
+class HangmanGameScreen extends StatelessWidget {
+  const HangmanGameScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class PuzzleScreen extends StatelessWidget {
             //   mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "WELCOME TO WORD PUZZLE",
+                "WELCOME TO HANGMAN",
                 style: GoogleFonts.poppins(
                   color: ColorTheme.maincolor,
                   fontWeight: FontWeight.bold,
@@ -33,7 +34,7 @@ class PuzzleScreen extends StatelessWidget {
                 width: 200,
                 decoration: BoxDecoration(
                   image: const DecorationImage(
-                    image: AssetImage("assets/images/abcd.jpeg"),
+                    image: AssetImage("assets/images/img.png"),
                     fit: BoxFit.cover,
                   ),
                   borderRadius: BorderRadius.circular(20),
@@ -41,7 +42,7 @@ class PuzzleScreen extends StatelessWidget {
               ),
               SizedBox(height: size.height * 0.05),
               Text(
-                "1. Find The Original Word",
+                " Identify The Original Word",
                 style: GoogleFonts.poppins(
                   color: ColorTheme.maincolor,
                   fontSize: 20,
@@ -50,27 +51,12 @@ class PuzzleScreen extends StatelessWidget {
               SizedBox(height: size.height * 0.05),
               Padding(
                 padding: EdgeInsets.fromLTRB(
-                    size.width * 0.1, 0, size.width * 0.1, 0),
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                      mainAxisExtent: 80,
-                      childAspectRatio: 1.8,
-                      crossAxisSpacing: 10,
-                      maxCrossAxisExtent: 80),
-                  shrinkWrap: true,
-                  itemCount: 4,
-                  itemBuilder: (context, index) => Container(
-                    height: size.height * 0.080,
-                    width: 200,
-                    decoration: BoxDecoration(
-                        color: ColorTheme.maincolor,
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Center(
-                        child: Text(
-                      "A",
-                      style: GoogleFonts.poppins(
-                          color: ColorTheme.white, fontWeight: FontWeight.bold),
-                    )),
+                    size.width * 0.09, 0, size.width * 0.09, 0),
+                child: Text(
+                  " hint: Contrary to popular belief, Lorem Ipsum",
+                  style: GoogleFonts.poppins(
+                    color: ColorTheme.maincolor,
+                    fontSize: 18,
                   ),
                 ),
               ),
@@ -90,7 +76,7 @@ class PuzzleScreen extends StatelessWidget {
                 child: ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const WordPuzzleScoreScreen()));
+                          builder: (context) => const HangmanScoreScreen()));
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: ColorTheme.maincolor,

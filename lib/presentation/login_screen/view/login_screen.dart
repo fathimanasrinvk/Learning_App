@@ -31,11 +31,14 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           Text(
             "Welcome Back !!",
-            style: GoogleFonts.nunito(
-                fontWeight: FontWeight.w700,
+            style: GoogleFonts.poppins(
+                fontWeight: FontWeight.bold,
                 color: ColorTheme.maincolor,
-                fontSize: size*24),
-          ),
+
+                fontSize: 25),
+                ),
+
+
           Padding(
             padding:  EdgeInsets.only(left: size*35, right: size*35, top: size*100),
             child: TextFormField(

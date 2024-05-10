@@ -11,18 +11,10 @@ class WordPuzzleScoreScreen extends StatelessWidget {
       backgroundColor: ColorTheme.maincolor,
       appBar: AppBar(
         backgroundColor: ColorTheme.maincolor,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const LevelScreenWordPuzzle()));
-          },
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            color: ColorTheme.white,
-            size: 30,
+        leading:Icon(
+           null
           ),
         ),
-      ),
       body: Center(
           child: Column(
         children: [

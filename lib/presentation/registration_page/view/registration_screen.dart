@@ -195,12 +195,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     backgroundColor: ColorTheme.maincolor,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(size * 7))),
-                child: Text(
-                  "Register",
-                  style: TextStyle(
-                    color: ColorTheme.primarycolor,
-                  ),
-                ),
+                child: Text("Register", style: GlobalTextStyles.buttonText),
               ),
             ),
             SizedBox(height: size * 130),

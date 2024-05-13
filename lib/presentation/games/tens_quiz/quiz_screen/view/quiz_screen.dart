@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
+import 'package:gaming_app/core/constants/global_text_style.dart';
 import 'package:gaming_app/presentation/games/tens_quiz/score_screen/view/score_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,23 +16,12 @@ class TenseQuizScreen extends StatelessWidget {
         child: Center(
             child: Column(
           children: [
-            Text(
-              "WELCOME TO TENSE QUIZ",
-              style: GoogleFonts.poppins(
-                  color: ColorTheme.maincolor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25),
-            ),
+            Text("WELCOME TO TENSE QUIZ", style: GlobalTextStyles.secondTittle),
             SizedBox(
               height: size.height * .09,
             ),
-            Text(
-              "1. What is the past tense of Eat ?",
-              style: GoogleFonts.poppins(
-                color: ColorTheme.maincolor,
-                fontSize: 20,
-              ),
-            ),
+            Text("1. What is the past tense of Eat ?",
+                style: GlobalTextStyles.subTitle3),
             SizedBox(
               height: size.height * .09,
             ),
@@ -70,7 +60,7 @@ class TenseQuizScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20))),
                   child: Text(
                     "OK",
-                    style: TextStyle(color: ColorTheme.white, fontSize: 15),
+                    style: GlobalTextStyles.buttonText,
                   )),
             )
           ],

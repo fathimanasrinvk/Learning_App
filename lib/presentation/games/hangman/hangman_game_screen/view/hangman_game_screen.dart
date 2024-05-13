@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
+import 'package:gaming_app/core/constants/global_text_style.dart';
 import 'package:gaming_app/presentation/games/hangman/score_screen/view/score_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 
 class HangmanGameScreen extends StatelessWidget {
   const HangmanGameScreen({super.key});
@@ -20,14 +20,7 @@ class HangmanGameScreen extends StatelessWidget {
             // mainAxisSize: MainAxisSize.min,
             //   mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "WELCOME TO HANGMAN",
-                style: GoogleFonts.poppins(
-                  color: ColorTheme.maincolor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25,
-                ),
-              ),
+              Text("WELCOME TO HANGMAN", style: GlobalTextStyles.secondTittle),
               SizedBox(height: size.height * 0.05),
               Container(
                 height: 200,
@@ -41,24 +34,14 @@ class HangmanGameScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: size.height * 0.05),
-              Text(
-                " Identify The Original Word",
-                style: GoogleFonts.poppins(
-                  color: ColorTheme.maincolor,
-                  fontSize: 20,
-                ),
-              ),
+              Text(" Identify The Original Word",
+                  style: GlobalTextStyles.subTitle3),
               SizedBox(height: size.height * 0.05),
               Padding(
                 padding: EdgeInsets.fromLTRB(
                     size.width * 0.09, 0, size.width * 0.09, 0),
-                child: Text(
-                  " hint: Contrary to popular belief, Lorem Ipsum",
-                  style: GoogleFonts.poppins(
-                    color: ColorTheme.maincolor,
-                    fontSize: 18,
-                  ),
-                ),
+                child: Text(" hint: Contrary to popular belief, Lorem Ipsum",
+                    style: GlobalTextStyles.subTitle2),
               ),
               SizedBox(height: size.height * 0.02),
               Padding(
@@ -82,10 +65,7 @@ class HangmanGameScreen extends StatelessWidget {
                         backgroundColor: ColorTheme.maincolor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20))),
-                    child: Text(
-                      "OK",
-                      style: TextStyle(color: ColorTheme.white, fontSize: 15),
-                    )),
+                    child: Text("OK", style: GlobalTextStyles.buttonText)),
               )
             ],
           ),

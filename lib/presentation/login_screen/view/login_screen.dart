@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
+import 'package:gaming_app/core/constants/global_text_style.dart';
 import 'package:gaming_app/presentation/registration_page/view/registration_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -26,21 +27,13 @@ class _LoginScreenState extends State<LoginScreen> {
         body: SingleChildScrollView(
             child: Center(
                 child: Column(children: [
-           SizedBox(
-            height: size*150,
+          SizedBox(
+            height: size * 150,
           ),
-          Text(
-            "Welcome Back !!",
-            style: GoogleFonts.poppins(
-                fontWeight: FontWeight.bold,
-                color: ColorTheme.maincolor,
-
-                fontSize: 25),
-                ),
-
-
+          Text("Welcome Back !!", style: GlobalTextStyles.secondTittle),
           Padding(
-            padding:  EdgeInsets.only(left: size*35, right: size*35, top: size*100),
+            padding: EdgeInsets.only(
+                left: size * 35, right: size * 35, top: size * 100),
             child: TextFormField(
               controller: namecontroller,
               textInputAction: TextInputAction.next,
@@ -53,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 filled: true,
                 fillColor: Colors.white,
                 hintText: 'Username',
-                contentPadding:  EdgeInsets.symmetric(horizontal: size*20),
+                contentPadding: EdgeInsets.symmetric(horizontal: size * 20),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(7),
                     borderSide: BorderSide.none),
@@ -61,7 +54,8 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           Padding(
-            padding:  EdgeInsets.only(left: size*35, right: size*35, top: size*30),
+            padding: EdgeInsets.only(
+                left: size * 35, right: size * 35, top: size * 30),
             child: TextFormField(
               controller: pcontroller,
               textInputAction: TextInputAction.next,
@@ -73,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 filled: true,
                 fillColor: Colors.white,
                 hintText: 'Password',
-                contentPadding:  EdgeInsets.symmetric(horizontal: size*20),
+                contentPadding: EdgeInsets.symmetric(horizontal: size * 20),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(7),
                     borderSide: BorderSide.none),
@@ -81,14 +75,14 @@ class _LoginScreenState extends State<LoginScreen> {
               style: TextStyle(color: ColorTheme.maincolor),
             ),
           ),
-           SizedBox(
-            height: size*40,
+          SizedBox(
+            height: size * 40,
           ),
           Container(
-            width: size*250,
+            width: size * 250,
             decoration: BoxDecoration(
                 color: ColorTheme.maincolor,
-                borderRadius: BorderRadius.circular(size*7)),
+                borderRadius: BorderRadius.circular(size * 7)),
             child: ElevatedButton(
               onPressed: () async {
                 SharedPreferences preferences =
@@ -130,12 +124,12 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Text(
                 "Login",
                 style: TextStyle(
-                  color: ColorTheme.primarycolor,fontSize: size*30
+                  color: ColorTheme.primarycolor,
                 ),
               ),
             ),
           ),
-           SizedBox(height: size*280),
+          SizedBox(height: size * 280),
           TextButton(
             onPressed: () {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -148,7 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     text: "Don't have account ?  ",
                     style: GoogleFonts.lato(
                         decoration: TextDecoration.none,
-                        fontSize: size*14,
+                        fontSize: size * 14,
                         color: Colors.black),
                   ),
                   TextSpan(
@@ -156,7 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: GoogleFonts.lato(
                         color: ColorTheme.maincolor,
                         decoration: TextDecoration.none,
-                        fontSize: size*18,
+                        fontSize: size * 18,
                         fontWeight: FontWeight.bold),
                   )
                 ],

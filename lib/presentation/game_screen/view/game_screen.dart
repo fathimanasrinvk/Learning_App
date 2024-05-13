@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
+import 'package:gaming_app/core/constants/global_text_style.dart';
 import 'package:gaming_app/presentation/games/boggle/level_screen/view/level_screen.dart';
 import 'package:gaming_app/presentation/games/gk/level_screen/view/level_screen.dart';
 import 'package:gaming_app/presentation/games/hangman/level_screen/view/level_screen.dart';
@@ -28,21 +29,12 @@ class GameScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double size = constantsize(context);
     return Scaffold(
-      backgroundColor:Colors.white,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        leading:Icon(
-           null
-          ),
+        leading: Icon(null),
         centerTitle: true,
         backgroundColor: Colors.transparent,
-        title: Text("GAMES",
-            style: GoogleFonts.poppins(
-                decoration: TextDecoration.none,
-                fontSize: size*30,
-                color: ColorTheme.maincolor,
-
-
-                fontWeight: FontWeight.bold)),
+        title: Text("GAMES", style: GlobalTextStyles.mainTittle),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -51,17 +43,16 @@ class GameScreen extends StatelessWidget {
                 MainAxisAlignment.center, // Align the column center
             children: [
               SizedBox(
-                height: size*70,
+                height: size * 70,
               ),
               Padding(
-                padding: EdgeInsets.fromLTRB(
-                    size*20, 0, size*20, 0),
+                padding: EdgeInsets.fromLTRB(size * 20, 0, size * 20, 0),
                 child: GridView(
                   shrinkWrap: true,
-                  gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    mainAxisSpacing: size*40,
-                    crossAxisSpacing: size*20,
+                    mainAxisSpacing: size * 40,
+                    crossAxisSpacing: size * 20,
                     childAspectRatio: 1 / .9,
                   ),
                   children: List.generate(
@@ -75,7 +66,8 @@ class GameScreen extends StatelessWidget {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(size*20),
+                                  borderRadius:
+                                      BorderRadius.circular(size * 20),
                                   image: DecorationImage(
                                       image: AssetImage(images[index]),
                                       fit: BoxFit.fill)),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gaming_app/core/constants/global_text_style.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/constants/colors.dart';
@@ -15,73 +16,61 @@ class AlphabetScreen extends StatelessWidget {
     return Scaffold(
         body: CustomScrollView(slivers: [
       SliverPadding(
-        padding:  EdgeInsets.only(top: size*100),
+        padding: EdgeInsets.only(top: size * 100),
         sliver: SliverList(
             delegate: SliverChildListDelegate([
           Text("CAPITAL LETTERS",
-              textAlign: TextAlign.center,
-              style: GoogleFonts.passionOne(
-                  decoration: TextDecoration.none,
-                  fontSize: size*35,
-                  color: ColorTheme.maincolor,
-                  fontWeight: FontWeight.w400))
+              textAlign: TextAlign.center, style: GlobalTextStyles.mainTittle2)
         ])),
       ),
       SliverPadding(
-          padding:  EdgeInsets.all(size*20),
+          padding: EdgeInsets.all(size * 20),
           sliver: SliverList(
               delegate: SliverChildListDelegate([
             Wrap(
               alignment: WrapAlignment.center,
-              spacing: size*8,
-              runSpacing: size*5,
+              spacing: size * 8,
+              runSpacing: size * 5,
               children: capitalAlphabets.map((letter) {
                 return Padding(
-                  padding:  EdgeInsets.only(left: size*10, right: size*10),
+                  padding: EdgeInsets.only(left: size * 10, right: size * 10),
                   child: Text(letter,
                       style: GoogleFonts.peddana(
                           decoration: TextDecoration.none,
-                          fontSize: size*38,
+                          fontSize: size * 38,
                           color: ColorTheme.maincolor,
-                          fontWeight:
-                              FontWeight.w400)
-                      ),
+                          fontWeight: FontWeight.w400)),
                 );
               }).toList(),
             ),
           ]))),
       SliverPadding(
-        padding: EdgeInsets.only(top: size*50),
+        padding: EdgeInsets.only(top: size * 50),
         sliver: SliverList(
             delegate: SliverChildListDelegate([
           Text("SMALL LETTERS",
-              textAlign: TextAlign.center,
-              style: GoogleFonts.passionOne(
-                  decoration: TextDecoration.none,
-                  fontSize: size*35,
-                  color: ColorTheme.maincolor,
-                  fontWeight: FontWeight.w400))
+              textAlign: TextAlign.center, style: GlobalTextStyles.mainTittle2)
         ])),
       ),
       SliverPadding(
-          padding: EdgeInsets.all(size*10),
+          padding: EdgeInsets.all(size * 10),
           sliver: SliverList(
               delegate: SliverChildListDelegate([
             Wrap(
               alignment: WrapAlignment.center,
-              spacing: size*8,
-              runSpacing: size*5,
+              spacing: size * 8,
+              runSpacing: size * 5,
               children: smallAlphabets.map((letter) {
                 return Padding(
-                  padding:  EdgeInsets.only(left: size*10, right: size*10),
+                  padding: EdgeInsets.only(left: size * 10, right: size * 10),
                   child: Text(letter,
-                      style: GoogleFonts.peddana(
+                      style:
+                       GoogleFonts.peddana(
                           decoration: TextDecoration.none,
-                          fontSize: size*40,
+                          fontSize: size * 40,
                           color: ColorTheme.maincolor,
-                          fontWeight: FontWeight
-                              .w400)
-                      ),
+                          fontWeight: FontWeight.w400)
+                          ),
                 );
               }).toList(),
             ),

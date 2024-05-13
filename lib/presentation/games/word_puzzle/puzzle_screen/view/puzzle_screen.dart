@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
+import 'package:gaming_app/core/constants/global_text_style.dart';
 import 'package:gaming_app/presentation/games/word_puzzle/score_screen/view/score_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -19,14 +20,8 @@ class PuzzleScreen extends StatelessWidget {
             // mainAxisSize: MainAxisSize.min,
             //   mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "WELCOME TO WORD PUZZLE",
-                style: GoogleFonts.poppins(
-                  color: ColorTheme.maincolor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25,
-                ),
-              ),
+              Text("WELCOME TO WORD PUZZLE",
+                  style: GlobalTextStyles.secondTittle),
               SizedBox(height: size.height * 0.05),
               Container(
                 height: 200,
@@ -40,13 +35,8 @@ class PuzzleScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: size.height * 0.05),
-              Text(
-                "1. Find The Original Word",
-                style: GoogleFonts.poppins(
-                  color: ColorTheme.maincolor,
-                  fontSize: 20,
-                ),
-              ),
+              Text("1. Find The Original Word",
+                  style: GlobalTextStyles.subTitle3),
               SizedBox(height: size.height * 0.05),
               Padding(
                 padding: EdgeInsets.fromLTRB(
@@ -96,10 +86,7 @@ class PuzzleScreen extends StatelessWidget {
                         backgroundColor: ColorTheme.maincolor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20))),
-                    child: Text(
-                      "OK",
-                      style: TextStyle(color: ColorTheme.white, fontSize: 15),
-                    )),
+                    child: Text("OK", style: GlobalTextStyles.buttonText)),
               )
             ],
           ),

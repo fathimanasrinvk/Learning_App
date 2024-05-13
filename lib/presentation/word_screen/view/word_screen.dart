@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
+import 'package:gaming_app/core/constants/global_text_style.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-
 
 class WordScreen extends StatelessWidget {
   var images = [
@@ -39,12 +38,7 @@ class WordScreen extends StatelessWidget {
         leading: Icon(null),
         centerTitle: true,
         backgroundColor: Colors.transparent,
-        title: Text("WORDS",
-            style: GoogleFonts.passionOne(
-                decoration: TextDecoration.none,
-                fontSize: size*40,
-                color: ColorTheme.maincolor,
-                fontWeight: FontWeight.w400)),
+        title: Text("WORDS", style: GlobalTextStyles.mainTittle),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -53,17 +47,16 @@ class WordScreen extends StatelessWidget {
                 MainAxisAlignment.center, // Align the column center
             children: [
               SizedBox(
-                height: size*50,
+                height: size * 50,
               ),
               Padding(
-                padding: EdgeInsets.fromLTRB(
-                    size*10, 0, size*10, 0),
+                padding: EdgeInsets.fromLTRB(size * 10, 0, size * 10, 0),
                 child: GridView(
                   shrinkWrap: true,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    mainAxisSpacing: size*10,
-                    crossAxisSpacing: size*10,
+                    mainAxisSpacing: size * 10,
+                    crossAxisSpacing: size * 10,
                     childAspectRatio: 1 / 1.3,
                   ),
                   children: List.generate(
@@ -78,18 +71,13 @@ class WordScreen extends StatelessWidget {
                                   ),
                                 ),
                                 Expanded(
-                                  child: Text(
-                                    names[index],
-                                    style: GoogleFonts.poppins(
-                                        color: ColorTheme.maincolor,
-                                        fontSize: size*20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
+                                  child: Text(names[index],
+                                      style: GlobalTextStyles.subTitle3),
                                 ),
                               ],
                             ),
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(size*20),
+                              borderRadius: BorderRadius.circular(size * 20),
                             ),
                           )),
                 ),

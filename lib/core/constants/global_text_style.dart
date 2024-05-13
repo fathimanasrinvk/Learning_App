@@ -16,5 +16,7 @@ class GlobalTextStyles {
       fontSize: 20, fontWeight: FontWeight.bold, color: ColorTheme.maincolor);
   static TextStyle buttonText = GoogleFonts.poppins(
       fontSize: 18, fontWeight: FontWeight.bold, color: ColorTheme.white);
+       static TextStyle mainTittle2 = GoogleFonts.poppins(
+      fontSize: 30, fontWeight: FontWeight.bold, color: ColorTheme.maincolor);
   
 }

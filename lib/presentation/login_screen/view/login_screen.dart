@@ -121,12 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   backgroundColor: ColorTheme.maincolor,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(7))),
-              child: Text(
-                "Login",
-                style: TextStyle(
-                  color: ColorTheme.primarycolor,
-                ),
-              ),
+              child: Text("Login", style: GlobalTextStyles.buttonText),
             ),
           ),
           SizedBox(height: size * 280),

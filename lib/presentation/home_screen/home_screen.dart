@@ -57,11 +57,7 @@ class HomeScreen extends StatelessWidget {
                       child: Container(
                           alignment: Alignment.centerLeft,
                           child: Text("Let’s start learning!",
-                              style: GoogleFonts.nunito(
-                                  decoration: TextDecoration.none,
-                                  fontSize: size * 15,
-                                  color: ColorTheme.maincolor,
-                                  fontWeight: FontWeight.bold)))),
+                              style: GlobalTextStyles.subTitle1))),
                   SizedBox(height: size * 65)
                 ])),
                 SliverList(
@@ -96,11 +92,12 @@ class HomeScreen extends StatelessWidget {
                               child: Center(
                                 child: Text(
                                   names[index],
-                                  style: GoogleFonts.passionOne(
-                                    decoration: TextDecoration.none,
-                                    fontSize: size * 30,
-                                    color: ColorTheme.maincolor,
-                                  ),
+                                  style: GlobalTextStyles.secondTittle,
+                                  // style: GoogleFonts.passionOne(
+                                  //   decoration: TextDecoration.none,
+                                  //   fontSize: size * 30,
+                                  //   color: ColorTheme.maincolor,
+                                  // ),
                                 ),
                               ),
                             ),

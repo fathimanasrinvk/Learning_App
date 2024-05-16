@@ -40,50 +40,38 @@ class WordScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         title: Text("WORDS", style: GlobalTextStyles.mainTittle),
       ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            mainAxisAlignment:
-            MainAxisAlignment.center, // Align the column center
-            children: [
-              SizedBox(
-                height: size * 50,
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(size * 10, 0, size * 10, 0),
-                child: GridView(
-                  shrinkWrap: true,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: size * 10,
-                    crossAxisSpacing: size * 10,
-                    childAspectRatio: 1 / 1.3,
-                  ),
-                  children: List.generate(
-                      10,
-                          (index) => Container(
-                        child: Column(
-                          children: [
-                            Expanded(
-                              child: Image(
-                                image: AssetImage(images[index]),
-                                fit: BoxFit.fill,
-                              ),
-                            ),
-                            Expanded(
-                              child: Text(names[index],
-                                  style: GlobalTextStyles.subTitle3),
-                            ),
-                          ],
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(size * 20),
-                        ),
-                      )),
-                ),
-              )
-            ],
+      body: Padding(
+        padding: EdgeInsets.fromLTRB(size * 50, 0, size * 10, 0),
+        child: GridView.builder(
+          shrinkWrap: true,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: size * 10,
+            crossAxisSpacing: size * 10,
+            childAspectRatio: 1,
           ),
+          itemCount: images.length,
+          itemBuilder: (context, index) {
+            return Container(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Image(
+                      image: AssetImage(images[index]),
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(names[index],
+                        style: GlobalTextStyles.subTitle3),
+                  ),
+                ],
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(size * 20),
+              ),
+            );
+          },
         ),
       ),
     );

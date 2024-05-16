@@ -5,7 +5,7 @@ import 'package:gaming_app/core/constants/global_text_style.dart';
 import 'package:gaming_app/presentation/registration_page/view/registration_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../home_screen/home_screen.dart';
+import '../../home_screen/view/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override

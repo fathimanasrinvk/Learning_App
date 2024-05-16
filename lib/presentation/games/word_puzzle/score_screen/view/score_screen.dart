@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
+import 'package:gaming_app/core/constants/global_text_style.dart';
 import 'package:gaming_app/presentation/games/word_puzzle/level_screen/view/level_screen.dart';
 
 class WordPuzzleScoreScreen extends StatelessWidget {
@@ -11,10 +12,8 @@ class WordPuzzleScoreScreen extends StatelessWidget {
       backgroundColor: ColorTheme.maincolor,
       appBar: AppBar(
         backgroundColor: ColorTheme.maincolor,
-        leading:Icon(
-           null
-          ),
-        ),
+        leading: Icon(null),
+      ),
       body: Center(
           child: Column(
         children: [
@@ -38,10 +37,7 @@ class WordPuzzleScoreScreen extends StatelessWidget {
                 ),
                 Text(
                   "Your Score is ",
-                  style: TextStyle(
-                      color: ColorTheme.maincolor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22),
+                  style: GlobalTextStyles.subTitle3,
                 )
               ],
             ),

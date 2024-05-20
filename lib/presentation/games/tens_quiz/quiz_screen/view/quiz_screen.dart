@@ -15,7 +15,7 @@ class TenseQuizScreen extends StatefulWidget {
 }
 
 class _TenseQuizScreenState extends State<TenseQuizScreen> {
-  List<String>? questions;
+  List<Map<String, String>>? questions;
 
   @override
   void initState() {
@@ -25,11 +25,22 @@ class _TenseQuizScreenState extends State<TenseQuizScreen> {
 
   Future<void> fetchQuestions(String level) async {
     try {
-      final response = await http.get(Uri.parse('http://127.0.0.1:8000/Tensequiz?level=$level'));
+      final response = await http.post(
+        Uri.parse('http://10.11.0.112:8000/TenseQuiz/'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, String>{
+          'level': level,
+        }),
+      );
 
       if (response.statusCode == 200) {
         List<dynamic> data = jsonDecode(response.body);
-        List<String> fetchedQuestions = data.map((e) => e['question'].toString()).toList();
+        List<Map<String, String>> fetchedQuestions = data.map((e) => {
+          "question": e['question'].toString(),
+          "answer": e['answer'].toString()
+        }).toList();
         setState(() {
           questions = fetchedQuestions;
         });
@@ -55,27 +66,37 @@ class _TenseQuizScreenState extends State<TenseQuizScreen> {
               Text("WELCOME TO TENSE QUIZ", style: GlobalTextStyles.secondTittle),
               SizedBox(height: size.height * .09),
               if (questions != null && questions!.isNotEmpty)
-                Text("Question 1: ${questions![0]}", style: GlobalTextStyles.subTitle3),
-              SizedBox(height: size.height * .09),
-              Container(
-                width: size.width * .750,
-                height: size.height * .25,
-                decoration: BoxDecoration(
-                  color: ColorTheme.primarycolor,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: TextField(
-                  style: TextStyle(color: ColorTheme.maincolor),
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.circular(10.0),
+                for (int i = 0; i < questions!.length; i++)
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: size.height * 0.02),
+                    child: Column(
+                      children: [
+                        Text("Question ${i + 1}: ${questions![i]['question']}", style: GlobalTextStyles.subTitle3),
+                        SizedBox(height: size.height * .02),
+                        Container(
+                          width: size.width * .750,
+                          height: size.height * .15,
+                          decoration: BoxDecoration(
+                            color: ColorTheme.primarycolor,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: TextField(
+                            style: TextStyle(color: ColorTheme.maincolor),
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              hintText: "Enter Your Answer",
+                              hintStyle: TextStyle(color: ColorTheme.lightgrey, fontSize: 15),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    hintText: "Enter Your Answer",
-                    hintStyle: TextStyle(color: ColorTheme.lightgrey, fontSize: 15),
                   ),
-                ),
-              ),
+              if (questions == null)
+                CircularProgressIndicator(),
               SizedBox(height: size.height * .09),
               Container(
                 height: size.height * .05,
@@ -97,7 +118,7 @@ class _TenseQuizScreenState extends State<TenseQuizScreen> {
                     style: GlobalTextStyles.buttonText,
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -105,107 +126,3 @@ class _TenseQuizScreenState extends State<TenseQuizScreen> {
     );
   }
 }
-
-
-
-// import 'dart:convert';
-
-// import 'package:flutter/material.dart';
-// import 'package:gaming_app/core/constants/colors.dart';
-// import 'package:gaming_app/core/constants/global_text_style.dart';
-// import 'package:gaming_app/presentation/games/tens_quiz/score_screen/view/score_screen.dart';
-// import 'package:google_fonts/google_fonts.dart';
-// import 'package:http/http.dart' as http;
-
-// class TenseQuizScreen extends StatefulWidget {
-//   final String Level;
-//   const TenseQuizScreen({super.key, required this.Level});
-
-//   @override
-//   State<TenseQuizScreen> createState() => _TenseQuizScreenState();
-// }
-
-// class _TenseQuizScreenState extends State<TenseQuizScreen> {
-//   late List<String> questions;
-//   @override
-//   void initState() {
-//     super.initState();
-//     fetchQuestions(widget.level);
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     var size = MediaQuery.sizeOf(context);
-//     return Scaffold(
-//       appBar: AppBar(leading: Icon(null)),
-//       body: SingleChildScrollView(
-//         child: Center(
-//             child: Column(
-//           children: [
-//             Text("WELCOME TO TENSE QUIZ", style: GlobalTextStyles.secondTittle),
-//             SizedBox(
-//               height: size.height * .09,
-//             ),
-//             Text("${questions != null ? questions[0]: ''}",
-//                 style: GlobalTextStyles.subTitle3),
-//             SizedBox(
-//               height: size.height * .09,
-//             ),
-//             Container(
-//                 width: size.width * .750,
-//                 height: size.height * .25,
-//                 decoration: BoxDecoration(
-//                   color: ColorTheme.primarycolor,
-//                   borderRadius: BorderRadius.circular(20),
-//                 ),
-//                 child: TextField(
-//                   style: TextStyle(color: ColorTheme.maincolor),
-//                   decoration: InputDecoration(
-//                       border: OutlineInputBorder(
-//                         borderSide: BorderSide.none,
-//                         borderRadius: BorderRadius.circular(10.0),
-//                       ),
-//                       hintText: "Enter Your Answer",
-//                       hintStyle:
-//                           TextStyle(color: ColorTheme.lightgrey, fontSize: 15)),
-//                 )),
-//             SizedBox(
-//               height: size.height * .09,
-//             ),
-//             Container(
-//               height: size.height * .05,
-//               width: size.width * .20,
-//               child: ElevatedButton(
-//                   onPressed: () {
-//                     Navigator.of(context).push(MaterialPageRoute(
-//                         builder: (context) => const TensQuizScoreScreen()));
-//                   },
-//                   style: ElevatedButton.styleFrom(
-//                       backgroundColor: ColorTheme.maincolor,
-//                       shape: RoundedRectangleBorder(
-//                           borderRadius: BorderRadius.circular(20))),
-//                   child: Text(
-//                     "OK",
-//                     style: GlobalTextStyles.buttonText,
-//                   )),
-//             )
-//           ],
-//         )),
-//       ),
-//     );
-//   }
-// }
-
-// void fetchQuestions(String level) async {
-//   final response =
-//       await http.get(Uri.parse('http://127.0.0.1:8000/TenseQuiz?level=$level'));
-//   if (response.statusCode == 200) {
-//     List<dynamic> data = jsonDecode(response.body);
-//     List fetchQuestions = data.map((e) => e['questions']).toList();
-//     setState(() {
-//       questions = fetchQuestions;
-//     });
-//   }else {
-//     throw Exception('Failed to fetch questions')
-//   }
-// }

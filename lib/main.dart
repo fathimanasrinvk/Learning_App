@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gaming_app/presentation/games/tens_quiz/level_screen/view/level_screen.dart';
 import 'package:gaming_app/presentation/home_screen/view/home_screen.dart';
 import 'package:gaming_app/presentation/login_screen/view/login_screen.dart';
 import 'package:gaming_app/presentation/onboarding_screen/view/onboarding_screen.dart';
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // home: HomeScreen()
        // home: LoginScreen()
-     home:SplashScreen(),
+     home:LevelScreenTensQuiz()
+     //SplashScreen(),
      //    home:RegistrationScreen(),
      //    home:OnboardingScreen(),
      //    home:TranslationScreen()

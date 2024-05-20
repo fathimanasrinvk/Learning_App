@@ -37,6 +37,7 @@ dependencies:
   shared_preferences:
   provider:
   flutter_staggered_grid_view:
+  http:
 
 dev_dependencies:
   flutter_test:

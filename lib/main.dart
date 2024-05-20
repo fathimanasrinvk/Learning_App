@@ -19,8 +19,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // home: HomeScreen()
        // home: LoginScreen()
-     home:SplashScreen(),
-    // LevelScreenTensQuiz()
+     home:
+     //SplashScreen(),
+     LevelScreenTensQuiz()
      
      //    home:RegistrationScreen(),
      //    home:OnboardingScreen(),

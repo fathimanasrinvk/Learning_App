@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
-import 'package:gaming_app/presentation/game_screen/view/game_screen.dart';
 import 'package:gaming_app/presentation/games/tens_quiz/quiz_screen/view/quiz_screen.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class LevelScreenTensQuiz extends StatelessWidget {
-  const LevelScreenTensQuiz({super.key});
+  const LevelScreenTensQuiz({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.sizeOf(context);
+    var size = MediaQuery.of(context).size;
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(top: size.height * 0.1),
@@ -27,7 +25,8 @@ class LevelScreenTensQuiz extends StatelessWidget {
                   child: ElevatedButton(
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const TenseQuizScreen()));
+                            builder: (context) =>
+                                TenseQuizScreen()));
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: ColorTheme.maincolor,
@@ -44,7 +43,11 @@ class LevelScreenTensQuiz extends StatelessWidget {
                   height: size.height * .15,
                   width: size.width * .750,
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) =>
+                                TenseQuizScreen()));
+                      },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: ColorTheme.maincolor,
                           shape: RoundedRectangleBorder(
@@ -60,7 +63,11 @@ class LevelScreenTensQuiz extends StatelessWidget {
                   height: size.height * .15,
                   width: size.width * .750,
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) =>
+                                TenseQuizScreen()));
+                      },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: ColorTheme.maincolor,
                           shape: RoundedRectangleBorder(
@@ -76,3 +83,82 @@ class LevelScreenTensQuiz extends StatelessWidget {
     );
   }
 }
+
+// import 'package:flutter/material.dart';
+// import 'package:gaming_app/core/constants/colors.dart';
+// import 'package:gaming_app/core/constants/global_text_style.dart';
+// import 'package:gaming_app/presentation/games/tens_quiz/quiz_screen/view/quiz_screen.dart';
+
+
+// class LevelScreenTensQuiz extends StatelessWidget {
+//   const LevelScreenTensQuiz({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     var size = MediaQuery.sizeOf(context);
+//     return Scaffold(
+//       body: Padding(
+//         padding: EdgeInsets.only(top: size.height * 0.1),
+//         child: Center(
+//           child: Column(
+//             children: [
+//               Text("Choose Your Level", style: GlobalTextStyles.secondTittle),
+//               SizedBox(
+//                 height: size.height * .1,
+//               ),
+//               Container(
+//                   height: size.height * .15,
+//                   width: size.width * .750,
+//                   child: ElevatedButton(
+//                       onPressed: ()  {
+                        
+//                         Navigator.of(context).push(MaterialPageRoute(
+//                             builder: (context) => const TenseQuizScreen()));
+//                       },
+//                       style: ElevatedButton.styleFrom(
+//                           backgroundColor: ColorTheme.maincolor,
+//                           shape: RoundedRectangleBorder(
+//                               borderRadius: BorderRadius.circular(15))),
+//                       child: Text(
+//                         "EASY",
+//                         style: GlobalTextStyles.subTitle4,
+//                       ))),
+//               SizedBox(
+//                 height: size.height * .1,
+//               ),
+//               Container(
+//                   height: size.height * .15,
+//                   width: size.width * .750,
+//                   child: ElevatedButton(
+//                       onPressed: () {},
+//                       style: ElevatedButton.styleFrom(
+//                           backgroundColor: ColorTheme.maincolor,
+//                           shape: RoundedRectangleBorder(
+//                               borderRadius: BorderRadius.circular(15))),
+//                       child: Text(
+//                         "MEDIUM",
+//                         style: GlobalTextStyles.subTitle4,
+//                       ))),
+//               SizedBox(
+//                 height: size.height * .1,
+//               ),
+//               Container(
+//                   height: size.height * .15,
+//                   width: size.width * .750,
+//                   child: ElevatedButton(
+//                       onPressed: () {},
+//                       style: ElevatedButton.styleFrom(
+//                           backgroundColor: ColorTheme.maincolor,
+//                           shape: RoundedRectangleBorder(
+//                               borderRadius: BorderRadius.circular(15))),
+//                       child: Text(
+//                         "HARD",
+//                         style: GlobalTextStyles.subTitle4,
+//                       ))),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }

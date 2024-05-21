@@ -14,7 +14,25 @@ class WordScreen extends StatelessWidget {
     "assets/words/g.png",
     "assets/words/h.png",
     "assets/words/i.png",
-    "assets/words/j.png"
+    "assets/words/j.png",
+    "assets/words/k.png",
+    "assets/words/l.png",
+    "assets/words/m.png",
+    "assets/words/n.png",
+    "assets/words/o.png",
+    "assets/words/p.png",
+    "assets/words/q.png",
+    "assets/words/r.png",
+    "assets/words/s.png",
+    "assets/words/t.png",
+    "assets/words/u.png",
+    "assets/words/v.png",
+    "assets/words/w.png",
+    "assets/words/x.png",
+    "assets/words/y.png",
+    "assets/words/z.png"
+
+
   ];
   var names = [
     "Ambulance",
@@ -26,7 +44,24 @@ class WordScreen extends StatelessWidget {
     "Giraffe",
     "Home",
     "Ice Cream",
-    "Jack Fruit"
+    "Jack Fruit",
+    "Kite",
+    "Lion",
+    "Monkey",
+    "Nurse",
+    "Orange",
+    "Pen",
+    "Queen",
+    "Ring",
+    "Sun",
+    "Tree",
+    "Umbrella",
+    "Van",
+    "Watermelon",
+    "Xerus",
+    "Yak",
+    "Zebra"
+
   ];
 
   @override
@@ -60,7 +95,7 @@ class WordScreen extends StatelessWidget {
                     childAspectRatio: 1 / 1.3,
                   ),
                   children: List.generate(
-                      10,
+                  names.length,
                       (index) => Container(
                             child: Column(
                               children: [

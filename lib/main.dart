@@ -6,6 +6,7 @@ import 'package:gaming_app/presentation/onboarding_screen/view/onboarding_screen
 import 'package:gaming_app/presentation/registration_page/view/registration_screen.dart';
 import 'package:gaming_app/presentation/splash_screen/view/splash_screen.dart';
 import 'package:gaming_app/presentation/translation_screen/view/translation_screen.dart';
+import 'package:gaming_app/presentation/word_screen/view/word_screen.dart';
 
 void main(){
   runApp(MyApp());
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // home: HomeScreen()
        // home: LoginScreen()
-     home:SplashScreen(),
+    // home:SplashScreen(),
+     home:WordScreen(),
      //    home:RegistrationScreen(),
      //    home:OnboardingScreen(),
      //    home:TranslationScreen()

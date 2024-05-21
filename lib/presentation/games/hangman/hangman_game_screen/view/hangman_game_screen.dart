@@ -27,7 +27,7 @@ class HangmanGameScreen extends StatelessWidget {
                 width: 200,
                 decoration: BoxDecoration(
                   image: const DecorationImage(
-                    image: AssetImage("assets/images/img.png"),
+                    image: AssetImage("assets/images/y.png"),
                     fit: BoxFit.cover,
                   ),
                   borderRadius: BorderRadius.circular(20),

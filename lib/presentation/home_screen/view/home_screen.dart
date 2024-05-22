@@ -42,27 +42,27 @@ class HomeScreen extends StatelessWidget {
               body: CustomScrollView(slivers: [
                 SliverList(
                     delegate: SliverChildListDelegate([
-                      SizedBox(height: size * 35),
-                      Padding(
-                        padding: EdgeInsets.only(left: size * 45, right: size * 45),
-                        child: Container(
-                          alignment: Alignment.centerLeft,
-                          child: Text("Hi, $name👋",
-                              style: GlobalTextStyles.subTitle3),
-                        ),
-                      ),
-                      Padding(
-                          padding:
+                  SizedBox(height: size * 35),
+                  Padding(
+                    padding: EdgeInsets.only(left: size * 45, right: size * 45),
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text("Hi, $name👋",
+                          style: GlobalTextStyles.subTitle3),
+                    ),
+                  ),
+                  Padding(
+                      padding:
                           EdgeInsets.only(left: size * 45, right: size * 45),
-                          child: Container(
-                              alignment: Alignment.centerLeft,
-                              child: Text("Let’s start learning!",
-                                  style: GlobalTextStyles.subTitle1))),
-                      SizedBox(height: size * 65)
-                    ])),
+                      child: Container(
+                          alignment: Alignment.centerLeft,
+                          child: Text("Let’s start learning!",
+                              style: GlobalTextStyles.subTitle1))),
+                  SizedBox(height: size * 65)
+                ])),
                 SliverList(
                   delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) {
+                    (BuildContext context, int index) {
                       return Padding(
                         padding: EdgeInsets.fromLTRB(
                             size * 20, size * 20, size * 20, 0),

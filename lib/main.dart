@@ -17,10 +17,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // home: HomeScreen()
+       home: HomeScreen(name: 'git',)
        // home: LoginScreen()
     // home:SplashScreen(),
-     home:WordScreen(),
+     //home:WordScreen(),
      //    home:RegistrationScreen(),
      //    home:OnboardingScreen(),
      //    home:TranslationScreen()

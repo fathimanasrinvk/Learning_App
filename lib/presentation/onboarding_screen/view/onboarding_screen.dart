@@ -26,7 +26,7 @@ class OnboardingScreen extends StatelessWidget {
               PageViewModel(
                   title: "Learn More",
                   body:
-                  "Discover the joy of learning English with our app, where each word learned opens new doors to opportunities and connections.",
+                      "Discover the joy of learning English with our app, where each word learned opens new doors to opportunities and connections.",
                   image: Image.asset("assets/onboarding/onboarding1.png",
                       height: MediaQuery.of(context).size.width - 40,
                       width: MediaQuery.of(context).size.width - 40),
@@ -36,7 +36,7 @@ class OnboardingScreen extends StatelessWidget {
               PageViewModel(
                   title: "It’s gamified!",
                   body:
-                  "Level up your English with our immersive games, designed to strengthen your language skills and make learning a rewarding adventure.",
+                      "Level up your English with our immersive games, designed to strengthen your language skills and make learning a rewarding adventure.",
                   image: Image.asset("assets/onboarding/onboarding2.png",
                       height: MediaQuery.of(context).size.width - 40,
                       width: MediaQuery.of(context).size.width - 40),
@@ -46,7 +46,7 @@ class OnboardingScreen extends StatelessWidget {
               PageViewModel(
                   title: "Take learning beyond the classroom walls",
                   body:
-                  "Extend your learning journey with us beyond traditional classroom boundaries.",
+                      "Extend your learning journey with us beyond traditional classroom boundaries.",
                   image: Image.asset("assets/onboarding/onboarding3.png",
                       height: MediaQuery.of(context).size.width - 40,
                       width: MediaQuery.of(context).size.width - 40),

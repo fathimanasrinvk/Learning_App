@@ -32,6 +32,7 @@ class WordScreen extends StatelessWidget {
     "assets/words/y.png",
     "assets/words/z.png"
   ];
+
   var names = [
     "Ambulance",
     "Ball",

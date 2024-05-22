@@ -31,8 +31,6 @@ class WordScreen extends StatelessWidget {
     "assets/words/x.png",
     "assets/words/y.png",
     "assets/words/z.png"
-
-
   ];
   var names = [
     "Ambulance",
@@ -61,7 +59,6 @@ class WordScreen extends StatelessWidget {
     "Xerus",
     "Yak",
     "Zebra"
-
   ];
 
   @override
@@ -95,7 +92,7 @@ class WordScreen extends StatelessWidget {
                     childAspectRatio: 1 / 1.3,
                   ),
                   children: List.generate(
-                  names.length,
+                      names.length,
                       (index) => Container(
                             child: Column(
                               children: [

@@ -50,7 +50,7 @@ class WordScreen extends StatelessWidget {
     "Orange",
     "Pen",
     "Queen",
-    "Ring",
+    "Rat",
     "Sun",
     "Tree",
     "Umbrella",
@@ -73,81 +73,36 @@ class WordScreen extends StatelessWidget {
         title: Text("WORDS", style: GlobalTextStyles.mainTittle),
       ),
       body: Padding(
-        padding: EdgeInsets.fromLTRB(size * 50, 0, size * 10, 0),
-        child: GridView.builder(
+        padding: EdgeInsets.fromLTRB(size * 10, 50, size * 10, 0),
+        child: GridView(
           shrinkWrap: true,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: size * 10,
             crossAxisSpacing: size * 10,
-            childAspectRatio: 1,
-
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            mainAxisAlignment:
-                MainAxisAlignment.center, // Align the column center
-            children: [
-              SizedBox(
-                height: size * 50,
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(size * 10, 0, size * 10, 0),
-                child: GridView(
-                  shrinkWrap: true,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: size * 10,
-                    crossAxisSpacing: size * 10,
-                    childAspectRatio: 1 / 1.3,
-                  ),
-                  children: List.generate(
-                      names.length,
-                      (index) => Container(
-                            child: Column(
-                              children: [
-                                Expanded(
-                                  child: Image(
-                                    image: AssetImage(images[index]),
-                                    fit: BoxFit.fill,
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Text(names[index],
-                                      style: GlobalTextStyles.subTitle3),
-                                ),
-                              ],
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(size * 20),
-                            ),
-                          )),
-                ),
-              )
-            ],
+            childAspectRatio: 1 / 1.3,
           ),
-          itemCount: images.length,
-          itemBuilder: (context, index) {
-            return Container(
-              child: Column(
-                children: [
-                  Expanded(
-                    child: Image(
-                      image: AssetImage(images[index]),
-                      fit: BoxFit.fill,
+          children: List.generate(
+              names.length,
+              (index) => Container(
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: Image(
+                            image: AssetImage(images[index]),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                        Expanded(
+                          child: Text(names[index],
+                              style: GlobalTextStyles.subTitle3),
+                        ),
+                      ],
                     ),
-                  ),
-                  Expanded(
-                    child: Text(names[index],
-                        style: GlobalTextStyles.subTitle3),
-                  ),
-                ],
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(size * 20),
-              ),
-            );
-          },
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(size * 20),
+                    ),
+                  )),
         ),
       ),
     );

@@ -1,11 +1,29 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
 import 'package:gaming_app/presentation/games/tens_quiz/level_screen/view/level_screen.dart';
+import 'package:gaming_app/presentation/home_screen/view/home_screen.dart';
 
-class TensQuizScoreScreen extends StatelessWidget {
-  const TensQuizScoreScreen({super.key});
+import '../../../../game_screen/view/game_screen.dart';
 
+class TensQuizScoreScreen extends StatefulWidget {
+
+
+  @override
+  State<TensQuizScoreScreen> createState() => _TensQuizScoreScreenState();
+}
+
+class _TensQuizScoreScreenState extends State<TensQuizScoreScreen> {
+  @override
+  void initState(){
+    Timer(Duration(seconds:5), () {
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context)=> GameScreen()));
+    });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
@@ -34,10 +52,6 @@ class TensQuizScoreScreen extends StatelessWidget {
                 SizedBox(
                   height: size.height * .02,
                 ),
-                Text(
-                  "Your Score is ",
-                  style: GlobalTextStyles.subTitle3,
-                )
               ],
             ),
           )

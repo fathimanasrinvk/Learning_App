@@ -5,6 +5,8 @@ import 'package:gaming_app/presentation/game_screen/view/game_screen.dart';
 import 'package:gaming_app/presentation/games/tens_quiz/quiz_screen/view/quiz_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../quiz datas.dart';
+
 class LevelScreenTensQuiz extends StatelessWidget {
   const LevelScreenTensQuiz({super.key});
 
@@ -27,14 +29,14 @@ class LevelScreenTensQuiz extends StatelessWidget {
                   child: ElevatedButton(
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const TenseQuizScreen()));
+                            builder: (context) => TenseQuizScreen(questions: beginner)));
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: ColorTheme.maincolor,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15))),
                       child: Text(
-                        "EASY",
+                        "BEGINNER",
                         style: GlobalTextStyles.subTitle4,
                       ))),
               SizedBox(
@@ -44,7 +46,9 @@ class LevelScreenTensQuiz extends StatelessWidget {
                   height: size.height * .15,
                   width: size.width * .750,
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () { Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => TenseQuizScreen(questions: medium)));
+                      },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: ColorTheme.maincolor,
                           shape: RoundedRectangleBorder(
@@ -60,13 +64,15 @@ class LevelScreenTensQuiz extends StatelessWidget {
                   height: size.height * .15,
                   width: size.width * .750,
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () { Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => TenseQuizScreen(questions: expert)));
+                      },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: ColorTheme.maincolor,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15))),
                       child: Text(
-                        "HARD",
+                        "EXPERT",
                         style: GlobalTextStyles.subTitle4,
                       ))),
             ],

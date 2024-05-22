@@ -14,7 +14,23 @@ class WordScreen extends StatelessWidget {
     "assets/words/g.png",
     "assets/words/h.png",
     "assets/words/i.png",
-    "assets/words/j.png"
+    "assets/words/j.png",
+    "assets/words/k.png",
+    "assets/words/l.png",
+    "assets/words/m.png",
+    "assets/words/n.png",
+    "assets/words/o.png",
+    "assets/words/p.png",
+    "assets/words/q.png",
+    "assets/words/r.png",
+    "assets/words/s.png",
+    "assets/words/t.png",
+    "assets/words/u.png",
+    "assets/words/v.png",
+    "assets/words/w.png",
+    "assets/words/x.png",
+    "assets/words/y.png",
+    "assets/words/z.png"
   ];
   var names = [
     "Ambulance",
@@ -26,7 +42,23 @@ class WordScreen extends StatelessWidget {
     "Giraffe",
     "Home",
     "Ice Cream",
-    "Jack Fruit"
+    "Jack Fruit",
+    "Kite",
+    "Lion",
+    "Monkey",
+    "Nurse",
+    "Orange",
+    "Pen",
+    "Queen",
+    "Ring",
+    "Sun",
+    "Tree",
+    "Umbrella",
+    "Van",
+    "Watermelon",
+    "Xerus",
+    "Yak",
+    "Zebra"
   ];
 
   @override
@@ -49,6 +81,50 @@ class WordScreen extends StatelessWidget {
             mainAxisSpacing: size * 10,
             crossAxisSpacing: size * 10,
             childAspectRatio: 1,
+
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment:
+                MainAxisAlignment.center, // Align the column center
+            children: [
+              SizedBox(
+                height: size * 50,
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(size * 10, 0, size * 10, 0),
+                child: GridView(
+                  shrinkWrap: true,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: size * 10,
+                    crossAxisSpacing: size * 10,
+                    childAspectRatio: 1 / 1.3,
+                  ),
+                  children: List.generate(
+                      names.length,
+                      (index) => Container(
+                            child: Column(
+                              children: [
+                                Expanded(
+                                  child: Image(
+                                    image: AssetImage(images[index]),
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Text(names[index],
+                                      style: GlobalTextStyles.subTitle3),
+                                ),
+                              ],
+                            ),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(size * 20),
+                            ),
+                          )),
+                ),
+              )
+            ],
           ),
           itemCount: images.length,
           itemBuilder: (context, index) {

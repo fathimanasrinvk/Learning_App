@@ -67,7 +67,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/onboarding/
-    - assets/games/
+  
     - assets/words/
 
   #   - images/a_dot_burr.jpeg

@@ -26,7 +26,7 @@ class TenseQuizScreen extends StatelessWidget {
               height: size.height * .09,
             ),
             Container(
-                width: size.width * .750,
+                 width: size.width * .750,
                 height: size.height * .25,
                 decoration: BoxDecoration(
                   color: ColorTheme.primarycolor,

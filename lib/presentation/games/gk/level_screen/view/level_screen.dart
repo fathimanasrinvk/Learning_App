@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
 import 'package:gaming_app/presentation/game_screen/view/game_screen.dart';
+import 'package:gaming_app/presentation/games/gk/common/controller.dart';
+import 'package:gaming_app/presentation/games/gk/common/difficulty.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import '../../gk_quiz_screen/view/gk_quiz_screen.dart';
 
 class LevelScreenGK extends StatelessWidget {
   const LevelScreenGK({super.key});
@@ -31,8 +36,12 @@ class LevelScreenGK extends StatelessWidget {
                   width: size.width * .750,
                   child: ElevatedButton(
                       onPressed: () {
-                        // Navigator.of(context).push(MaterialPageRoute(
-                        //     builder: (context) => const TensQuizScreen()));
+                        Provider.of<QuizProvider>(context, listen: false)
+                            .selectDifficulty(Difficulty.easy);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => GkQuizScreen()));
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: ColorTheme.maincolor,
@@ -46,7 +55,14 @@ class LevelScreenGK extends StatelessWidget {
                   height: size.height * .15,
                   width: size.width * .750,
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Provider.of<QuizProvider>(context, listen: false)
+                            .selectDifficulty(Difficulty.medium);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => GkQuizScreen()));
+                      },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: ColorTheme.maincolor,
                           shape: RoundedRectangleBorder(
@@ -60,7 +76,12 @@ class LevelScreenGK extends StatelessWidget {
                   height: size.height * .15,
                   width: size.width * .750,
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {Provider.of<QuizProvider>(context, listen: false)
+                            .selectDifficulty(Difficulty.hard);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => GkQuizScreen()));},
                       style: ElevatedButton.styleFrom(
                           backgroundColor: ColorTheme.maincolor,
                           shape: RoundedRectangleBorder(

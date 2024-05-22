@@ -4,6 +4,7 @@ import 'package:gaming_app/core/constants/global_text_style.dart';
 import 'package:gaming_app/presentation/games/tens_quiz/score_screen/view/score_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+
 class TenseQuizScreen extends StatelessWidget {
   const TenseQuizScreen({super.key});
 
@@ -25,6 +26,7 @@ class TenseQuizScreen extends StatelessWidget {
             SizedBox(
               height: size.height * .09,
             ),
+
             Container(
                 width: size.width * .750,
                 height: size.height * .25,

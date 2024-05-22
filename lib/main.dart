@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gaming_app/presentation/games/word_puzzle/puzzle_screen/view/puzzle_screen.dart';
 import 'package:gaming_app/presentation/home_screen/view/home_screen.dart';
 
 void main() {
@@ -12,10 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: HomeScreen(
-          name: 'git',
-        )
-        // home: LoginScreen()
+        // home: HomeScreen(
+        //   name: 'git',
+        // ),
+        home: PuzzleScreen()
+      // home: LoginScreen()
         // home:SplashScreen(),
         //home:WordScreen(),
         //    home:RegistrationScreen(),

@@ -3,36 +3,29 @@ import 'package:gaming_app/presentation/games/gk/gk_data/gk_data.dart';
 import 'package:gaming_app/presentation/games/gk/score_screen/view/score_screen.dart';
 import 'difficulty.dart'; // Import the Difficulty enum
 
-
 class QuizProvider extends ChangeNotifier {
-  List<GkQuestion> _questions = [];
-  int _currentQuestionIndex = 0;
-  String? _selectedOption;
-  bool _isAnswered = false;
-  bool _isCorrect = false;
-  int _score = 0;
+  List<GkQuestion> questions = [];
+  int currentQuestionIndex = 0;
+  String? selectedOption;
+  int score = 0;
 
-  List<GkQuestion> get questions => _questions;
-  int get currentQuestionIndex => _currentQuestionIndex;
-  String? get selectedOption => _selectedOption;
-  bool get isAnswered => _isAnswered;
-  bool get isCorrect => _isCorrect;
-  int get score => _score;
+  bool get isAnswered => selectedOption != null;
+  bool get isCorrect => isAnswered && selectedOption == questions[currentQuestionIndex].options.entries.firstWhere((entry) => entry.value == true).key;
 
-  bool get isQuizFinished => _currentQuestionIndex >= _questions.length - 1;
+  bool get isQuizFinished => currentQuestionIndex >= questions.length - 1;
 
   void selectOption(String option) {
-    if (_isAnswered) return;
+    if (isAnswered) return;
 
-    _selectedOption = option;
-    _isAnswered = true;
-    _isCorrect = _selectedOption == _questions[_currentQuestionIndex].answer;
+    selectedOption = option;
+    bool isCorrect = selectedOption == questions[currentQuestionIndex].options.entries.firstWhere((entry) => entry.value == true).key;
 
-    _questions[_currentQuestionIndex].selectedAnswer = option;
-    _questions[_currentQuestionIndex].answerdCorrectly = _isCorrect;
+    if (!isCorrect) {
+      questions[currentQuestionIndex].selectedAnswer = selectedOption;
+    }
 
-    if (_isCorrect) {
-      _score++;
+    if (isCorrect) {
+      score++;
     }
 
     notifyListeners();
@@ -49,30 +42,26 @@ class QuizProvider extends ChangeNotifier {
       return;
     }
 
-    _selectedOption = null;
-    _isAnswered = false;
-    _isCorrect = false;
-    _currentQuestionIndex++;
+    selectedOption = null;
+    currentQuestionIndex++;
     notifyListeners();
   }
 
   void selectDifficulty(Difficulty difficulty) {
     switch (difficulty) {
       case Difficulty.easy:
-        _questions = easyQuestions;
+        questions = easyQuestions;
         break;
       case Difficulty.medium:
-        _questions = mediumQuestions;
+        questions = mediumQuestions;
         break;
       case Difficulty.hard:
-        _questions = hardQuestions;
+        questions = hardQuestions;
         break;
     }
-    _currentQuestionIndex = 0;
-    _selectedOption = null;
-    _isAnswered = false;
-    _isCorrect = false;
-    _score = 0;
+    currentQuestionIndex = 0;
+    selectedOption = null;
+    score = 0;
     notifyListeners();
   }
 }

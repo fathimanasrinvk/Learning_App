@@ -16,8 +16,20 @@ class LevelScreenGK extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: ColorTheme.maincolor,
+          ),
+          onPressed: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => GameScreen()));
+          },
+        ),
+      ),
       body: Padding(
-        padding: EdgeInsets.only(top: size.height * 0.1),
+        padding: EdgeInsets.only(top: size.height * 0.0),
         child: Center(
           child: Column(
             children: [
@@ -76,12 +88,14 @@ class LevelScreenGK extends StatelessWidget {
                   height: size.height * .15,
                   width: size.width * .750,
                   child: ElevatedButton(
-                      onPressed: () {Provider.of<QuizProvider>(context, listen: false)
+                      onPressed: () {
+                        Provider.of<QuizProvider>(context, listen: false)
                             .selectDifficulty(Difficulty.hard);
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => GkQuizScreen()));},
+                                builder: (context) => GkQuizScreen()));
+                      },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: ColorTheme.maincolor,
                           shape: RoundedRectangleBorder(

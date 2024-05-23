@@ -35,10 +35,10 @@ class WordPuzzleScoreScreen extends StatelessWidget {
                 SizedBox(
                   height: size.height * .02,
                 ),
-                Text(
-                  "Your Score is ",
-                  style: GlobalTextStyles.subTitle3,
-                )
+                // Text(
+                //   "Your Score is ",
+                //   style: GlobalTextStyles.subTitle3,
+                // )
               ],
             ),
           )

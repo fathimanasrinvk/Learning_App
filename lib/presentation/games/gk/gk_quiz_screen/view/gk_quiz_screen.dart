@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
-import 'package:gaming_app/presentation/games/gk/common/controller.dart';
+import 'package:gaming_app/presentation/games/gk/level_screen/view/level_screen.dart';
+import 'package:gaming_app/presentation/games/gk/score_screen/view/score_screen.dart';
 import 'package:provider/provider.dart';
-
-import '../../level_screen/view/level_screen.dart';
-import '../../score_screen/view/score_screen.dart';
+import 'package:gaming_app/presentation/games/gk/common/controller.dart';
 
 class GkQuizScreen extends StatelessWidget {
   @override
@@ -14,12 +13,13 @@ class GkQuizScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          color: ColorTheme.maincolor,
+          icon: Icon(
+            Icons.arrow_back,
+            color: ColorTheme.maincolor,
+          ),
           onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => LevelScreenGK()),
-            );
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => LevelScreenGK()));
           },
         ),
       ),
@@ -27,50 +27,59 @@ class GkQuizScreen extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              Text(
-                "WELCOME TO GK QUIZ",
-                style: GlobalTextStyles.secondTittle,
-              ),
-              SizedBox(height: size.height * 0.06),
+              Text('WELCOME TO GK QUIZ', style: GlobalTextStyles.secondTittle),
+              SizedBox(height: size.height * 0.05),
               Consumer<QuizProvider>(
                 builder: (context, quizProvider, child) {
-                  final GkQuestion = quizProvider.questions[quizProvider.currentQuestionIndex];
+                  final question =
+                      quizProvider.questions[quizProvider.currentQuestionIndex];
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Center(
                         child: Text(
-                          'Question ${quizProvider.currentQuestionIndex + 1}',
-                          style: GlobalTextStyles.subTitle3,
-                        ),
+                            'Question ${quizProvider.currentQuestionIndex + 1}',
+                            style: GlobalTextStyles.subTitle3),
                       ),
                       Center(
                         child: Text(
-                          GkQuestion.question,
+                          question.question,
                           style: GlobalTextStyles.subTitle3,
                           textAlign: TextAlign.center,
                         ),
                       ),
                       SizedBox(height: size.height * 0.06),
-                      ...GkQuestion.options.map((option) {
+                      ...question.options.keys.map((option) {
                         Color? optionColor;
+
                         if (quizProvider.isAnswered) {
-                          if (option == GkQuestion.selectedAnswer) {
-                            optionColor = GkQuestion.answerdCorrectly ? ColorTheme.green : ColorTheme.red;
+                          if (option == question.selectedAnswer) {
+                            optionColor = quizProvider.isCorrect
+                                ? Colors.green
+                                : Colors.red;
+                          } else if (option ==
+                              question.options.entries
+                                  .firstWhere((entry) => entry.value == true)
+                                  .key) {
+                            optionColor = Colors.green;
                           }
                         }
+
                         return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16.0, vertical: 8.0),
                           child: GestureDetector(
                             onTap: () {
                               quizProvider.selectOption(option);
                               if (quizProvider.isQuizFinished) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => GkQuizScoreScreen(),
-                                  ),
-                                );
+                                Future.delayed(Duration(seconds: 3), () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => GkQuizScoreScreen(),
+                                    ),
+                                  );
+                                });
                               }
                             },
                             child: Container(
@@ -90,23 +99,17 @@ class GkQuizScreen extends StatelessWidget {
                       }).toList(),
                       SizedBox(height: size.height * 0.06),
                       Center(
-                        child: Container(
-                          height: size.height * .05,
-                          width: size.width * .20,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              quizProvider.nextQuestion(context);
-                            },
-                            style: ElevatedButton.styleFrom(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
                               backgroundColor: ColorTheme.maincolor,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                            ),
-                            child: Text(
-                              "OK",
-                              style: GlobalTextStyles.buttonText,
-                            ),
+                                  borderRadius: BorderRadius.circular(20))),
+                          onPressed: () {
+                            quizProvider.nextQuestion(context);
+                          },
+                          child: Text(
+                            'OK',
+                            style: TextStyle(color: ColorTheme.white),
                           ),
                         ),
                       )

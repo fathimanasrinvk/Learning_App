@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
-import 'package:gaming_app/presentation/games/gk/common/controller.dart';
+import 'package:gaming_app/presentation/games/gk/gk_quiz_screen/controller/gk_quiz_controller.dart';
 import 'package:gaming_app/presentation/games/gk/level_screen/view/level_screen.dart';
 import 'package:gaming_app/presentation/games/tens_quiz/level_screen/view/level_screen.dart';
 import 'package:provider/provider.dart';

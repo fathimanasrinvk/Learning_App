@@ -99,7 +99,8 @@ class GkQuizScreen extends StatelessWidget {
                       }).toList(),
                       SizedBox(height: size.height * 0.06),
                       Center(
-                        child: ElevatedButton(
+                        child:
+                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               backgroundColor: ColorTheme.maincolor,
                               shape: RoundedRectangleBorder(

@@ -40,7 +40,7 @@ class DbData {
       'original': 'shadow',
       'shuffled': 'wdasoh',
       'clue': 'Dark area cast by an object blocking light',
-      'image': 'assets/images/word_game_images/7.avif'
+      'image': 'assets/images/word_game_images/7.png'
     },
     {
       'original': 'winter',
@@ -58,13 +58,8 @@ class DbData {
       'original': 'castle',
       'shuffled': 'tslcea',
       'clue': 'A large building fortified against attack',
-      'image': 'assets/images/word_game_images/10.avif'
+      'image': 'assets/images/word_game_images/10.png'
     },
-    {
-      'original': 'castle',
-      'shuffled': 'tslcea',
-      'clue': 'A large building fortified against attack',
-      'image': 'assets/images/word_game_images/10.avif'
-    },
+
   ];
 }

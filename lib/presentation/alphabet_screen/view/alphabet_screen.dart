@@ -14,6 +14,8 @@ class AlphabetScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double size = constantsize(context);
     return Scaffold(
+      appBar: AppBar(
+      ),
         body: CustomScrollView(slivers: [
       SliverPadding(
         padding: EdgeInsets.only(top: size * 100),

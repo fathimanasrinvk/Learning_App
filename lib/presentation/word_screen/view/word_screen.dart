@@ -66,11 +66,11 @@ class WordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double size = constantsize(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorTheme.white,
       appBar: AppBar(
         leading: Icon(null),
         centerTitle: true,
-        backgroundColor: Colors.transparent,
+        backgroundColor: ColorTheme.white,
         title: Text("WORDS", style: GlobalTextStyles.mainTittle),
       ),
       body: Padding(

@@ -1,125 +1,170 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
-import 'package:gaming_app/presentation/games/gk/gk_quiz_screen/controller/gk_quiz_controller.dart';
+import 'package:gaming_app/presentation/games/gk/gk_data/gk_data.dart';
+import 'package:gaming_app/presentation/games/gk/gk_quiz_screen/model/gk_quiz_model.dart';
 import 'package:gaming_app/presentation/games/gk/level_screen/view/level_screen.dart';
 import 'package:gaming_app/presentation/games/gk/score_screen/view/score_screen.dart';
-import 'package:provider/provider.dart';
 
-class GkQuizScreen extends StatelessWidget {
+class QuizScreen extends StatefulWidget {
+  final String difficulty;
+
+  QuizScreen({required this.difficulty});
+
+  @override
+  _QuizScreenState createState() => _QuizScreenState();
+}
+
+class _QuizScreenState extends State<QuizScreen> {
+  late List<Question> questions;
+  int currentQuestionIndex = 0;
+  int correctAnswers = 0;
+  bool answered = false;
+  int selectedOptionIndex = -1;
+
+  @override
+  void initState() {
+    super.initState();
+    questions = fetchQuestions(widget.difficulty);
+    print("Number of questions: ${questions.length}:${questions.length}");
+  }
+
+  void handleAnswer(int index) {
+    if (answered) return;
+    setState(() {
+      answered = true;
+      selectedOptionIndex = index;
+      if (index == questions[currentQuestionIndex].correctOptionIndex) {
+        correctAnswers++;
+      }
+    });
+  }
+
+  void nextQuestion() {
+    setState(() {
+      if (currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex++;
+        answered = false;
+        selectedOptionIndex = -1;
+      } else {
+        print("Navigate to score screen");
+       
+
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  GkQuizScoreScreen(score: correctAnswers, total: questions.length),
+            ),
+          );
+        
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    Question currentQuestion = questions[currentQuestionIndex];
     var size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: ColorTheme.maincolor,
-          ),
-          onPressed: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => LevelScreenGK()));
-          },
+          leading: IconButton(
+        icon: Icon(
+          Icons.arrow_back,
+          color: ColorTheme.maincolor,
         ),
-      ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: [
-              Text('WELCOME TO GK QUIZ', style: GlobalTextStyles.secondTittle),
-              SizedBox(height: size.height * 0.05),
-              Consumer<QuizProvider>(
-                builder: (context, quizProvider, child) {
-                  final question =
-                      quizProvider.questions[quizProvider.currentQuestionIndex];
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Center(
-                        child: Text(
-                            'Question ${quizProvider.currentQuestionIndex + 1}',
-                            style: GlobalTextStyles.subTitle3),
-                      ),
-                      Center(
-                        child: Text(
-                          question.question,
-                          style: GlobalTextStyles.subTitle3,
-                          textAlign: TextAlign.center,
+        onPressed: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => LevelScreenGk()));
+        },
+      )),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment:
+              CrossAxisAlignment.center, // Align content in the center
+          children: [
+            Text("WELCOME TO GK QUIZ", style: GlobalTextStyles.secondTittle),
+            SizedBox(
+              height: size.height * .05,
+            ),
+            Text(
+              "Question ${currentQuestionIndex + 1}: ${currentQuestion.questionText}",
+              style: GlobalTextStyles.subTitle3,
+              textAlign: TextAlign.center, // Align text in the center
+            ),
+            SizedBox(height: size.height * .05),
+            Column(
+              children: currentQuestion.options.asMap().entries.map((entry) {
+                int idx = entry.key;
+                String option = entry.value;
+                return GestureDetector(
+                  onTap: () => handleAnswer(idx),
+                  child: Container(
+                    width: double.infinity, // Make container full width
+                    alignment: Alignment.center, // Center the content
+                    margin: const EdgeInsets.symmetric(vertical: 8.0),
+                    padding: const EdgeInsets.all(16.0),
+                    decoration: BoxDecoration(
+                      color: answered
+                          ? (idx == selectedOptionIndex
+                              ? (idx == currentQuestion.correctOptionIndex
+                                  ? Colors.green
+                                  : Colors.red)
+                              : (idx == currentQuestion.correctOptionIndex
+                                  ? Colors.green
+                                  : Colors.white))
+                          : Colors.white,
+                      border: Border.all(color: ColorTheme.maincolor),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: Text(
+                      option,
+                      style: TextStyle(fontSize: 18.0),
+                    ),
+                  ),
+                );
+              }).toList(),
+            ),
+            SizedBox(height: size.height * .1),
+
+            Container(
+              height: size.height * 0.05,
+              width: size.width * 0.20,
+              child: ElevatedButton(
+                onPressed: () {
+                  if (answered) {
+                    nextQuestion(); // Move to the next question
+                  }
+                  // Check if all questions are answered
+                  if (currentQuestionIndex == questions.length - 1) {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => GkQuizScoreScreen(
+                          score: correctAnswers,
+                          total: questions.length,
                         ),
                       ),
-                      SizedBox(height: size.height * 0.06),
-                      ...question.options.keys.map((option) {
-                        Color? optionColor;
-
-                        if (quizProvider.isAnswered) {
-                          if (option == question.selectedAnswer) {
-                            optionColor = quizProvider.isCorrect
-                                ? Colors.green
-                                : Colors.red;
-                          } else if (option ==
-                              question.options.entries
-                                  .firstWhere((entry) => entry.value == true)
-                                  .key) {
-                            optionColor = Colors.green;
-                          }
-                        }
-
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16.0, vertical: 8.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              quizProvider.selectOption(option);
-                              if (quizProvider.isQuizFinished) {
-                                Future.delayed(Duration(seconds: 3), () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => GkQuizScoreScreen(),
-                                    ),
-                                  );
-                                });
-                              }
-                            },
-                            child: Container(
-                              padding: EdgeInsets.all(20),
-                              decoration: BoxDecoration(
-                                color: optionColor ?? Colors.white,
-                                border: Border.all(color: ColorTheme.maincolor),
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child: Center(
-                                child: Text(option),
-                              ),
-                              height: 60,
-                            ),
-                          ),
-                        );
-                      }).toList(),
-                      SizedBox(height: size.height * 0.06),
-                      Center(
-                        child:
-                         ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: ColorTheme.maincolor,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20))),
-                          onPressed: () {
-                            quizProvider.nextQuestion(context);
-                          },
-                          child: Text(
-                            'OK',
-                            style: TextStyle(color: ColorTheme.white),
-                          ),
-                        ),
-                      )
-                    ],
-                  );
+                    );
+                  }
                 },
+                child: Text(
+                  "OK",
+                  style: TextStyle(color: ColorTheme.white), // Text color
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: ColorTheme.maincolor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
               ),
-            ],
-          ),
+            ),
+
+          
+          ],
         ),
       ),
     );

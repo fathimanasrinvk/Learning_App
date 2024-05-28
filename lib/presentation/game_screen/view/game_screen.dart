@@ -22,7 +22,7 @@ class GameScreen extends StatelessWidget {
     LevelScreenHangman(),
     LevelScreenWordPuzzle(),
     LevelScreenTensQuiz(),
-    LevelScreenGK(),
+    LevelScreenGk(),
   ];
 
   @override

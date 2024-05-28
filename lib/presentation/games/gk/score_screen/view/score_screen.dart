@@ -81,7 +81,7 @@ class GkQuizScoreScreen extends StatelessWidget {
                       style: GlobalTextStyles.subTitle3,
                     ),
                     Text(
-                      "$score / $total",
+                      "$score ",
                       style: GlobalTextStyles.subTitle3,
                     ),
                   ],

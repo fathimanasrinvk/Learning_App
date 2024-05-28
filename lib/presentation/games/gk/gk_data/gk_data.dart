@@ -105,7 +105,7 @@ final Map<String, List<Map<String, dynamic>>> questionData = {
       ],
       "correctOptionIndex": 1
     },
-     {
+    {
       "questionText": "Which word is a pronoun?",
       "options": [
         "Run",
@@ -168,8 +168,7 @@ final Map<String, List<Map<String, dynamic>>> questionData = {
       "correctOptionIndex": 1
     },
     {
-      "questionText":
-          "Choose the correctly phrased sentence: 'Between you and me, the decision was made.'",
+      "questionText": "Choose the correctly phrased sentence: ",
       "options": [
         "Between you and I, the decision was made.",
         "Between you and me, the decision was made.",
@@ -189,8 +188,7 @@ final Map<String, List<Map<String, dynamic>>> questionData = {
       "correctOptionIndex": 3
     },
     {
-      "questionText":
-          "Select the properly phrased sentence: 'I have never been to that city before.'",
+      "questionText": "Select the properly phrased sentence:",
       "options": [
         "I haven't never been to that city before.",
         "I haven't ever been to that city before.",
@@ -200,8 +198,7 @@ final Map<String, List<Map<String, dynamic>>> questionData = {
       "correctOptionIndex": 3
     },
     {
-      "questionText":
-          "Identify the correctly phrased sentence: 'The dog ran quickly through the yard.'",
+      "questionText": "Identify the correctly phrased sentence: ",
       "options": [
         "The dog quickly ran through the yard.",
         "Quickly the dog ran through the yard.",
@@ -211,7 +208,7 @@ final Map<String, List<Map<String, dynamic>>> questionData = {
       "correctOptionIndex": 3
     },
     {
-      "questionText": "Choose the properly phrased sentence: 'She sings well.'",
+      "questionText": "Choose the properly phrased sentence: ",
       "options": [
         "She sings good.",
         "She sings well.",
@@ -220,7 +217,7 @@ final Map<String, List<Map<String, dynamic>>> questionData = {
       ],
       "correctOptionIndex": 1
     },
-     {
+    {
       "questionText": "Which word is a pronoun?",
       "options": [
         "Run",
@@ -342,7 +339,7 @@ final Map<String, List<Map<String, dynamic>>> questionData = {
       ],
       "correctOptionIndex": 1
     },
-     {
+    {
       "questionText": "Which word is a pronoun?",
       "options": [
         "Run",

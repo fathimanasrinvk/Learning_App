@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gaming_app/presentation/games/word_puzzle/puzzle_screen/view/puzzle_screen.dart';
+import 'package:gaming_app/presentation/games/word_puzzle/puzzle_screen/view/easy/puzzle_screen.dart';
 import 'package:gaming_app/presentation/home_screen/view/home_screen.dart';
 import 'package:gaming_app/presentation/splash_screen/view/splash_screen.dart';
 
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         // home: HomeScreen(
         //   name: 'git',
         // ),
-        // home: PuzzleScreen()
+        //  home: PuzzleScreen()
       // home: LoginScreen()
         home:SplashScreen(),
         //home:WordScreen(),

@@ -24,7 +24,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
-        leading: Icon(null),
+        leading: BackButton(color: ColorTheme.maincolor),
         backgroundColor: Colors.transparent,
         title: Padding(
           padding: EdgeInsets.only(top: size * 30),
@@ -173,7 +173,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
                 maxLines: 6,
                 decoration: InputDecoration(
                     hintStyle: TextStyle(color: ColorTheme.maincolor),
-                    hintText: ' Enter your text',
+                    hintText: ' Translation',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(size * 10),
                         borderSide: BorderSide(

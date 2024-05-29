@@ -68,7 +68,7 @@ class WordScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: Icon(null),
+        leading: BackButton(color: ColorTheme.maincolor),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         title: Text("WORDS", style: GlobalTextStyles.mainTittle),

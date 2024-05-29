@@ -38,6 +38,7 @@ dependencies:
   provider:
   flutter_staggered_grid_view:
   http:
+  path_provider:
 
 dev_dependencies:
   flutter_test:

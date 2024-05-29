@@ -14,15 +14,14 @@ class LevelScreenTensQuiz extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
     return Scaffold(
+      appBar: AppBar(leading: BackButton(color: ColorTheme.maincolor),
+      title:Text("Choose Your Level", style: GlobalTextStyles.secondTittle),
+          centerTitle: true,),
       body: Padding(
-        padding: EdgeInsets.only(top: size.height * 0.1),
+        padding: EdgeInsets.only(top: size.height * 0.08),
         child: Center(
           child: Column(
             children: [
-              Text("Choose Your Level", style: GlobalTextStyles.secondTittle),
-              SizedBox(
-                height: size.height * .1,
-              ),
               Container(
                   height: size.height * .15,
                   width: size.width * .750,

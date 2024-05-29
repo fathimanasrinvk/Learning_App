@@ -31,7 +31,11 @@ class GameScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: Icon(null),
+        leading: IconButton(onPressed: (){
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
+          HomeScreen()));
+        }, icon: Icon(Icons.arrow_back,
+        color: ColorTheme.maincolor,)),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         title: Text("GAMES", style: GlobalTextStyles.mainTittle),

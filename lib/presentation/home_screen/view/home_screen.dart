@@ -1,17 +1,53 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:path_provider/path_provider.dart';
 import '../../alphabet_screen/view/alphabet_screen.dart';
 import '../../game_screen/view/game_screen.dart';
+import '../../registration_page/view/registration_screen.dart';
 import '../../translation_screen/view/translation_screen.dart';
 import '../../word_screen/view/word_screen.dart';
 
-class HomeScreen extends StatelessWidget {
-  final String name;
+class HomeScreen extends StatefulWidget {
 
-  HomeScreen({required this.name});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  String _name = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadName();
+  }
+
+  Future<String> _readName() async {
+    try {
+      final file = await _getLocalFile();
+      String name = await file.readAsString();
+      return name;
+    } catch (e) {
+      return '';
+    }
+  }
+
+  Future<File> _getLocalFile() async {
+    final directory = await getApplicationDocumentsDirectory();
+    return File('${directory.path}/name.txt');
+  }
+
+  Future<void> _loadName() async {
+    String name = await _readName();
+    setState(() {
+      _name = name;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     var names = [
@@ -28,7 +64,6 @@ class HomeScreen extends StatelessWidget {
     ];
     double size = constantsize(context);
     return Scaffold(
-        extendBody: true,
         body: Stack(children: [
           // Background image
           Positioned.fill(
@@ -43,21 +78,36 @@ class HomeScreen extends StatelessWidget {
                 SliverList(
                     delegate: SliverChildListDelegate([
                   SizedBox(height: size * 35),
-                  Padding(
-                    padding: EdgeInsets.only(left: size * 45, right: size * 45),
-                    child: Container(
-                      alignment: Alignment.centerLeft,
-                      child: Text("Hi, $name👋",
-                          style: GlobalTextStyles.subTitle3),
-                    ),
+                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(crossAxisAlignment: CrossAxisAlignment.start
+                        ,children: [
+                          Padding(
+                            padding: EdgeInsets.only(left: size * 45),
+                            child: Container(width: size*210,
+                              alignment: Alignment.centerLeft,
+                              child: Text("Hi, 👋 $_name",maxLines: 1,overflow: TextOverflow.ellipsis,
+                                  style: GlobalTextStyles.subTitle3),
+                            ),
+                          ),
+                          Padding(
+                              padding:
+                                  EdgeInsets.only(left: size * 45),
+                              child: Container(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text("Let’s start learning!",
+                                      style: GlobalTextStyles.subTitle1))),
+                        ],
+                      ),
+                      Padding(
+                        padding:  EdgeInsets.only(right: size*20),
+                        child: ElevatedButton(onPressed: (){
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
+                          RegistrationScreen()));
+                        }, child: Text("LogOut")),
+                      )
+                    ],
                   ),
-                  Padding(
-                      padding:
-                          EdgeInsets.only(left: size * 45, right: size * 45),
-                      child: Container(
-                          alignment: Alignment.centerLeft,
-                          child: Text("Let’s start learning!",
-                              style: GlobalTextStyles.subTitle1))),
                   SizedBox(height: size * 65)
                 ])),
                 SliverList(

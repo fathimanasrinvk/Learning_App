@@ -6,6 +6,8 @@ import 'package:gaming_app/presentation/registration_page/view/registration_scre
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../home_screen/view/home_screen.dart';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -102,8 +104,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             user = null;
                           }
                           if (user != null && user.pword == enteredPassword) {
+                            await _writeName(enteredName);
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => HomeScreen(name: enteredName)));
+                                builder: (context) => HomeScreen()));
                             namecontroller.text = "";
                             pcontroller.text = "";
                           } else {
@@ -153,5 +156,23 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   )
                 ]))));
+  }
+}
+Future<File> _getLocalFile() async {
+  final directory = await getApplicationDocumentsDirectory();
+  return File('${directory.path}/name.txt');
+}
+Future<void> _writeName(String name) async {
+  final file = await _getLocalFile();
+  await file.writeAsString(name);
+}
+Future<String> _readName() async {
+  try {
+    final file = await _getLocalFile();
+    String name = await file.readAsString();
+    return name;
+  } catch (e) {
+    // If encountering an error, return empty string
+    return '';
   }
 }

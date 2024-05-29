@@ -42,22 +42,10 @@ class _QuizScreenState extends State<QuizScreen> {
 
   void nextQuestion() {
     setState(() {
-      if (currentQuestionIndex < questions.length - 1) {
+      if (currentQuestionIndex < 9 ) {
         currentQuestionIndex++;
         answered = false;
         selectedOptionIndex = -1;
-      } else {
-        print("Navigate to score screen");
-       
-
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) =>
-                  GkQuizScoreScreen(score: correctAnswers, total: questions.length),
-            ),
-          );
-        
       }
     });
   }
@@ -69,6 +57,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
     return Scaffold(
       appBar: AppBar(
+          title:Text("WELCOME TO GK QUIZ", style: GlobalTextStyles.secondTittle),
           leading: IconButton(
         icon: Icon(
           Icons.arrow_back,
@@ -79,92 +68,91 @@ class _QuizScreenState extends State<QuizScreen> {
               .push(MaterialPageRoute(builder: (context) => LevelScreenGk()));
         },
       )),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment:
-              CrossAxisAlignment.center, // Align content in the center
-          children: [
-            Text("WELCOME TO GK QUIZ", style: GlobalTextStyles.secondTittle),
-            SizedBox(
-              height: size.height * .05,
-            ),
-            Text(
-              "Question ${currentQuestionIndex + 1}: ${currentQuestion.questionText}",
-              style: GlobalTextStyles.subTitle3,
-              textAlign: TextAlign.center, // Align text in the center
-            ),
-            SizedBox(height: size.height * .05),
-            Column(
-              children: currentQuestion.options.asMap().entries.map((entry) {
-                int idx = entry.key;
-                String option = entry.value;
-                return GestureDetector(
-                  onTap: () => handleAnswer(idx),
-                  child: Container(
-                    width: double.infinity, // Make container full width
-                    alignment: Alignment.center, // Center the content
-                    margin: const EdgeInsets.symmetric(vertical: 8.0),
-                    padding: const EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: answered
-                          ? (idx == selectedOptionIndex
-                              ? (idx == currentQuestion.correctOptionIndex
-                                  ? Colors.green
-                                  : Colors.red)
-                              : (idx == currentQuestion.correctOptionIndex
-                                  ? Colors.green
-                                  : Colors.white))
-                          : Colors.white,
-                      border: Border.all(color: ColorTheme.maincolor),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    child: Text(
-                      option,
-                      style: TextStyle(fontSize: 18.0),
-                    ),
-                  ),
-                );
-              }).toList(),
-            ),
-            SizedBox(height: size.height * .1),
-
-            Container(
-              height: size.height * 0.05,
-              width: size.width * 0.20,
-              child: ElevatedButton(
-                onPressed: () {
-                  if (answered) {
-                    nextQuestion(); // Move to the next question
-                  }
-                  // Check if all questions are answered
-                  if (currentQuestionIndex == questions.length - 1) {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => GkQuizScoreScreen(
-                          score: correctAnswers,
-                          total: questions.length,
-                        ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment:
+                CrossAxisAlignment.center, // Align content in the center
+            children: [
+              Text(
+                "Question ${currentQuestionIndex + 1}: ${currentQuestion.questionText}",
+                style: GlobalTextStyles.subTitle3,
+                textAlign: TextAlign.center, // Align text in the center
+              ),
+              SizedBox(height: size.height * .05),
+              Column(
+                children: currentQuestion.options.asMap().entries.map((entry) {
+                  int idx = entry.key;
+                  String option = entry.value;
+                  return GestureDetector(
+                    onTap: () => handleAnswer(idx),
+                    child: Container(
+                      width: double.infinity, // Make container full width
+                      alignment: Alignment.center, // Center the content
+                      margin: const EdgeInsets.symmetric(vertical: 8.0),
+                      padding: const EdgeInsets.all(16.0),
+                      decoration: BoxDecoration(
+                        color: answered
+                            ? (idx == selectedOptionIndex
+                                ? (idx == currentQuestion.correctOptionIndex
+                                    ? Colors.green
+                                    : Colors.red)
+                                : (idx == currentQuestion.correctOptionIndex
+                                    ? Colors.green
+                                    : Colors.white))
+                            : Colors.white,
+                        border: Border.all(color: ColorTheme.maincolor),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
-                    );
-                  }
-                },
-                child: Text(
-                  "OK",
-                  style: TextStyle(color: ColorTheme.white), // Text color
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: ColorTheme.maincolor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+                      child: Text(
+                        option,
+                        style: TextStyle(fontSize: 18.0),
+                      ),
+                    ),
+                  );
+                }).toList(),
+              ),
+              SizedBox(height: size.height * .1),
+        
+              Container(
+                height: size.height * 0.05,
+                width: size.width * 0.20,
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Check if all questions are answered
+                    if (currentQuestionIndex == 9) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => GkQuizScoreScreen(
+                            score: correctAnswers,
+                            total: questions.length,
+                          ),
+                        ),
+                      );
+                    }else{
+                      if (answered) {
+                        nextQuestion(); // Move to the next question
+                      }
+                    }
+                  },
+                  child: Text(
+                    "OK",
+                    style: TextStyle(color: ColorTheme.white), // Text color
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: ColorTheme.maincolor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                   ),
                 ),
               ),
-            ),
-
-          
-          ],
+        
+            
+            ],
+          ),
         ),
       ),
     );

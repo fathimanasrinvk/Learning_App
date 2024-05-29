@@ -8,83 +8,82 @@ class LevelScreenGk extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
-    return Scaffold(
-      appBar: AppBar(
-          leading: IconButton(
-        icon: Icon(
-          Icons.arrow_back,
-          color: ColorTheme.maincolor,
-        ),
-        onPressed: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => GameScreen()));
-        },
-      )),
-      body: Padding(
-        padding: EdgeInsets.only(top: size.height * 0.01),
-        child: Center(
-          child: Column(
-            children: [
-              Text("Choose Your Level", style: GlobalTextStyles.secondTittle),
-              SizedBox(
-                height: size.height * .1,
-              ),
-              Container(
-                  height: size.height * .15,
-                  width: size.width * .750,
-                  child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => QuizScreen(
-                                  difficulty: 'easy',
-                                )));
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: ColorTheme.maincolor,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15))),
-                      child: Text(
-                        "EASY",
-                        style: GlobalTextStyles.subTitle4,
-                      ))),
-              SizedBox(
-                height: size.height * .1,
-              ),
-              Container(
-                  height: size.height * .15,
-                  width: size.width * .750,
-                  child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => QuizScreen(
-                                  difficulty: 'medium',
-                                )));
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: ColorTheme.maincolor,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15))),
-                      child:
-                          Text("MEDIUM", style: GlobalTextStyles.subTitle4))),
-              SizedBox(
-                height: size.height * .1,
-              ),
-              Container(
-                  height: size.height * .15,
-                  width: size.width * .750,
-                  child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => QuizScreen(
-                                  difficulty: 'hard',
-                                )));
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: ColorTheme.maincolor,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15))),
-                      child: Text("HARD", style: GlobalTextStyles.subTitle4))),
-            ],
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
+            GameScreen()));
+        return false;
+      },
+      child: Scaffold(
+        appBar: AppBar( leading: IconButton(onPressed: (){
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
+              GameScreen()));
+        }, icon: Icon(Icons.arrow_back,
+          color: ColorTheme.maincolor,)),
+          title:Text("Choose Your Level", style: GlobalTextStyles.secondTittle),
+          centerTitle: true,),
+        body: Padding(
+          padding: EdgeInsets.only(top: size.height * 0.08),
+          child: Center(
+            child: Column(
+              children: [
+                Container(
+                    height: size.height * .15,
+                    width: size.width * .750,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => QuizScreen(
+                                    difficulty: 'easy',
+                                  )));
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: ColorTheme.maincolor,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15))),
+                        child: Text(
+                          "EASY",
+                          style: GlobalTextStyles.subTitle4,
+                        ))),
+                SizedBox(
+                  height: size.height * .1,
+                ),
+                Container(
+                    height: size.height * .15,
+                    width: size.width * .750,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => QuizScreen(
+                                    difficulty: 'medium',
+                                  )));
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: ColorTheme.maincolor,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15))),
+                        child:
+                            Text("MEDIUM", style: GlobalTextStyles.subTitle4))),
+                SizedBox(
+                  height: size.height * .1,
+                ),
+                Container(
+                    height: size.height * .15,
+                    width: size.width * .750,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => QuizScreen(
+                                    difficulty: 'hard',
+                                  )));
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: ColorTheme.maincolor,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15))),
+                        child: Text("HARD", style: GlobalTextStyles.subTitle4))),
+              ],
+            ),
           ),
         ),
       ),

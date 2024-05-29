@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gaming_app/presentation/games/word_puzzle/puzzle_screen/view/easy/puzzle_screen.dart';
 import 'package:gaming_app/presentation/home_screen/view/home_screen.dart';
 import 'package:gaming_app/presentation/splash_screen/view/splash_screen.dart';
 

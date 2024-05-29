@@ -105,16 +105,6 @@ final Map<String, List<Map<String, dynamic>>> questionData = {
       ],
       "correctOptionIndex": 1
     },
-    {
-      "questionText": "Which word is a pronoun?",
-      "options": [
-        "Run",
-        "Beautiful",
-        "They",
-        "Quickly",
-      ],
-      "correctOptionIndex": 2
-    },
   ],
   "medium": [
     {
@@ -178,14 +168,14 @@ final Map<String, List<Map<String, dynamic>>> questionData = {
       "correctOptionIndex": 1
     },
     {
-      "questionText": "Which sentence is in the past tense?",
+      "questionText": "What is the past participle form of the verb 'sing'?",
       "options": [
-        "I am running.",
-        "I will run.",
-        "I run.",
-        "I ran.",
+        "Singed",
+        "Sang",
+        "Sung",
+        "Singing",
       ],
-      "correctOptionIndex": 3
+      "correctOptionIndex": 2
     },
     {
       "questionText": "Select the properly phrased sentence:",
@@ -216,16 +206,6 @@ final Map<String, List<Map<String, dynamic>>> questionData = {
         "She sings gooder.",
       ],
       "correctOptionIndex": 1
-    },
-    {
-      "questionText": "Which word is a pronoun?",
-      "options": [
-        "Run",
-        "Beautiful",
-        "They",
-        "Quickly",
-      ],
-      "correctOptionIndex": 2
     },
   ],
   "hard": [
@@ -338,16 +318,6 @@ final Map<String, List<Map<String, dynamic>>> questionData = {
         " The sun will be rising in the east.",
       ],
       "correctOptionIndex": 1
-    },
-    {
-      "questionText": "Which word is a pronoun?",
-      "options": [
-        "Run",
-        "Beautiful",
-        "They",
-        "Quickly",
-      ],
-      "correctOptionIndex": 2
     },
   ]
 };

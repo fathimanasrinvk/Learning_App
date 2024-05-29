@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gaming_app/presentation/games/word_puzzle/puzzle_screen/view/easy/puzzle_screen.dart';
+import 'package:gaming_app/presentation/games/word_puzzle/puzzle_screen/puzzle_screen.dart';
 import 'package:gaming_app/presentation/home_screen/view/home_screen.dart';
 import 'package:gaming_app/presentation/splash_screen/view/splash_screen.dart';
 
@@ -14,13 +14,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      //home: HomeScreen(),
+      home: HomeScreen(),
       //  home: PuzzleScreen()
       // home: LoginScreen()
-      home:SplashScreen(),
+      //home:SplashScreen(),
       //home:WordScreen(),
       //    home:RegistrationScreen(),
       //    home:OnboardingScreen(),
       //    home:TranslationScreen()
     );
   }
+}

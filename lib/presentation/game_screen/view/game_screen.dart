@@ -12,10 +12,10 @@ import 'package:google_fonts/google_fonts.dart';
 class GameScreen extends StatelessWidget {
   var images = [
     "assets/images/boggle.jpeg",
-    "assets/images/img.png",
+    "assets/images/hangmann.png",
     "assets/images/wrdpzzle.png",
     "assets/images/tensequiz.png",
-    "assets/images/img_1.png"
+    "assets/images/Gkquiz.png"
   ];
   var screens = [
     LevelScreenBoggle(),

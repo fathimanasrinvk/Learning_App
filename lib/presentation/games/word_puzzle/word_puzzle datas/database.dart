@@ -5,61 +5,61 @@ class DbData {
       'original': 'bird',
       'shuffled': 'dibr',
       'clue': 'Feathered creature',
-      'image': 'assets/images/word_game_images/bird.jpg'
+      'image': 'assets/images/word_game_images/birrd.png'
     },
     {
       'original': 'cake',
       'shuffled': 'ekca',
       'clue': 'Sweet dessert',
-      'image': 'assets/images/word_game_images/cake.jpg'
+      'image': 'assets/images/word_game_images/cake.png'
     },
     {
       'original': 'door',
       'shuffled': 'rood',
       'clue': 'Entrance to a room',
-      'image': 'assets/images/word_game_images/door.jpg'
+      'image': 'assets/images/word_game_images/img.png',
     },
     {
       'original': 'fish',
       'shuffled': 'hsif',
       'clue': 'Aquatic animal',
-      'image': 'assets/images/word_game_images/fish.jpg'
+      'image': 'assets/images/word_game_images/fi.png'
     },
     {
       'original': 'book',
       'shuffled': 'kobo',
       'clue': 'Contains stories or information',
-      'image': 'assets/images/word_game_images/book.jpg'
+      'image': 'assets/images/word_game_images/b.png'
     },
     {
       'original': 'moon',
       'shuffled': 'onom',
       'clue': 'Natural satellite of Earth',
-      'image': 'assets/images/word_game_images/moon.jpg'
+      'image': 'assets/images/word_game_images/moon.png'
     },
     {
       'original': 'tree',
       'shuffled': 'teer',
       'clue': 'Tall woody plant',
-      'image': 'assets/images/word_game_images/tree.jpg'
+      'image': 'assets/images/word_game_images/tree.png'
     },
     {
       'original': 'ball',
       'shuffled': 'llab',
       'clue': 'Spherical object used in games',
-      'image': 'assets/images/word_game_images/ball.jpg'
+      'image': 'assets/images/word_game_images/ball.png'
     },
     {
       'original': 'time',
       'shuffled': 'emit',
       'clue': 'Measurement of duration',
-      'image': 'assets/images/word_game_images/time.jpg'
+      'image': 'assets/images/word_game_images/time.png'
     },
     {
       'original': 'song',
       'shuffled': 'gnos',
       'clue': 'Musical composition with vocals',
-      'image': 'assets/images/word_game_images/song.jpg'
+      'image': 'assets/images/word_game_images/song.png'
     },
   ];
 

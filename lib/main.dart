@@ -13,17 +13,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        // home: HomeScreen(
-        //   name: 'git',
-        // ),
-        //  home: PuzzleScreen()
+      debugShowCheckedModeBanner: false,
+      // home: HomeScreen(
+      //   name: 'git',
+      // ),
+      //  home: PuzzleScreen()
       // home: LoginScreen()
-        home:SplashScreen(),
-        //home:WordScreen(),
-        //    home:RegistrationScreen(),
-        //    home:OnboardingScreen(),
-        //    home:TranslationScreen()
-        );
+      home:SplashScreen(),
+      //home:WordScreen(),
+      //    home:RegistrationScreen(),
+      //    home:OnboardingScreen(),
+      //    home:TranslationScreen()
+    );
   }
 }

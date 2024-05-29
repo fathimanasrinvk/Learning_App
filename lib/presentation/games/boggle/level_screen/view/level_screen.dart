@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
-import 'package:gaming_app/presentation/game_screen/view/game_screen.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:gaming_app/presentation/games/boggle/boggle_game_screen/view/boggle_game_screen.dart';
 
 class LevelScreenBoggle extends StatelessWidget {
   const LevelScreenBoggle({super.key});
@@ -25,8 +24,10 @@ class LevelScreenBoggle extends StatelessWidget {
                   width: size.width * .750,
                   child: ElevatedButton(
                       onPressed: () {
-                        // Navigator.of(context).push(MaterialPageRoute(
-                        //     builder: (context) => const TensQuizScreen()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => BoggleGameScreen(level: 'easy',)));
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: ColorTheme.maincolor,
@@ -40,7 +41,12 @@ class LevelScreenBoggle extends StatelessWidget {
                   height: size.height * .15,
                   width: size.width * .750,
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => BoggleGameScreen(level: 'medium',)));
+                      },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: ColorTheme.maincolor,
                           shape: RoundedRectangleBorder(
@@ -54,7 +60,12 @@ class LevelScreenBoggle extends StatelessWidget {
                   height: size.height * .15,
                   width: size.width * .750,
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => BoggleGameScreen(level: 'hard',)));
+                      },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: ColorTheme.maincolor,
                           shape: RoundedRectangleBorder(

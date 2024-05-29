@@ -58,6 +58,7 @@ class _HangmanGameScreenState extends State<HangmanGameScreen> {
 
   void showEndDialog(bool won) {
     showDialog(
+      barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
@@ -174,7 +175,9 @@ class _HangmanGameScreenState extends State<HangmanGameScreen> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+       leading: BackButton(color: ColorTheme.maincolor),
+    ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

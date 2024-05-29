@@ -26,10 +26,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
         centerTitle: true,
         leading: BackButton(color: ColorTheme.maincolor),
         backgroundColor: Colors.transparent,
-        title: Padding(
-          padding: EdgeInsets.only(top: size * 30),
-          child: Text("TRANSLATION", style: GlobalTextStyles.mainTittle),
-        ),
+        title: Text("TRANSLATION", style: GlobalTextStyles.mainTittle),
       ),
       body: SingleChildScrollView(
         child: Column(

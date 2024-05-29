@@ -157,7 +157,7 @@ class _HangmanGameScreenState extends State<HangmanGameScreen> {
             alignment: Alignment.center,
             margin: EdgeInsets.all(4.0),
             decoration: BoxDecoration(
-              color: guessedLetters.contains(letter) ? Colors.grey : Color(0xff67729D),
+              color: guessedLetters.contains(letter) ? currentAnswer.contains(letter)? Colors.green:Colors.red : Color(0xff67729D),
               borderRadius: BorderRadius.circular(4.0),
             ),
             child: Text(

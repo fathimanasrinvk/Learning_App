@@ -15,10 +15,11 @@ class AlphabetScreen extends StatelessWidget {
     double size = constantsize(context);
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(color: ColorTheme.maincolor),
       ),
         body: CustomScrollView(slivers: [
       SliverPadding(
-        padding: EdgeInsets.only(top: size * 100),
+        padding: EdgeInsets.only(top: size * 50),
         sliver: SliverList(
             delegate: SliverChildListDelegate([
           Text("CAPITAL LETTERS",

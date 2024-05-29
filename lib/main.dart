@@ -14,12 +14,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // home: HomeScreen(
-      //   name: 'git',
-      // ),
+      home: HomeScreen(
+      name: 'git'),
       //  home: PuzzleScreen()
       // home: LoginScreen()
-      home:SplashScreen(),
+     // home:SplashScreen(),
       //home:WordScreen(),
       //    home:RegistrationScreen(),
       //    home:OnboardingScreen(),

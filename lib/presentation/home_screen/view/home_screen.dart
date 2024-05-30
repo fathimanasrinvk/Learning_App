@@ -66,116 +66,113 @@ class _HomeScreenState extends State<HomeScreen> {
     ];
     double size = constantsize(context);
     return Scaffold(
-        body: Stack(children: [
-          Scaffold(
-              backgroundColor:ColorTheme.secondarycolor,
-              body: CustomScrollView(slivers: [
-                SliverList(
-                    delegate: SliverChildListDelegate([
-                      SizedBox(height: size * 35),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
+            backgroundColor:ColorTheme.secondarycolor,
+            body: CustomScrollView(slivers: [
+              SliverList(
+                  delegate: SliverChildListDelegate([
+                    SizedBox(height: size * 35),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(left: size * 45),
+                              child: Container(
+                                width: size * 210,
+                                alignment: Alignment.centerLeft,
+                                child: Text("Hi, 👋 $_name",
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: GlobalTextStyles.subTitle3),
+                              ),
+                            ),
+                            Padding(
                                 padding: EdgeInsets.only(left: size * 45),
                                 child: Container(
-                                  width: size * 210,
-                                  alignment: Alignment.centerLeft,
-                                  child: Text("Hi, 👋 $_name",
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: GlobalTextStyles.subTitle3),
-                                ),
+                                    alignment: Alignment.centerLeft,
+                                    child: Text("Let’s start learning!",
+                                        style: GlobalTextStyles.subTitle1))),
+                          ],
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(right: size * 20),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(builder: (context) => RegistrationScreen()),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: ColorTheme.maincolor, backgroundColor: Colors.white, // Text color
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
                               ),
-                              Padding(
-                                  padding: EdgeInsets.only(left: size * 45),
-                                  child: Container(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text("Let’s start learning!",
-                                          style: GlobalTextStyles.subTitle1))),
-                            ],
+                            ),
+                            child: Text(
+                              "LogOut",
+                              style: TextStyle(color: ColorTheme.maincolor),
+                            ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(right: size * 20),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => RegistrationScreen()),
-                                );
-                              },
-                              style: ElevatedButton.styleFrom(
-                                foregroundColor: ColorTheme.maincolor, backgroundColor: Colors.white, // Text color
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                              ),
-                              child: Text(
-                                "LogOut",
-                                style: TextStyle(color: ColorTheme.maincolor),
-                              ),
-                            ),
-                          )
+                        )
 
-                        ],
-                      ),
-                      SizedBox(height: size * 65)
-                    ])),
-                SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) {
-                      return Padding(
-                        padding:
-                        EdgeInsets.fromLTRB(size * 20, size * 20, size * 20, 0),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => screen[index],
-                              ),
-                            );
-                          },
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              top: size * 10,
-                              bottom: size * 10,
-                              left: size * 25,
-                              right: size * 25,
+                      ],
+                    ),
+                    SizedBox(height: size * 65)
+                  ])),
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                    return Padding(
+                      padding:
+                      EdgeInsets.fromLTRB(size * 20, size * 20, size * 20, 0),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => screen[index],
                             ),
-                            child: Container(
-                              height: size * 83,
-                              width: double.infinity,
-                              decoration: BoxDecoration(border: Border.all(
-                                color: ColorTheme.maincolor,
-                                width: 5, // Adjust the width as needed
-                              ),
-                                color:ColorTheme.white,
-                                borderRadius: BorderRadius.circular(size * 5),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  names[index],
-                                  style: GlobalTextStyles.thirdTittle,
-                                  // style: GoogleFonts.passionOne(
-                                  //   decoration: TextDecoration.none,
-                                  //   fontSize: size * 30,
-                                  //   color: ColorTheme.maincolor,
-                                  // ),
-                                ),
+                          );
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            top: size * 10,
+                            bottom: size * 10,
+                            left: size * 25,
+                            right: size * 25,
+                          ),
+                          child: Container(
+                            height: size * 83,
+                            width: double.infinity,
+                            decoration: BoxDecoration(border: Border.all(
+                              color: ColorTheme.maincolor,
+                              width: 5, // Adjust the width as needed
+                            ),
+                              color:ColorTheme.white,
+                              borderRadius: BorderRadius.circular(size * 5),
+                            ),
+                            child: Center(
+                              child: Text(
+                                names[index],
+                                style: GlobalTextStyles.thirdTittle,
+                                // style: GoogleFonts.passionOne(
+                                //   decoration: TextDecoration.none,
+                                //   fontSize: size * 30,
+                                //   color: ColorTheme.maincolor,
+                                // ),
                               ),
                             ),
                           ),
                         ),
-                      );
-                    },
-                    childCount: 5,
-                  ),
+                      ),
+                    );
+                  },
+                  childCount: 5,
                 ),
-              ]))
-        ]));
+              ),
+            ]));
   }
 }

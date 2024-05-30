@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
+import 'package:gaming_app/presentation/common_screen/view/level_screen.dart';
+import 'package:gaming_app/presentation/common_screen/view/score_screen.dart';
 import 'package:gaming_app/presentation/games/boggle/game_data/boogle_game_data.dart';
-import '../../../../common_screen/view/level_screen.dart';
-import '../../../../common_screen/view/score_screen.dart';
 
 class BoggleGameScreen extends StatefulWidget {
   final String level;
@@ -16,19 +16,14 @@ class BoggleGameScreen extends StatefulWidget {
 class _BoggleGameScreenState extends State<BoggleGameScreen> {
   late BoggleGameData gameData;
   final TextEditingController controller = TextEditingController();
-  final List<String> correctWords =
-  []; // to store the words the user correctly guessed
-  final List<String> userTypeWords =
-  []; // used to store the words that the user has typed in the game
-  int maxWords =
-  0; // used to store the maximum number of correct words that the user can enter for the current level of the game
-  int maxLettersInRowOrColumn =
-  0; // used to store the maximum number of letters that can be displayed in a single row or column of the grid in the game
+  final List<String> correctWords = [];
+  final List<String> userTypeWords = [];
+  int maxWords = 0;
+  int maxLettersInRowOrColumn = 0;
   String hintText = '';
   final double letterContainerHeight = 30;
   final double letterContainerWidth = 30;
 
-  // to retrieve the data from selected level
   @override
   void initState() {
     super.initState();
@@ -69,25 +64,25 @@ class _BoggleGameScreenState extends State<BoggleGameScreen> {
 
   void navigateToScore() {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => ScoreScreen(name: LevelScreen(easy: BoggleGameScreen(level: 'easy'), medium: BoggleGameScreen(level: 'medium'),
-        hard: BoggleGameScreen(level: 'hard')))));
+        context, MaterialPageRoute(builder: (context) => ScoreScreen(name:LevelScreen(easy: BoggleGameScreen(level: 'easy'), medium: BoggleGameScreen(level: 'medium'),
+        hard: BoggleGameScreen(level: 'hard')),)));
   }
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
 
-    return WillPopScope(
-      onWillPop: () async {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
-            LevelScreen(easy: BoggleGameScreen(level: 'easy'), medium: BoggleGameScreen(level: 'medium'),
-                hard: BoggleGameScreen(level: 'hard')),));
-        return false;
-      },
-      child: Scaffold(
+    return
+      WillPopScope(
+          onWillPop: () async {
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
+                LevelScreen(easy: BoggleGameScreen(level: 'easy'), medium: BoggleGameScreen(level: 'medium'),
+                    hard: BoggleGameScreen(level: 'hard')),));
+            return false;
+          },child:  Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            onPressed: () {
+            onPressed: ()  {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => LevelScreen(easy: BoggleGameScreen(level: 'easy'), medium: BoggleGameScreen(level: 'medium'),
                       hard: BoggleGameScreen(level: 'hard')),));
@@ -103,17 +98,23 @@ class _BoggleGameScreenState extends State<BoggleGameScreen> {
             style: GlobalTextStyles.subTitle2,
           ),
         ),
+        resizeToAvoidBottomInset: false, // Add this line
         body: Padding(
           padding: EdgeInsets.only(
-              left: size.width * 0.1,
-              right: size.width * 0.1,
-              top: 8.0,
-              bottom: 8.0),
+            left: size.width * 0.1,
+            right: size.width * 0.1,
+          ),
           child: Column(
             children: [
+              SizedBox(
+                height: size.height * .05,
+              ),
               Text(
                 hintText,
                 style: GlobalTextStyles.subTitle3,
+              ),
+              SizedBox(
+                height: size.height * .05,
               ),
               Expanded(
                 child: GridView.builder(
@@ -178,7 +179,7 @@ class _BoggleGameScreenState extends State<BoggleGameScreen> {
             ],
           ),
         ),
-      ),
-    );
+      )
+      );
   }
 }

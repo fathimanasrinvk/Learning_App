@@ -182,13 +182,13 @@ class DbData {
       'original': 'pineapple',
       'shuffled': 'pplneapie',
       'clue': 'Tropical fruit with spiky skin',
-      'image': 'assets/images/word_game_images/pineapple.avif'
+      'image': 'assets/images/word_game_images/pineapple.png'
     },
     {
       'original': 'airplane',
       'shuffled': 'planeiar',
       'clue': 'Aircraft that flies',
-      'image': 'assets/images/word_game_images/airplane.avif'
+      'image': 'assets/images/word_game_images/airplane.png'
     },
   ];
 }

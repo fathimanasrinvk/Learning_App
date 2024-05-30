@@ -74,98 +74,103 @@ class _TenseQuizScreenState extends State<TenseQuizScreen> {
         return false;
       },
       child: Scaffold(
-        appBar: AppBar(leading: Icon(null)),
+        appBar: AppBar(
+          title: Text("WELCOME TO TENSE QUIZ", style: GlobalTextStyles.secondTittle),
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: ColorTheme.maincolor,
+            ),
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => LevelScreen(easy: TenseQuizScreen(questions: beginner), medium: TenseQuizScreen(questions: medium),
+                  hard: TenseQuizScreen(questions: expert)) ));
+            },
+          ),
+        ),
         body: SingleChildScrollView(
           child: Center(
               child: Column(
                 children: [
-                  Text("WELCOME TO TENSE QUIZ", style: GlobalTextStyles.secondTittle),
-                  SizedBox(
-                    height: size.height * .09,
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Text(
+                      "$i. ${shuffledQuestions[currentQuestionIndex]['question']}",
+                      style: GlobalTextStyles.subTitle3,textAlign: TextAlign.left,
+                    ),
                   ),
-                  Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: Text(
-                          "$i. ${shuffledQuestions[currentQuestionIndex]['question']}",
-                          style: GlobalTextStyles.subTitle3,textAlign: TextAlign.left,
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    width: size.width * .75,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: ColorTheme.primarycolor,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: TextField(
+                      textInputAction: TextInputAction.next,
+                      controller: answer,
+                      onChanged: (value) {
+                        userAnswer = value;
+                      },
+                      style: TextStyle(color: ColorTheme.maincolor),
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          hintText: "Enter Your Answer",
+                          hintStyle: TextStyle(
+                              color: ColorTheme.lightgrey, fontSize: 15)),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  feedbackMessage == 'Correct!'?
+                  Text(feedbackMessage, style: TextStyle(color: Colors.green)):
+                  Text(feedbackMessage, style: TextStyle(color: Colors.red)),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          "Score: $score",
+                          style: GlobalTextStyles.subTitle3,
                         ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        width: size.width * .75,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: ColorTheme.primarycolor,
-                          borderRadius: BorderRadius.circular(20),
+                        Container(
+                          height: size.height * .05,
+                          width: size.width * .20,
+                          child: ElevatedButton(
+                              onPressed: () {
+                                if (currentQuestionIndex ==9) {
+                                  button==0 ?checkAnswer():null;
+                                  Timer(Duration(seconds:5), () {
+                                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                                      builder: (context) =>
+                                          ScoreScreen(name: LevelScreen(easy: TenseQuizScreen(questions: beginner), medium: TenseQuizScreen(questions: medium),
+                                              hard: TenseQuizScreen(questions: expert)),)));});
+                                }else{
+                                  checkAnswer();
+                                }
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: ColorTheme.maincolor,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20))),
+                              child: Text(
+                                "OK",
+                                style: GlobalTextStyles.buttonText,
+                              )),
                         ),
-                        child: TextField(
-                          textInputAction: TextInputAction.next,
-                          controller: answer,
-                          onChanged: (value) {
-                            userAnswer = value;
-                          },
-                          style: TextStyle(color: ColorTheme.maincolor),
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              hintText: "Enter Your Answer",
-                              hintStyle: TextStyle(
-                                  color: ColorTheme.lightgrey, fontSize: 15)),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      feedbackMessage == 'Correct!'?
-                      Text(feedbackMessage, style: TextStyle(color: Colors.green)):
-                      Text(feedbackMessage, style: TextStyle(color: Colors.red)),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              "Score: $score",
-                              style: GlobalTextStyles.subTitle3,
-                            ),
-                            Container(
-                              height: size.height * .05,
-                              width: size.width * .20,
-                              child: ElevatedButton(
-                                  onPressed: () {
-                                    if (currentQuestionIndex ==9) {
-                                      button==0 ?checkAnswer():null;
-                                      Timer(Duration(seconds:5), () {
-                                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                          builder: (context) =>
-                                              ScoreScreen(name: LevelScreen(easy: TenseQuizScreen(questions: beginner), medium: TenseQuizScreen(questions: medium),
-                                                  hard: TenseQuizScreen(questions: expert)),)));});
-                                    }else{
-                                      checkAnswer();
-                                    }
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: ColorTheme.maincolor,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(20))),
-                                  child: Text(
-                                    "OK",
-                                    style: GlobalTextStyles.buttonText,
-                                  )),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
+                      ],
+                    ),
                   )
                 ],
               )),

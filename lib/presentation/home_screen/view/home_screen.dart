@@ -1,7 +1,10 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
+import 'package:gaming_app/presentation/sentense_screen/view/sentence_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:path_provider/path_provider.dart';
 import '../../alphabet_screen/view/alphabet_screen.dart';
 import '../../game_screen/view/game_screen.dart';
@@ -10,8 +13,6 @@ import '../../translation_screen/view/translation_screen.dart';
 import '../../word_screen/view/word_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -46,18 +47,21 @@ class _HomeScreenState extends State<HomeScreen> {
       _name = name;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     var names = [
       'START WITH ALPHABETS',
       'LEARN WITH WORDS',
       'LEARN WITH GAMES',
+      'LEARN WITH SENTENCES',
       'TRANSLATION'
     ];
     var screen = [
       AlphabetScreen(),
       WordScreen(),
       GameScreen(),
+      SentenceScreen(),
       TranslationScreen()
     ];
     double size = constantsize(context);
@@ -75,67 +79,53 @@ class _HomeScreenState extends State<HomeScreen> {
               body: CustomScrollView(slivers: [
                 SliverList(
                     delegate: SliverChildListDelegate([
-                  SizedBox(height: size * 35),
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(crossAxisAlignment: CrossAxisAlignment.start
-                        ,children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: size * 45),
-                            child: Container(width: size*210,
-                              alignment: Alignment.centerLeft,
-                              child: Text("Hi, 👋 $_name",maxLines: 1,overflow: TextOverflow.ellipsis,
-                                  style: GlobalTextStyles.subTitle3),
-                            ),
+                      SizedBox(height: size * 35),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(left: size * 45),
+                                child: Container(
+                                  width: size * 210,
+                                  alignment: Alignment.centerLeft,
+                                  child: Text("Hi, 👋 $_name",
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: GlobalTextStyles.subTitle3),
+                                ),
+                              ),
+                              Padding(
+                                  padding: EdgeInsets.only(left: size * 45),
+                                  child: Container(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text("Let’s start learning!",
+                                          style: GlobalTextStyles.subTitle1))),
+                            ],
                           ),
                           Padding(
-                              padding:
-                                  EdgeInsets.only(left: size * 45),
-                              child: Container(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text("Let’s start learning!",
-                                      style: GlobalTextStyles.subTitle1))),
+                            padding: EdgeInsets.only(right: size * 20),
+                            child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => RegistrationScreen()));
+                                },
+                                child: Text("LogOut")),
+                          )
                         ],
                       ),
-                      // Padding(
-                      //   padding:  EdgeInsets.only(right: size*20),
-                      //   child: ElevatedButton(onPressed: (){
-                      //     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
-                      //     RegistrationScreen()));
-                      //   }, child: Text("LogOut",style: TextStyle(color: ColorTheme.maincolor),)),
-                      // )
-                      Padding(
-                        padding: EdgeInsets.only(right: size * 20),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(builder: (context) => RegistrationScreen()),
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: ColorTheme.maincolor, backgroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          child: Text(
-                            "LogOut",
-                            style: TextStyle(color: ColorTheme.maincolor),
-                          ),
-                        ),
-                      )
-
-                    ],
-                  ),
-                  SizedBox(height: size * 65)
-                ])),
+                      SizedBox(height: size * 65)
+                    ])),
                 SliverList(
                   delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
+                        (BuildContext context, int index) {
                       return Padding(
-                        padding: EdgeInsets.fromLTRB(
-                            size * 20, size * 20, size * 20, 0),
+                        padding:
+                        EdgeInsets.fromLTRB(size * 20, size * 20, size * 20, 0),
                         child: InkWell(
                           onTap: () {
                             Navigator.push(
@@ -175,11 +165,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       );
                     },
-                    childCount: 4,
+                    childCount: 5,
                   ),
                 ),
               ]))
         ]));
   }
 }
-

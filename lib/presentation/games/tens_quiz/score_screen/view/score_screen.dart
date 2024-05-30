@@ -2,10 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
-import 'package:gaming_app/core/constants/global_text_style.dart';
-import 'package:gaming_app/presentation/games/tens_quiz/level_screen/view/level_screen.dart';
-import 'package:gaming_app/presentation/home_screen/view/home_screen.dart';
-
 import '../../../../game_screen/view/game_screen.dart';
 
 class TensQuizScoreScreen extends StatefulWidget {

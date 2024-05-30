@@ -1,9 +1,7 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:path_provider/path_provider.dart';
 import '../../alphabet_screen/view/alphabet_screen.dart';
 import '../../game_screen/view/game_screen.dart';
@@ -162,3 +160,4 @@ class _HomeScreenState extends State<HomeScreen> {
         ]));
   }
 }
+

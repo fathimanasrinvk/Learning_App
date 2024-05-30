@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../common_screen/view/level_screen.dart';
 import '../../../common_screen/view/score_screen.dart';
-import '../level_screen/view/level_screen.dart';
+import '../word_puzzle datas/database.dart';
 
 class PuzzleScreen extends StatefulWidget {
   List<Map<String, String>> words;
@@ -52,126 +53,135 @@ class _PuzzleScreenState extends State<PuzzleScreen> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: AppBar(
-        leading: Icon(null),
-      ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: [
-              Text("WELCOME TO WORD PUZZLE",
-                  style: GlobalTextStyles.secondTittle),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "${currentIndex + 1} / 10",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: size.height * 0.05),
-              Container(
-                height: 200,
-                width: 200,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image:
-                        AssetImage(widget.words[currentIndex]['image'] ?? ""),
-                    fit: BoxFit.cover,
-                  ),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-              SizedBox(height: size.height * 0.04),
-              Text("Clue"),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Center(
-                  child: Text(widget.words[currentIndex]['clue'].toString(),
-                      style: GoogleFonts.poppins(
-                          fontSize: 15, color: ColorTheme.red)),
-                ),
-              ),
-              SizedBox(height: size.height * 0.04),
-              Padding(
-                padding: EdgeInsets.fromLTRB(
-                    5, 0, 5, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: widget.words[currentIndex]['shuffled']!
-                      .split('')
-                      .map((letter) {
-                    return Container(
-                      margin: EdgeInsets.symmetric(horizontal: 3.0),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                      decoration: BoxDecoration(
-                          color: ColorTheme.maincolor,
-                          borderRadius: BorderRadius.circular(12)),
-                      child: Text(
-                        letter,
-                        style: TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
+            LevelScreen(easy: PuzzleScreen(words: DbData.easy), medium: PuzzleScreen(words: DbData.medium),
+                hard: PuzzleScreen(words: DbData.hard)),));
+        return false;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          leading: Icon(null),
+        ),
+        body: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              children: [
+                Text("WELCOME TO WORD PUZZLE",
+                    style: GlobalTextStyles.secondTittle),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "${currentIndex + 1} / 10",
+                        style:
+                            TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                       ),
-                    );
-                  }).toList(),
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              SizedBox(height: size.height * 0.01),
-              Padding(
-                padding: EdgeInsets.fromLTRB(
-                    size.width * 0.2, 0, size.width * 0.2, 0),
-                child: TextField(
-                  controller: _controller,
-                  style: TextStyle(color: ColorTheme.maincolor),
-                  decoration:
-                      const InputDecoration(border: OutlineInputBorder()),
+                SizedBox(height: size.height * 0.05),
+                Container(
+                  height: 200,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image:
+                          AssetImage(widget.words[currentIndex]['image'] ?? ""),
+                      fit: BoxFit.cover,
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
                 ),
-              ),
-              SizedBox(height: size.height * 0.05),
-              SizedBox(
-                child: ElevatedButton(
-                    onPressed: () {
-                      if (currentIndex == 9) {
-                        checkAnswer();
-                        if(feedback =='Correct!') {
-                          Timer(Duration(seconds:5), () {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      ScoreScreen(name: LevelScreenWordPuzzle()))); });
-                        } }else {
-                        checkAnswer();
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: ColorTheme.maincolor,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15))),
-                    child: Text("Check", style: GlobalTextStyles.buttonText)),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                feedback,
-                style: TextStyle(
-                    fontSize: 24,
-                    color: feedback == 'Correct!' ? Colors.green : Colors.red),
-                textAlign: TextAlign.center,
-              ),
-            ],
+                SizedBox(height: size.height * 0.04),
+                Text("Clue"),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Center(
+                    child: Text(widget.words[currentIndex]['clue'].toString(),
+                        style: GoogleFonts.poppins(
+                            fontSize: 15, color: ColorTheme.red)),
+                  ),
+                ),
+                SizedBox(height: size.height * 0.04),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(
+                      5, 0, 5, 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: widget.words[currentIndex]['shuffled']!
+                        .split('')
+                        .map((letter) {
+                      return Container(
+                        margin: EdgeInsets.symmetric(horizontal: 3.0),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                        decoration: BoxDecoration(
+                            color: ColorTheme.maincolor,
+                            borderRadius: BorderRadius.circular(12)),
+                        child: Text(
+                          letter,
+                          style: TextStyle(
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                SizedBox(height: size.height * 0.01),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(
+                      size.width * 0.2, 0, size.width * 0.2, 0),
+                  child: TextField(
+                    controller: _controller,
+                    style: TextStyle(color: ColorTheme.maincolor),
+                    decoration:
+                        const InputDecoration(border: OutlineInputBorder()),
+                  ),
+                ),
+                SizedBox(height: size.height * 0.05),
+                SizedBox(
+                  child: ElevatedButton(
+                      onPressed: () {
+                        if (currentIndex == 9) {
+                          checkAnswer();
+                          if(feedback =='Correct!') {
+                            Timer(Duration(seconds:5), () {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ScoreScreen(name: LevelScreen(easy: PuzzleScreen(words: DbData.easy), medium: PuzzleScreen(words: DbData.medium),
+                                            hard: PuzzleScreen(words: DbData.hard)),))); });
+                          } }else {
+                          checkAnswer();
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: ColorTheme.maincolor,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15))),
+                      child: Text("Check", style: GlobalTextStyles.buttonText)),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  feedback,
+                  style: TextStyle(
+                      fontSize: 24,
+                      color: feedback == 'Correct!' ? Colors.green : Colors.red),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
           ),
         ),
       ),

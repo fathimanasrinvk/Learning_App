@@ -1,5 +1,70 @@
 class DbData {
-  static final List<Map<String, String>> words = [
+  // easy data
+  static final List<Map<String, String>> easy = [
+    {
+      'original': 'bird',
+      'shuffled': 'dibr',
+      'clue': 'Feathered creature',
+      'image': 'assets/images/word_game_images/birrd.png'
+    },
+    {
+      'original': 'cake',
+      'shuffled': 'ekca',
+      'clue': 'Sweet dessert',
+      'image': 'assets/images/word_game_images/cake.png'
+    },
+    {
+      'original': 'door',
+      'shuffled': 'rood',
+      'clue': 'Entrance to a room',
+      'image': 'assets/images/word_game_images/img.png',
+    },
+    {
+      'original': 'fish',
+      'shuffled': 'hsif',
+      'clue': 'Aquatic animal',
+      'image': 'assets/images/word_game_images/fi.png'
+    },
+    {
+      'original': 'book',
+      'shuffled': 'kobo',
+      'clue': 'Contains stories or information',
+      'image': 'assets/images/word_game_images/b.png'
+    },
+    {
+      'original': 'moon',
+      'shuffled': 'onom',
+      'clue': 'Natural satellite of Earth',
+      'image': 'assets/images/word_game_images/moon.png'
+    },
+    {
+      'original': 'tree',
+      'shuffled': 'teer',
+      'clue': 'Tall woody plant',
+      'image': 'assets/images/word_game_images/tree.png'
+    },
+    {
+      'original': 'ball',
+      'shuffled': 'llab',
+      'clue': 'Spherical object used in games',
+      'image': 'assets/images/word_game_images/ball.png'
+    },
+    {
+      'original': 'time',
+      'shuffled': 'emit',
+      'clue': 'Measurement of duration',
+      'image': 'assets/images/word_game_images/time.png'
+    },
+    {
+      'original': 'song',
+      'shuffled': 'gnos',
+      'clue': 'Musical composition with vocals',
+      'image': 'assets/images/word_game_images/song.png'
+    },
+  ];
+
+  //medium data
+  static final List<Map<String, String>> medium = [
     {
       'original': 'candle',
       'shuffled': 'nalced',
@@ -63,8 +128,8 @@ class DbData {
 
   ];
 
-  // medium data
-  static final List<Map<String, String>> mediumWords = [
+  // hard data
+  static final List<Map<String, String>> hard = [
     {
       'original': 'elephant',
       'shuffled': 'pahenlet',

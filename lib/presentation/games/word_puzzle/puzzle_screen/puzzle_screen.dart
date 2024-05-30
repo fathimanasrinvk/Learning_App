@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
-import 'package:gaming_app/core/constants/database/database.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
 import 'package:gaming_app/presentation/games/word_puzzle/score_screen/view/score_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../word_puzzle datas/database.dart';
+
 class PuzzleScreen extends StatefulWidget {
-  const PuzzleScreen({super.key});
+  List<Map<String, String>> words;
+   PuzzleScreen({super.key, required this.words});
 
   @override
   State<PuzzleScreen> createState() => _PuzzleScreenState();
@@ -19,10 +21,10 @@ class _PuzzleScreenState extends State<PuzzleScreen> {
 
   void checkAnswer() {
     if (_controller.text.trim().toLowerCase() ==
-        DbData.words[currentIndex]['original']) {
+        widget.words[currentIndex]['original']) {
       setState(() {
         feedback = 'Correct!';
-        currentIndex = (currentIndex + 1) % DbData.words.length;
+        currentIndex = (currentIndex + 1) % widget.words.length;
         _controller.clear();
       });
     } else {
@@ -65,7 +67,7 @@ class _PuzzleScreenState extends State<PuzzleScreen> {
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image:
-                        AssetImage(DbData.words[currentIndex]['image'] ?? ""),
+                        AssetImage(widget.words[currentIndex]['image'] ?? ""),
                     fit: BoxFit.cover,
                   ),
                   borderRadius: BorderRadius.circular(20),
@@ -76,7 +78,7 @@ class _PuzzleScreenState extends State<PuzzleScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Center(
-                  child: Text(DbData.words[currentIndex]['clue'].toString(),
+                  child: Text(widget.words[currentIndex]['clue'].toString(),
                       style: GoogleFonts.poppins(
                           fontSize: 15, color: ColorTheme.red)),
                 ),
@@ -84,14 +86,14 @@ class _PuzzleScreenState extends State<PuzzleScreen> {
               SizedBox(height: size.height * 0.04),
               Padding(
                 padding: EdgeInsets.fromLTRB(
-                    size.width * 0.1, 0, size.width * 0.1, 0),
+                    5, 0, 5, 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: DbData.words[currentIndex]['shuffled']!
+                  children: widget.words[currentIndex]['shuffled']!
                       .split('')
                       .map((letter) {
                     return Container(
-                      margin: EdgeInsets.symmetric(horizontal: 4.0),
+                      margin: EdgeInsets.symmetric(horizontal: 3.0),
                       padding:
                           EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                       decoration: BoxDecoration(
@@ -131,7 +133,7 @@ class _PuzzleScreenState extends State<PuzzleScreen> {
                       if (currentIndex > 9) {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) =>
-                                const WordPuzzleScoreScreen()));
+                                 WordPuzzleScoreScreen()));
                       }
                       setState(() {});
                     },

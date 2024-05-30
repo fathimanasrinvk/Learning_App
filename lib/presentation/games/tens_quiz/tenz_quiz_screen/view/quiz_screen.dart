@@ -75,7 +75,7 @@ class _TenseQuizScreenState extends State<TenseQuizScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text("WELCOME TO TENSE QUIZ", style: GlobalTextStyles.secondTittle),
+          title: Text("WELCOME TO TENSE QUIZ", style: GlobalTextStyles.subTitle2,),
           leading: IconButton(
             icon: Icon(
               Icons.arrow_back,

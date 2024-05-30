@@ -67,15 +67,8 @@ class _HomeScreenState extends State<HomeScreen> {
     double size = constantsize(context);
     return Scaffold(
         body: Stack(children: [
-          // Background image
-          Positioned.fill(
-            child: Image.asset(
-              "assets/images/home screen background.PNG",
-              fit: BoxFit.fill,
-            ),
-          ),
           Scaffold(
-              backgroundColor: Colors.transparent,
+              backgroundColor:ColorTheme.secondarycolor,
               body: CustomScrollView(slivers: [
                 SliverList(
                     delegate: SliverChildListDelegate([
@@ -105,17 +98,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                           style: GlobalTextStyles.subTitle1))),
                             ],
                           ),
-                          // Padding(
-                          //   padding: EdgeInsets.only(right: size * 20),
-                          //   child: ElevatedButton(
-                          //       onPressed: () {
-                          //         Navigator.pushReplacement(
-                          //             context,
-                          //             MaterialPageRoute(
-                          //                 builder: (context) => RegistrationScreen()));
-                          //       },
-                          //       child: Text("LogOut")),
-                          // )
                           Padding(
                             padding: EdgeInsets.only(right: size * 20),
                             child: ElevatedButton(
@@ -167,14 +149,17 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Container(
                               height: size * 83,
                               width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFD9E1FF),
+                              decoration: BoxDecoration(border: Border.all(
+                                color: ColorTheme.maincolor,
+                                width: 5, // Adjust the width as needed
+                              ),
+                                color:ColorTheme.white,
                                 borderRadius: BorderRadius.circular(size * 5),
                               ),
                               child: Center(
                                 child: Text(
                                   names[index],
-                                  style: GlobalTextStyles.secondTittle,
+                                  style: GlobalTextStyles.thirdTittle,
                                   // style: GoogleFonts.passionOne(
                                   //   decoration: TextDecoration.none,
                                   //   fontSize: size * 30,

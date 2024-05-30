@@ -20,6 +20,7 @@ class _QuizScreenState extends State<QuizScreen> {
   int currentQuestionIndex = 0;
   bool answered = false;
   int selectedOptionIndex = -1;
+  int score = 0; // Track the score
 
   @override
   void initState() {
@@ -33,6 +34,9 @@ class _QuizScreenState extends State<QuizScreen> {
     setState(() {
       answered = true;
       selectedOptionIndex = index;
+      if (index == questions[currentQuestionIndex].correctOptionIndex) {
+        score++; // Increase score if the answer is correct
+      }
     });
   }
 
@@ -53,9 +57,16 @@ class _QuizScreenState extends State<QuizScreen> {
 
     return WillPopScope(
       onWillPop: () async {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
-            LevelScreen(easy: QuizScreen( difficulty: 'easy'), medium: QuizScreen( difficulty: 'medium'),
-                hard: QuizScreen( difficulty: 'hard')),));
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => LevelScreen(
+              easy: QuizScreen(difficulty: 'easy'),
+              medium: QuizScreen(difficulty: 'medium'),
+              hard: QuizScreen(difficulty: 'hard'),
+            ),
+          ),
+        );
         return false;
       },
       child: Scaffold(
@@ -67,9 +78,13 @@ class _QuizScreenState extends State<QuizScreen> {
               color: ColorTheme.maincolor,
             ),
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => LevelScreen(easy: QuizScreen( difficulty: 'easy'), medium: QuizScreen( difficulty: 'medium'),
-                  hard: QuizScreen( difficulty: 'hard')),));
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => LevelScreen(
+                  easy: QuizScreen(difficulty: 'easy'),
+                  medium: QuizScreen(difficulty: 'medium'),
+                  hard: QuizScreen(difficulty: 'hard'),
+                ),
+              ));
             },
           ),
         ),
@@ -117,6 +132,11 @@ class _QuizScreenState extends State<QuizScreen> {
                     );
                   }).toList(),
                 ),
+                SizedBox(height: size.height * .02),
+                Text(
+                  "Score: $score", // Display the score
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                ),
                 SizedBox(height: size.height * .1),
                 Container(
                   height: size.height * 0.05,
@@ -127,9 +147,12 @@ class _QuizScreenState extends State<QuizScreen> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ScoreScreen(name: LevelScreen(easy: QuizScreen( difficulty: 'easy'), medium: QuizScreen( difficulty: 'medium'),
-                                hard: QuizScreen( difficulty: 'hard')),
-
+                            builder: (context) => ScoreScreen(
+                              name: LevelScreen(
+                                easy: QuizScreen(difficulty: 'easy'),
+                                medium: QuizScreen(difficulty: 'medium'),
+                                hard: QuizScreen(difficulty: 'hard'),
+                              ),
                             ),
                           ),
                         );

@@ -7,7 +7,6 @@ import 'package:gaming_app/presentation/games/hangman/level_screen/view/level_sc
 import 'package:gaming_app/presentation/games/tens_quiz/level_screen/view/level_screen.dart';
 import 'package:gaming_app/presentation/games/word_puzzle/level_screen/view/level_screen.dart';
 import 'package:gaming_app/presentation/home_screen/view/home_screen.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class GameScreen extends StatelessWidget {
   var images = [

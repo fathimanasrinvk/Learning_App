@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
+import 'package:gaming_app/presentation/common_screen/view/common_screen.dart';
 import 'package:gaming_app/presentation/games/gk/gk_data/gk_data.dart';
 import 'package:gaming_app/presentation/games/gk/gk_quiz_screen/model/gk_quiz_model.dart';
 import 'package:gaming_app/presentation/games/gk/level_screen/view/level_screen.dart';
-import 'package:gaming_app/presentation/games/gk/score_screen/view/score_screen.dart';
 
 class QuizScreen extends StatefulWidget {
   final String difficulty;
@@ -18,7 +18,6 @@ class QuizScreen extends StatefulWidget {
 class _QuizScreenState extends State<QuizScreen> {
   late List<Question> questions;
   int currentQuestionIndex = 0;
-  int correctAnswers = 0;
   bool answered = false;
   int selectedOptionIndex = -1;
 
@@ -26,7 +25,7 @@ class _QuizScreenState extends State<QuizScreen> {
   void initState() {
     super.initState();
     questions = fetchQuestions(widget.difficulty);
-    print("Number of questions: ${questions.length}:${questions.length}");
+    print("Number of questions: ${questions.length}");
   }
 
   void handleAnswer(int index) {
@@ -34,15 +33,12 @@ class _QuizScreenState extends State<QuizScreen> {
     setState(() {
       answered = true;
       selectedOptionIndex = index;
-      if (index == questions[currentQuestionIndex].correctOptionIndex) {
-        correctAnswers++;
-      }
     });
   }
 
   void nextQuestion() {
     setState(() {
-      if (currentQuestionIndex < 9 ) {
+      if (currentQuestionIndex < 9) {
         currentQuestionIndex++;
         answered = false;
         selectedOptionIndex = -1;
@@ -57,23 +53,23 @@ class _QuizScreenState extends State<QuizScreen> {
 
     return Scaffold(
       appBar: AppBar(
-          title:Text("WELCOME TO GK QUIZ", style: GlobalTextStyles.secondTittle),
-          leading: IconButton(
-        icon: Icon(
-          Icons.arrow_back,
-          color: ColorTheme.maincolor,
+        title: Text("WELCOME TO GK QUIZ", style: GlobalTextStyles.secondTittle),
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: ColorTheme.maincolor,
+          ),
+          onPressed: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => LevelScreenGk()));
+          },
         ),
-        onPressed: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => LevelScreenGk()));
-        },
-      )),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            crossAxisAlignment:
-                CrossAxisAlignment.center, // Align content in the center
+            crossAxisAlignment: CrossAxisAlignment.center, // Align content in the center
             children: [
               Text(
                 "Question ${currentQuestionIndex + 1}: ${currentQuestion.questionText}",
@@ -114,24 +110,19 @@ class _QuizScreenState extends State<QuizScreen> {
                 }).toList(),
               ),
               SizedBox(height: size.height * .1),
-        
               Container(
                 height: size.height * 0.05,
                 width: size.width * 0.20,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Check if all questions are answered
                     if (currentQuestionIndex == 9) {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => GkQuizScoreScreen(
-                            score: correctAnswers,
-                            total: questions.length,
-                          ),
+                          builder: (context) => CongratsScreen(),
                         ),
                       );
-                    }else{
+                    } else {
                       if (answered) {
                         nextQuestion(); // Move to the next question
                       }
@@ -149,8 +140,6 @@ class _QuizScreenState extends State<QuizScreen> {
                   ),
                 ),
               ),
-        
-            
             ],
           ),
         ),

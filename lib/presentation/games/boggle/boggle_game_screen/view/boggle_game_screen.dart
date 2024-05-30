@@ -152,7 +152,7 @@ class _BoggleGameScreenState extends State<BoggleGameScreen> {
               shape: StadiumBorder(),
               color: ColorTheme.maincolor,
               onPressed:
-                  correctWords.length < maxWords ? checkWord : navigateToScore,
+              correctWords.length < maxWords ? checkWord : navigateToScore,
               child: Text(correctWords.length < maxWords ? 'Check Word' : 'OK',
                   style: GlobalTextStyles.buttonText),
             ),

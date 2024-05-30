@@ -52,7 +52,7 @@ class GameScreen extends StatelessWidget {
                   MainAxisAlignment.center, // Align the column center
               children: [
                 SizedBox(
-                  height: size * 70,
+                  height: size * 50,
                 ),
                 Padding(
                   padding: EdgeInsets.fromLTRB(size * 20, 0, size * 20, 0),

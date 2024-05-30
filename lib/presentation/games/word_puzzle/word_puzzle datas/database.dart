@@ -23,7 +23,7 @@ class DbData {
       'original': 'fish',
       'shuffled': 'hsif',
       'clue': 'Aquatic animal',
-      'image': 'assets/images/word_game_images/fi.png'
+      'image': 'assets/images/word_game_images/fishn.png'
     },
     {
       'original': 'book',

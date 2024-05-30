@@ -61,7 +61,7 @@ class GkQuizScoreScreen extends StatelessWidget {
           child: Column(
         children: [
           SizedBox(
-            height: size.height * .25,
+            height: size.height * .1,
           ),
           Container(
             height: size.height * .4,

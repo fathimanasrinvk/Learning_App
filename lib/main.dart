@@ -13,10 +13,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      //home: HomeScreen(),
+      home: HomeScreen(),
       //  home: PuzzleScreen()
       // home: LoginScreen()
-      home: SplashScreen(),
+      //home: SplashScreen(),
       //home:WordScreen(),
       //    home:RegistrationScreen(),
       //    home:OnboardingScreen(),

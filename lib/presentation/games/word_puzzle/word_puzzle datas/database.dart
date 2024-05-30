@@ -134,37 +134,37 @@ class DbData {
       'original': 'elephant',
       'shuffled': 'pahenlet',
       'clue': 'Large mammal with a trunk',
-      'image': 'assets/images/word_game_images/elephant.avif'
+      'image': 'assets/images/word_game_images/elephantt.png'
     },
     {
       'original': 'notebook',
       'shuffled': 'bkenooot',
       'clue': 'Used for writing notes',
-      'image': 'assets/images/word_game_images/notebook.jpg'
+      'image': 'assets/images/word_game_images/notebook.png'
     },
     {
       'original': 'mountain',
       'shuffled': 'tamnioun',
       'clue': 'Large natural elevation of the earth',
-      'image': 'assets/images/word_game_images/mountain.avif'
+      'image': 'assets/images/word_game_images/mountain.png'
     },
     {
       'original': 'umbrella',
       'shuffled': 'mrbueall',
       'clue': 'Used to protect from rain',
-      'image': 'assets/images/word_game_images/umbrella.avif'
+      'image': 'assets/images/word_game_images/umbrella.png'
     },
     {
       'original': 'chocolate',
       'shuffled': 'hocotcael',
       'clue': 'Sweet treat made from cocoa',
-      'image': 'assets/images/word_game_images/chocolate.avif'
+      'image': 'assets/images/word_game_images/chocolate.png'
     },
     {
       'original': 'building',
       'shuffled': 'gdnuilib',
       'clue': 'Structure with walls and a roof',
-      'image': 'assets/images/word_game_images/building.avif'
+      'image': 'assets/images/word_game_images/building.png'
     },
     {
       'original': 'telescope',
@@ -176,7 +176,7 @@ class DbData {
       'original': 'hospital',
       'shuffled': 'phtosila',
       'clue': 'Place for medical treatment',
-      'image': 'assets/images/word_game_images/telescope.jpg'
+      'image': 'assets/images/word_game_images/hospital.png'
     },
     {
       'original': 'pineapple',

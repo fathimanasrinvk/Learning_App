@@ -3,8 +3,6 @@ import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
 import 'package:gaming_app/presentation/home_screen/view/home_screen.dart';
 
-
-
 class SentenceScreen extends StatelessWidget {
   var english = [
     "How are you?",
@@ -27,10 +25,8 @@ class SentenceScreen extends StatelessWidget {
     "Thank you for your help.",
     "Can I have a glass of water, please?",
     "I'm sorry for being late.",
-    
     "Have a good day!",
     "How was your weekend?",
-   
   ];
 
   var meaning = [
@@ -56,7 +52,6 @@ class SentenceScreen extends StatelessWidget {
     "വൈകിയതിൽ ക്ഷമിക്കണം.",
     "ഒരു നല്ല ദിനം ആശംസിക്കുന്നു!",
     "നിങ്ങളുടെ വാരാന്ത്യം എങ്ങനെയായിരുന്നു?",
-    
   ];
 
   @override
@@ -65,7 +60,15 @@ class SentenceScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorTheme.white,
       appBar: AppBar(
-        leading: IconButton(icon: Icon(Icons.arrow_back,color: ColorTheme.maincolor,), onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=>HomeScreen())) ;},
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: ColorTheme.maincolor,
+          ),
+          onPressed: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => HomeScreen()));
+          },
         ),
         centerTitle: true,
         backgroundColor: ColorTheme.Transperance,
@@ -80,7 +83,7 @@ class SentenceScreen extends StatelessWidget {
               margin: EdgeInsets.symmetric(vertical: size * .5),
               padding: EdgeInsets.all(size * 2),
               decoration: BoxDecoration(
-                color: Colors.grey[200],
+                color: ColorTheme.secondarycolor,
                 borderRadius: BorderRadius.circular(size * 1),
               ),
               child: Column(

@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
-import 'package:gaming_app/presentation/games/boggle/level_screen/view/level_screen.dart';
-import 'package:gaming_app/presentation/games/gk/level_screen/view/level_screen.dart';
-import 'package:gaming_app/presentation/games/hangman/level_screen/view/level_screen.dart';
-import 'package:gaming_app/presentation/games/tens_quiz/level_screen/view/level_screen.dart';
-import 'package:gaming_app/presentation/games/word_puzzle/level_screen/view/level_screen.dart';
 import 'package:gaming_app/presentation/home_screen/view/home_screen.dart';
+import '../../common_screen/view/level_screen.dart';
+import '../../games/boggle/boggle_game_screen/view/boggle_game_screen.dart';
+import '../../games/gk/gk_quiz_screen/view/gk_quiz_screen.dart';
+import '../../games/hangman/hangman_datas/hangman_datas.dart';
+import '../../games/hangman/hangman_game_screen/view/hangman_game_screen.dart';
+import '../../games/tens_quiz/tens_quiz_datas/quiz datas.dart';
+import '../../games/tens_quiz/tenz_quiz_screen/view/quiz_screen.dart';
+import '../../games/word_puzzle/puzzle_screen/puzzle_screen.dart';
+import '../../games/word_puzzle/word_puzzle datas/database.dart';
 
 class GameScreen extends StatelessWidget {
   var images = [
@@ -17,11 +21,16 @@ class GameScreen extends StatelessWidget {
     "assets/images/Gkquiz.png"
   ];
   var screens = [
-    LevelScreenBoggle(),
-    LevelScreenHangman(),
-    LevelScreenWordPuzzle(),
-    LevelScreenTensQuiz(),
-    LevelScreenGk(),
+    LevelScreen(easy: BoggleGameScreen(level: 'easy'), medium: BoggleGameScreen(level: 'medium'),
+      hard: BoggleGameScreen(level: 'hard')),
+    LevelScreen(easy: HangmanGameScreen(questions: beginnerQuestions), medium: HangmanGameScreen(questions: mediumQuestions),
+      hard: HangmanGameScreen(questions: expertQuestions)),
+    LevelScreen(easy: PuzzleScreen(words: DbData.easy), medium: PuzzleScreen(words: DbData.medium),
+        hard: PuzzleScreen(words: DbData.hard)),
+    LevelScreen(easy: TenseQuizScreen(questions: beginner), medium: TenseQuizScreen(questions: medium),
+        hard: TenseQuizScreen(questions: expert)),
+    LevelScreen(easy: QuizScreen( difficulty: 'easy'), medium: QuizScreen( difficulty: 'medium'),
+        hard: QuizScreen( difficulty: 'hard')),
   ];
 
   @override

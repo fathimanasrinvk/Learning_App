@@ -97,13 +97,35 @@ class _HomeScreenState extends State<HomeScreen> {
                                       style: GlobalTextStyles.subTitle1))),
                         ],
                       ),
+                      // Padding(
+                      //   padding:  EdgeInsets.only(right: size*20),
+                      //   child: ElevatedButton(onPressed: (){
+                      //     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
+                      //     RegistrationScreen()));
+                      //   }, child: Text("LogOut",style: TextStyle(color: ColorTheme.maincolor),)),
+                      // )
                       Padding(
-                        padding:  EdgeInsets.only(right: size*20),
-                        child: ElevatedButton(onPressed: (){
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
-                          RegistrationScreen()));
-                        }, child: Text("LogOut")),
+                        padding: EdgeInsets.only(right: size * 20),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (context) => RegistrationScreen()),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            foregroundColor: ColorTheme.maincolor, backgroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          child: Text(
+                            "LogOut",
+                            style: TextStyle(color: ColorTheme.maincolor),
+                          ),
+                        ),
                       )
+
                     ],
                   ),
                   SizedBox(height: size * 65)

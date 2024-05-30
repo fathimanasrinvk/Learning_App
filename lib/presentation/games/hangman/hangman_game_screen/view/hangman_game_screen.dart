@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
+import 'package:gaming_app/presentation/common_screen/view/score_screen.dart';
+
+import '../../../../common_screen/view/level_screen.dart';
+import '../../hangman_datas/hangman_datas.dart';
 
 class HangmanGameScreen extends StatefulWidget {
 
@@ -78,40 +82,10 @@ class _HangmanGameScreenState extends State<HangmanGameScreen> {
                     loadNextQuestion();
                   });
                 } else {
-                  showFinalScore();
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
+                     ScoreScreen(name: LevelScreen(easy: HangmanGameScreen(questions: beginnerQuestions), medium: HangmanGameScreen(questions: mediumQuestions),
+                          hard: HangmanGameScreen(questions: expertQuestions)) )));
                 }
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  void showFinalScore() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Game Completed'),
-          content: Text('Your final score is: $score'),
-          actions: <Widget>[
-            TextButton(
-              child: Text('Restart'),
-              onPressed: () {
-                Navigator.of(context).pop();
-                setState(() {
-                  currentQuestionIndex = 0;
-                  score = 0;
-                  loadNextQuestion();
-                });
-              },
-            ),
-            TextButton(
-              child: Text('Change Difficulty'),
-              onPressed: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).pop();
               },
             ),
           ],
@@ -174,39 +148,47 @@ class _HangmanGameScreenState extends State<HangmanGameScreen> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: AppBar(
-       leading: BackButton(color: ColorTheme.maincolor),
-    ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children:[
-            if(currentQuestionIndex == 0)   // welcome message for only the first question
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
+            LevelScreen(easy: HangmanGameScreen(questions: beginnerQuestions), medium: HangmanGameScreen(questions: mediumQuestions),
+                hard: HangmanGameScreen(questions: expertQuestions)) ));
+        return false;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+         leading: BackButton(color: ColorTheme.maincolor),
+      ),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children:[
+              if(currentQuestionIndex == 0)   // welcome message for only the first question
+                Text(
+                  'Welcome to Hangman',
+                  style: GlobalTextStyles.secondTittle
+                ),
+              SizedBox(height: 30),
               Text(
-                'Welcome to Hangman',
-                style: GlobalTextStyles.secondTittle
+                widget.questions[currentQuestionIndex]['question']!,
+                style: GlobalTextStyles.subTitle3,
               ),
-            SizedBox(height: 30),
-            Text(
-              widget.questions[currentQuestionIndex]['question']!,
-              style: GlobalTextStyles.subTitle3,
-            ),
-            SizedBox(height: 20),
-            showWord(),
-            SizedBox(height: 20),
-            showKeyboard(),
-            SizedBox(height: 20),
-            Text(
-              'Incorrect guesses: $incorrectGuesses',
-              style: TextStyle(fontSize: 18, color: Colors.red),
-            ),
-            SizedBox(height: 20),
-            Text(
-              'Score: $score',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,color:Color(0xff67729D) ),
-            ),
-          ],
+              SizedBox(height: 20),
+              showWord(),
+              SizedBox(height: 20),
+              showKeyboard(),
+              SizedBox(height: 20),
+              Text(
+                'Incorrect guesses: $incorrectGuesses',
+                style: TextStyle(fontSize: 18, color: Colors.red),
+              ),
+              SizedBox(height: 20),
+              Text(
+                'Score: $score',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,color:Color(0xff67729D) ),
+              ),
+            ],
+          ),
         ),
       ),
     );

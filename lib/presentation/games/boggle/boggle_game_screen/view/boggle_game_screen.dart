@@ -4,7 +4,6 @@ import 'package:gaming_app/core/constants/global_text_style.dart';
 import 'package:gaming_app/presentation/common_screen/view/level_screen.dart';
 import 'package:gaming_app/presentation/common_screen/view/score_screen.dart';
 import 'package:gaming_app/presentation/games/boggle/game_data/boogle_game_data.dart';
-import 'package:gaming_app/presentation/games/boggle/level_screen/view/level_screen.dart';
 
 class BoggleGameScreen extends StatefulWidget {
   final String level;
@@ -65,7 +64,8 @@ class _BoggleGameScreenState extends State<BoggleGameScreen> {
 
   void navigateToScore() {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => ScoreScreen(name: LevelScreenBoggle(),)));
+        context, MaterialPageRoute(builder: (context) => ScoreScreen(name:LevelScreen(easy: BoggleGameScreen(level: 'easy'), medium: BoggleGameScreen(level: 'medium'),
+        hard: BoggleGameScreen(level: 'hard')),)));
   }
 
   @override

@@ -105,17 +105,39 @@ class _HomeScreenState extends State<HomeScreen> {
                                           style: GlobalTextStyles.subTitle1))),
                             ],
                           ),
+                          // Padding(
+                          //   padding: EdgeInsets.only(right: size * 20),
+                          //   child: ElevatedButton(
+                          //       onPressed: () {
+                          //         Navigator.pushReplacement(
+                          //             context,
+                          //             MaterialPageRoute(
+                          //                 builder: (context) => RegistrationScreen()));
+                          //       },
+                          //       child: Text("LogOut")),
+                          // )
                           Padding(
                             padding: EdgeInsets.only(right: size * 20),
                             child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => RegistrationScreen()));
-                                },
-                                child: Text("LogOut")),
+                              onPressed: () {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => RegistrationScreen()),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                foregroundColor: ColorTheme.maincolor, backgroundColor: Colors.white, // Text color
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                              ),
+                              child: Text(
+                                "LogOut",
+                                style: TextStyle(color: ColorTheme.maincolor),
+                              ),
+                            ),
                           )
+
                         ],
                       ),
                       SizedBox(height: size * 65)

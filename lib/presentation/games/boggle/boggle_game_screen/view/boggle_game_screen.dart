@@ -4,7 +4,6 @@ import 'package:gaming_app/core/constants/global_text_style.dart';
 import 'package:gaming_app/presentation/common_screen/view/score_screen.dart';
 import 'package:gaming_app/presentation/games/boggle/game_data/boogle_game_data.dart';
 import 'package:gaming_app/presentation/games/boggle/level_screen/view/level_screen.dart';
-import 'package:gaming_app/presentation/games/boggle/score_screen/boggle_score_screen.dart';
 
 class BoggleGameScreen extends StatefulWidget {
   final String level;

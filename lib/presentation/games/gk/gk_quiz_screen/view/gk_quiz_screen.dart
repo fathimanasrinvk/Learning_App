@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
-import 'package:gaming_app/presentation/common_screen/view/common_screen.dart';
+import 'package:gaming_app/presentation/common_screen/view/score_screen.dart';
 import 'package:gaming_app/presentation/games/gk/gk_data/gk_data.dart';
 import 'package:gaming_app/presentation/games/gk/gk_quiz_screen/model/gk_quiz_model.dart';
 import 'package:gaming_app/presentation/games/gk/level_screen/view/level_screen.dart';
@@ -119,7 +119,9 @@ class _QuizScreenState extends State<QuizScreen> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => CongratsScreen(),
+                          builder: (context) => ScoreScreen(name: LevelScreenGk(),
+
+                          ),
                         ),
                       );
                     } else {

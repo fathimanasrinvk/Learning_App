@@ -1,7 +1,9 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
-import 'package:gaming_app/presentation/games/tens_quiz/score_screen/view/score_screen.dart';
+import '../../../gk/score_screen/view/score_screen.dart';
+import '../../level_screen/view/level_screen.dart';
 
 class TenseQuizScreen extends StatefulWidget {
   final List<Map<String, dynamic>> questions;
@@ -17,6 +19,7 @@ class _TenseQuizScreenState extends State<TenseQuizScreen> {
   int currentQuestionIndex = 0;
   String userAnswer = '';
   String feedbackMessage = '';
+  int button=0;
   var i=1;
   int score=0;
   late var answer =TextEditingController();
@@ -29,6 +32,20 @@ class _TenseQuizScreenState extends State<TenseQuizScreen> {
   }
 
   void checkAnswer() {
+    if(currentQuestionIndex ==9){
+      if (userAnswer.toLowerCase() ==
+          shuffledQuestions[currentQuestionIndex]['answer'].toLowerCase()) {
+        feedbackMessage = 'Correct!';
+        score++;
+      } else {
+        feedbackMessage = "Wrong! The correct answer is '${shuffledQuestions[currentQuestionIndex]['answer']}'";
+      }
+      setState(() {
+        button=1;
+        userAnswer = '';
+        answer.clear();
+      });
+    }else{
     if (userAnswer.toLowerCase() ==
         shuffledQuestions[currentQuestionIndex]['answer'].toLowerCase()) {
       feedbackMessage = 'Correct!';
@@ -41,7 +58,7 @@ class _TenseQuizScreenState extends State<TenseQuizScreen> {
       i++;
       userAnswer = '';
       answer.clear();
-    });
+    });}
   }
 
   @override
@@ -58,7 +75,6 @@ class _TenseQuizScreenState extends State<TenseQuizScreen> {
                 SizedBox(
                   height: size.height * .09,
                 ),
-                currentQuestionIndex < shuffledQuestions.length?
                 Column(
                   children: [
                     Padding(
@@ -118,7 +134,13 @@ class _TenseQuizScreenState extends State<TenseQuizScreen> {
                             width: size.width * .20,
                             child: ElevatedButton(
                                 onPressed: () {
-                                  if (currentQuestionIndex < shuffledQuestions.length) {
+                                  if (currentQuestionIndex ==9) {
+                                    button==0 ?checkAnswer():null;
+                                    Timer(Duration(seconds:5), () {
+                                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                                        builder: (context) =>
+                                            ScoreScreen(name: LevelScreenTensQuiz(),)));});
+                                  }else{
                                     checkAnswer();
                                   }
                                 },
@@ -135,27 +157,7 @@ class _TenseQuizScreenState extends State<TenseQuizScreen> {
                       ),
                     )
                   ],
-                ): Column(children: [Text("Quiz completed"),
-                  SizedBox(height: 50),
-                  Container(
-                    height: size.height * .05,
-                    width: size.width * .20,
-                    child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).pushReplacement(MaterialPageRoute(
-                              builder: (context) =>
-                                  TensQuizScoreScreen()));
-                        },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: ColorTheme.maincolor,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20))),
-                        child: Text(
-                          "OK",
-                          style: GlobalTextStyles.buttonText,
-                        )),
-                  ),
-                ],)
+                )
               ],
             )),
       ),

@@ -125,9 +125,8 @@ class _QuizScreenState extends State<QuizScreen> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => GkQuizScoreScreen(
-                            score: correctAnswers,
-                            total: questions.length,
+                          builder: (context) => ScoreScreen(name: LevelScreenGk(),
+
                           ),
                         ),
                       );

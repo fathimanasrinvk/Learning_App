@@ -24,7 +24,7 @@ class _PuzzleScreenState extends State<PuzzleScreen> {
         widget.words[currentIndex]['original']) {
       setState(() {
         feedback = 'Correct!';
-        currentIndex = (currentIndex + 1) % widget.words.length;
+        currentIndex = (currentIndex + 1) ;
         _controller.clear();
       });
     } else {
@@ -128,14 +128,13 @@ class _PuzzleScreenState extends State<PuzzleScreen> {
               SizedBox(
                 child: ElevatedButton(
                     onPressed: () {
-                      checkAnswer();
-
-                      if (currentIndex > 9) {
-                        Navigator.of(context).push(MaterialPageRoute(
+                      if (currentIndex == 9) {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
                             builder: (context) =>
                                  WordPuzzleScoreScreen()));
+                      }else{
+                        checkAnswer();
                       }
-                      setState(() {});
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: ColorTheme.maincolor,

@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       home: HomeScreen(),
       //  home: PuzzleScreen()
       // home: LoginScreen()
-      // home: SplashScreen(),
+      //home: SplashScreen(),
       //home:WordScreen(),
       //    home:RegistrationScreen(),
       //    home:OnboardingScreen(),

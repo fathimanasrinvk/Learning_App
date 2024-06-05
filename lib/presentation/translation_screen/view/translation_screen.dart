@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
+import 'package:gaming_app/presentation/translation_screen/controller/transilation_screen_controller.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class TranslationScreen extends StatefulWidget {
   @override
@@ -10,6 +12,7 @@ class TranslationScreen extends StatefulWidget {
 
 class _TranslationScreenState extends State<TranslationScreen> {
   TextEditingController tcontroller = TextEditingController();
+  TextEditingController translatedController = TextEditingController();
 
   @override
   void dispose() {
@@ -53,7 +56,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          "English",
+                          "മലയാളം",
                           style: GoogleFonts.roboto(
                               decoration: TextDecoration.none,
                               fontSize: size * 15,
@@ -87,7 +90,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          "Malayalam",
+                          "ENGLISH",
                           style: GoogleFonts.roboto(
                               decoration: TextDecoration.none,
                               fontSize: size * 15,
@@ -107,7 +110,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'English',
+                    'മലയാളം',
                     style: TextStyle(
                         fontSize: size * 18,
                         color: ColorTheme.maincolor,
@@ -145,7 +148,13 @@ class _TranslationScreenState extends State<TranslationScreen> {
                   backgroundColor: ColorTheme.maincolor,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(size * 7))),
-              onPressed: () {},
+              onPressed: () {
+                Provider.of<TransilationController>(context, listen: false)
+                    .onTransilation(
+                  tcontroller.text,
+                  context,
+                );
+              },
               child: Text("Translate", style: GlobalTextStyles.buttonText),
             ),
             Padding(
@@ -154,7 +163,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    'മലയാളം',
+                    'ENGLISH',
                     style: TextStyle(
                         fontSize: size * 18,
                         color: ColorTheme.maincolor,
@@ -165,18 +174,26 @@ class _TranslationScreenState extends State<TranslationScreen> {
             ),
             Padding(
               padding: EdgeInsets.all(size * 20),
-              child: TextFormField(
-                controller: tcontroller,
-                maxLines: 6,
-                decoration: InputDecoration(
-                    hintStyle: TextStyle(color: ColorTheme.maincolor),
-                    hintText: ' Translation',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(size * 10),
-                        borderSide: BorderSide(
-                            color: ColorTheme.maincolor, width: size * 5))),
+              child: Consumer<TransilationController>(
+                builder: (context, controller, child) {
+                  translatedController.text = controller.translatedText;
+                  return TextFormField(
+                    controller: translatedController,
+                    maxLines: 6,
+                    decoration: InputDecoration(
+                      hintStyle: TextStyle(color: ColorTheme.maincolor),
+                      hintText: controller.translatedText.isEmpty
+                          ? ' Translation'
+                          : controller.translatedText,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(size * 10),
+                          borderSide: BorderSide(
+                              color: ColorTheme.maincolor, width: size * 5)),
+                    ),
+                  );
+                },
               ),
-            )
+            ),
           ],
         ),
       ),

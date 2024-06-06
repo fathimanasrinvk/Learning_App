@@ -71,7 +71,8 @@ class _QuizScreenState extends State<QuizScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text("WELCOME TO GK QUIZ", style: GlobalTextStyles.secondTittle),
+          title:
+              Text("WELCOME TO GK QUIZ", style: GlobalTextStyles.secondTittle),
           leading: IconButton(
             icon: Icon(
               Icons.arrow_back,
@@ -92,7 +93,8 @@ class _QuizScreenState extends State<QuizScreen> {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center, // Align content in the center
+              crossAxisAlignment:
+                  CrossAxisAlignment.center, // Align content in the center
               children: [
                 Text(
                   "Question ${currentQuestionIndex + 1}: ${currentQuestion.questionText}",
@@ -101,7 +103,8 @@ class _QuizScreenState extends State<QuizScreen> {
                 ),
                 SizedBox(height: size.height * .05),
                 Column(
-                  children: currentQuestion.options.asMap().entries.map((entry) {
+                  children:
+                      currentQuestion.options.asMap().entries.map((entry) {
                     int idx = entry.key;
                     String option = entry.value;
                     return GestureDetector(
@@ -133,10 +136,8 @@ class _QuizScreenState extends State<QuizScreen> {
                   }).toList(),
                 ),
                 SizedBox(height: size.height * .02),
-                Text(
-                  "Score: $score", // Display the score
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                ),
+                Text("Score: $score", // Display the score
+                    style: GlobalTextStyles.thirdTittle),
                 SizedBox(height: size.height * .1),
                 Container(
                   height: size.height * 0.05,

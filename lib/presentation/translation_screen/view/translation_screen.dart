@@ -17,6 +17,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
   @override
   void dispose() {
     tcontroller.dispose();
+    translatedController.dispose();
     super.dispose();
   }
 
@@ -31,6 +32,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
         backgroundColor: Colors.transparent,
         title: Text("TRANSLATION", style: GlobalTextStyles.mainTittle),
       ),
+      resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,

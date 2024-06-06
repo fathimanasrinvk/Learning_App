@@ -31,7 +31,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           child: Center(
               child: Column(children: [
             SizedBox(
-              height: size * 150,
+              height: size * 100,
             ),
             Text("Welcome To SpeakUp", style: GlobalTextStyles.secondTittle),
             Padding(

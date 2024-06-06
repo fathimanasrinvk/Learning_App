@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Center(
                 child: Column(children: [
           SizedBox(
-            height: size * 150,
+            height: size * 100,
           ),
           Text("Welcome Back !!", style: GlobalTextStyles.secondTittle),
           Padding(

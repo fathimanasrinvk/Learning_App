@@ -31,7 +31,7 @@ class LevelScreen extends StatelessWidget {
                 color: ColorTheme.maincolor,
               )),
           title:
-              Text("Choose Your Level", style: GlobalTextStyles.secondTittle),
+              Text("CHOOSE YOUR LEVEL", style: GlobalTextStyles.secondTittle),
           centerTitle: true,
         ),
         resizeToAvoidBottomInset: false,

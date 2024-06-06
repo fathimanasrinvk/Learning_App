@@ -183,7 +183,7 @@ class _HangmanGameScreenState extends State<HangmanGameScreen> {
           leading: BackButton(color: ColorTheme.maincolor),
           centerTitle: true,
           title:
-              Text('Welcome to Hangman', style: GlobalTextStyles.secondTittle),
+              Text('WELCOME TO HANGMAN', style: GlobalTextStyles.secondTittle),
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),

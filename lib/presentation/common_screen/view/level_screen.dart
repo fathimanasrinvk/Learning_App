@@ -8,38 +8,46 @@ class LevelScreen extends StatelessWidget {
   final Widget easy;
   final Widget medium;
   final Widget hard;
-  LevelScreen({required this.easy,required this.medium,required this.hard});
+  LevelScreen({required this.easy, required this.medium, required this.hard});
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
     return WillPopScope(
       onWillPop: () async {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
-            GameScreen()));
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => GameScreen()));
         return false;
       },
       child: Scaffold(
         appBar: AppBar(
-          leading: IconButton(onPressed: (){
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
-                GameScreen()));
-          }, icon: Icon(Icons.arrow_back,
-            color: ColorTheme.maincolor,)),
-          title:Text("Choose Your Level", style: GlobalTextStyles.secondTittle),
-          centerTitle: true,),
+          leading: IconButton(
+              onPressed: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => GameScreen()));
+              },
+              icon: Icon(
+                Icons.arrow_back,
+                color: ColorTheme.maincolor,
+              )),
+          title:
+              Text("CHOOSE YOUR LEVEL", style: GlobalTextStyles.secondTittle),
+          centerTitle: true,
+        ),
+        resizeToAvoidBottomInset: false,
         body: Padding(
           padding: EdgeInsets.only(top: size.height * 0.08),
           child: Center(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
                     height: size.height * .15,
                     width: size.width * .750,
                     child: ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => easy));
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => easy));
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: ColorTheme.maincolor,
@@ -56,8 +64,9 @@ class LevelScreen extends StatelessWidget {
                     height: size.height * .15,
                     width: size.width * .750,
                     child: ElevatedButton(
-                        onPressed: () { Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => medium));
+                        onPressed: () {
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => medium));
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: ColorTheme.maincolor,
@@ -74,8 +83,9 @@ class LevelScreen extends StatelessWidget {
                     height: size.height * .15,
                     width: size.width * .750,
                     child: ElevatedButton(
-                        onPressed: () { Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => hard));
+                        onPressed: () {
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => hard));
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: ColorTheme.maincolor,

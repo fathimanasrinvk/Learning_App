@@ -7,7 +7,6 @@ import '../../../../common_screen/view/level_screen.dart';
 import '../../hangman_datas/hangman_datas.dart';
 
 class HangmanGameScreen extends StatefulWidget {
-
   final List<Map<String, String>> questions;
 
   HangmanGameScreen({required this.questions});
@@ -53,7 +52,9 @@ class _HangmanGameScreenState extends State<HangmanGameScreen> {
   }
 
   bool isGameWon() {
-    return currentAnswer.split('').every((letter) => guessedLetters.contains(letter));
+    return currentAnswer
+        .split('')
+        .every((letter) => guessedLetters.contains(letter));
   }
 
   bool isGameOver() {
@@ -68,9 +69,14 @@ class _HangmanGameScreenState extends State<HangmanGameScreen> {
         return AlertDialog(
           backgroundColor: Colors.white,
           title: Text(won ? 'You Won!' : 'Game Over'),
-          content: Text(won
-              ? 'Congratulations! You guessed the word correctly.'
-              : 'The correct word was: $currentAnswer',style: TextStyle(color: Color(0xff67729D),),),
+          content: Text(
+            won
+                ? 'Congratulations! You guessed the word correctly.'
+                : 'The correct word was: $currentAnswer',
+            style: TextStyle(
+              color: Color(0xff67729D),
+            ),
+          ),
           actions: [
             TextButton(
               child: Text('Next'),
@@ -82,9 +88,17 @@ class _HangmanGameScreenState extends State<HangmanGameScreen> {
                     loadNextQuestion();
                   });
                 } else {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
-                     ScoreScreen(name: LevelScreen(easy: HangmanGameScreen(questions: beginnerQuestions), medium: HangmanGameScreen(questions: mediumQuestions),
-                          hard: HangmanGameScreen(questions: expertQuestions)) )));
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ScoreScreen(
+                              name: LevelScreen(
+                                  easy: HangmanGameScreen(
+                                      questions: beginnerQuestions),
+                                  medium: HangmanGameScreen(
+                                      questions: mediumQuestions),
+                                  hard: HangmanGameScreen(
+                                      questions: expertQuestions)))));
                 }
               },
             ),
@@ -115,7 +129,8 @@ class _HangmanGameScreenState extends State<HangmanGameScreen> {
   Widget showWord() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: currentAnswer.split('').map((letter) => buildLetter(letter)).toList(),
+      children:
+          currentAnswer.split('').map((letter) => buildLetter(letter)).toList(),
     );
   }
 
@@ -132,7 +147,11 @@ class _HangmanGameScreenState extends State<HangmanGameScreen> {
             alignment: Alignment.center,
             margin: EdgeInsets.all(4.0),
             decoration: BoxDecoration(
-              color: guessedLetters.contains(letter) ? currentAnswer.contains(letter)? Colors.green:Colors.red : Color(0xff67729D),
+              color: guessedLetters.contains(letter)
+                  ? currentAnswer.contains(letter)
+                      ? Colors.green
+                      : Colors.red
+                  : Color(0xff67729D),
               borderRadius: BorderRadius.circular(4.0),
             ),
             child: Text(
@@ -150,25 +169,30 @@ class _HangmanGameScreenState extends State<HangmanGameScreen> {
     var size = MediaQuery.of(context).size;
     return WillPopScope(
       onWillPop: () async {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
-            LevelScreen(easy: HangmanGameScreen(questions: beginnerQuestions), medium: HangmanGameScreen(questions: mediumQuestions),
-                hard: HangmanGameScreen(questions: expertQuestions)) ));
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => LevelScreen(
+                    easy: HangmanGameScreen(questions: beginnerQuestions),
+                    medium: HangmanGameScreen(questions: mediumQuestions),
+                    hard: HangmanGameScreen(questions: expertQuestions))));
         return false;
       },
       child: Scaffold(
         appBar: AppBar(
-         leading: BackButton(color: ColorTheme.maincolor),
-      ),
+          leading: BackButton(color: ColorTheme.maincolor),
+          centerTitle: true,
+          title:
+              Text('WELCOME TO HANGMAN', style: GlobalTextStyles.secondTittle),
+        ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            children:[
-              if(currentQuestionIndex == 0)   // welcome message for only the first question
-                Text(
-                  'Welcome to Hangman',
-                  style: GlobalTextStyles.secondTittle
-                ),
-              SizedBox(height: 30),
+            children: [
+              if (currentQuestionIndex ==
+                  0) // welcome message for only the first question
+
+                SizedBox(height: 30),
               Text(
                 widget.questions[currentQuestionIndex]['question']!,
                 style: GlobalTextStyles.subTitle3,
@@ -185,7 +209,10 @@ class _HangmanGameScreenState extends State<HangmanGameScreen> {
               SizedBox(height: 20),
               Text(
                 'Score: $score',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,color:Color(0xff67729D) ),
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xff67729D)),
               ),
             ],
           ),
@@ -193,5 +220,4 @@ class _HangmanGameScreenState extends State<HangmanGameScreen> {
       ),
     );
   }
-
 }

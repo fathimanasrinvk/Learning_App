@@ -94,12 +94,12 @@ class _QuizScreenState extends State<QuizScreen> {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment:
-                  CrossAxisAlignment.center, // Align content in the center
+                  CrossAxisAlignment.center, 
               children: [
                 Text(
                   "Question ${currentQuestionIndex + 1}: ${currentQuestion.questionText}",
                   style: GlobalTextStyles.subTitle3,
-                  textAlign: TextAlign.center, // Align text in the center
+                  textAlign: TextAlign.center, 
                 ),
                 SizedBox(height: size.height * .05),
                 Column(
@@ -110,8 +110,8 @@ class _QuizScreenState extends State<QuizScreen> {
                     return GestureDetector(
                       onTap: () => handleAnswer(idx),
                       child: Container(
-                        width: double.infinity, // Make container full width
-                        alignment: Alignment.center, // Center the content
+                        width: double.infinity, 
+                        alignment: Alignment.center, 
                         margin: const EdgeInsets.symmetric(vertical: 8.0),
                         padding: const EdgeInsets.all(16.0),
                         decoration: BoxDecoration(

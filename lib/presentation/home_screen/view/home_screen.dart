@@ -100,11 +100,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: EdgeInsets.only(right: size * 20),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => RegistrationScreen()),
-                      );
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RegistrationScreen()),
+                          (route) => false);
                     },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: ColorTheme.maincolor,

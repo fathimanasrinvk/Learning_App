@@ -8,8 +8,10 @@ import '../../../common_screen/view/score_screen.dart';
 import '../word_puzzle datas/database.dart';
 
 class PuzzleScreen extends StatefulWidget {
+  final String level;
+
   List<Map<String, String>> words;
-   PuzzleScreen({super.key, required this.words});
+  PuzzleScreen({super.key, required this.words, required this.level});
 
   @override
   State<PuzzleScreen> createState() => _PuzzleScreenState();
@@ -21,20 +23,20 @@ class _PuzzleScreenState extends State<PuzzleScreen> {
   String feedback = '';
 
   void checkAnswer() {
-    if(currentIndex!=9){
-    if (_controller.text.trim().toLowerCase() ==
-        widget.words[currentIndex]['original']) {
-      setState(() {
-        feedback = 'Correct!';
-        currentIndex = (currentIndex + 1) ;
-        _controller.clear();
-      });
+    if (currentIndex != 9) {
+      if (_controller.text.trim().toLowerCase() ==
+          widget.words[currentIndex]['original']) {
+        setState(() {
+          feedback = 'Correct!';
+          currentIndex = (currentIndex + 1);
+          _controller.clear();
+        });
+      } else {
+        setState(() {
+          feedback = 'Try again!';
+        });
+      }
     } else {
-      setState(() {
-        feedback = 'Try again!';
-      });
-    }
-  }else{
       if (_controller.text.trim().toLowerCase() ==
           widget.words[currentIndex]['original']) {
         setState(() {
@@ -47,7 +49,6 @@ class _PuzzleScreenState extends State<PuzzleScreen> {
         });
       }
     }
-
   }
 
   @override
@@ -55,31 +56,67 @@ class _PuzzleScreenState extends State<PuzzleScreen> {
     var size = MediaQuery.of(context).size;
     return WillPopScope(
       onWillPop: () async {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
-            LevelScreen(easy: PuzzleScreen(words: DbData.easy), medium: PuzzleScreen(words: DbData.medium),
-                hard: PuzzleScreen(words: DbData.hard)),));
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => LevelScreen(
+                  easy: PuzzleScreen(
+                    words: DbData.easy,
+                    level: 'easy',
+                  ),
+                  medium: PuzzleScreen(
+                    words: DbData.medium,
+                    level: 'medium',
+                  ),
+                  hard: PuzzleScreen(
+                    words: DbData.hard,
+                    level: 'hard',
+                  )),
+            ));
         return false;
       },
       child: Scaffold(
         appBar: AppBar(
-          leading: Icon(null),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => LevelScreen(
+                    easy: PuzzleScreen(
+                      level: 'easy',
+                      words: DbData.easy,
+                    ),
+                    medium: PuzzleScreen(
+                      level: 'medium',
+                      words: DbData.medium,
+                    ),
+                    hard: PuzzleScreen(
+                      level: 'hard',
+                      words: DbData.hard,
+                    )),
+              ));
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              color: ColorTheme.maincolor,
+            ),
+          ),
+          centerTitle: true,
+          title: Text(
+            "WELCOME TO WORD",
+            style: GlobalTextStyles.secondTittle,
+          ),
         ),
         body: SingleChildScrollView(
           child: Center(
             child: Column(
               children: [
-                Text("WELCOME TO WORD PUZZLE",
-                    style: GlobalTextStyles.secondTittle),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        "${currentIndex + 1} / 10",
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                      ),
+                      // Text("${currentIndex + 1} / 10",
+                      //     style: GlobalTextStyles.thirdTittle),
                     ],
                   ),
                 ),
@@ -91,7 +128,7 @@ class _PuzzleScreenState extends State<PuzzleScreen> {
                     image: DecorationImage(
                       image:
                           AssetImage(widget.words[currentIndex]['image'] ?? ""),
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     ),
                     borderRadius: BorderRadius.circular(20),
                   ),
@@ -103,13 +140,12 @@ class _PuzzleScreenState extends State<PuzzleScreen> {
                   child: Center(
                     child: Text(widget.words[currentIndex]['clue'].toString(),
                         style: GoogleFonts.poppins(
-                            fontSize: 15, color: ColorTheme.red)),
+                            fontSize: 15, color: ColorTheme.maincolor)),
                   ),
                 ),
                 SizedBox(height: size.height * 0.04),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(
-                      5, 0, 5, 0),
+                  padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: widget.words[currentIndex]['shuffled']!
@@ -153,14 +189,28 @@ class _PuzzleScreenState extends State<PuzzleScreen> {
                       onPressed: () {
                         if (currentIndex == 9) {
                           checkAnswer();
-                          if(feedback =='Correct!') {
-                            Timer(Duration(seconds:5), () {
-                            Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        ScoreScreen(name: LevelScreen(easy: PuzzleScreen(words: DbData.easy), medium: PuzzleScreen(words: DbData.medium),
-                                            hard: PuzzleScreen(words: DbData.hard)),))); });
-                          } }else {
+                          if (feedback == 'Correct!') {
+                            Timer(Duration(seconds: 5), () {
+                              Navigator.of(context)
+                                  .pushReplacement(MaterialPageRoute(
+                                      builder: (context) => ScoreScreen(
+                                            name: LevelScreen(
+                                                easy: PuzzleScreen(
+                                                  words: DbData.easy,
+                                                  level: 'easy',
+                                                ),
+                                                medium: PuzzleScreen(
+                                                  words: DbData.medium,
+                                                  level: 'medium',
+                                                ),
+                                                hard: PuzzleScreen(
+                                                  words: DbData.hard,
+                                                  level: 'hard',
+                                                )),
+                                          )));
+                            });
+                          }
+                        } else {
                           checkAnswer();
                         }
                       },
@@ -177,7 +227,8 @@ class _PuzzleScreenState extends State<PuzzleScreen> {
                   feedback,
                   style: TextStyle(
                       fontSize: 24,
-                      color: feedback == 'Correct!' ? Colors.green : Colors.red),
+                      color:
+                          feedback == 'Correct!' ? Colors.green : Colors.red),
                   textAlign: TextAlign.center,
                 ),
               ],

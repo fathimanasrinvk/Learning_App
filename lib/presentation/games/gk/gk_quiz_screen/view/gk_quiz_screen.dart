@@ -20,6 +20,7 @@ class _QuizScreenState extends State<QuizScreen> {
   int currentQuestionIndex = 0;
   bool answered = false;
   int selectedOptionIndex = -1;
+  int score = 0; // Track the score
 
   @override
   void initState() {
@@ -33,6 +34,9 @@ class _QuizScreenState extends State<QuizScreen> {
     setState(() {
       answered = true;
       selectedOptionIndex = index;
+      if (index == questions[currentQuestionIndex].correctOptionIndex) {
+        score++; // Increase score if the answer is correct
+      }
     });
   }
 
@@ -53,23 +57,35 @@ class _QuizScreenState extends State<QuizScreen> {
 
     return WillPopScope(
       onWillPop: () async {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
-            LevelScreen(easy: QuizScreen( difficulty: 'easy'), medium: QuizScreen( difficulty: 'medium'),
-                hard: QuizScreen( difficulty: 'hard')),));
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => LevelScreen(
+              easy: QuizScreen(difficulty: 'easy'),
+              medium: QuizScreen(difficulty: 'medium'),
+              hard: QuizScreen(difficulty: 'hard'),
+            ),
+          ),
+        );
         return false;
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text("WELCOME TO GK QUIZ", style: GlobalTextStyles.secondTittle),
+          title:
+          Text("WELCOME TO GK QUIZ", style: GlobalTextStyles.secondTittle),
           leading: IconButton(
             icon: Icon(
               Icons.arrow_back,
               color: ColorTheme.maincolor,
             ),
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => LevelScreen(easy: QuizScreen( difficulty: 'easy'), medium: QuizScreen( difficulty: 'medium'),
-                  hard: QuizScreen( difficulty: 'hard')),));
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => LevelScreen(
+                  easy: QuizScreen(difficulty: 'easy'),
+                  medium: QuizScreen(difficulty: 'medium'),
+                  hard: QuizScreen(difficulty: 'hard'),
+                ),
+              ));
             },
           ),
         ),
@@ -77,34 +93,36 @@ class _QuizScreenState extends State<QuizScreen> {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center, // Align content in the center
+              crossAxisAlignment:
+              CrossAxisAlignment.center,
               children: [
                 Text(
                   "Question ${currentQuestionIndex + 1}: ${currentQuestion.questionText}",
                   style: GlobalTextStyles.subTitle3,
-                  textAlign: TextAlign.center, // Align text in the center
+                  textAlign: TextAlign.center,
                 ),
                 SizedBox(height: size.height * .05),
                 Column(
-                  children: currentQuestion.options.asMap().entries.map((entry) {
+                  children:
+                  currentQuestion.options.asMap().entries.map((entry) {
                     int idx = entry.key;
                     String option = entry.value;
                     return GestureDetector(
                       onTap: () => handleAnswer(idx),
                       child: Container(
-                        width: double.infinity, // Make container full width
-                        alignment: Alignment.center, // Center the content
+                        width: double.infinity,
+                        alignment: Alignment.center,
                         margin: const EdgeInsets.symmetric(vertical: 8.0),
                         padding: const EdgeInsets.all(16.0),
                         decoration: BoxDecoration(
                           color: answered
                               ? (idx == selectedOptionIndex
-                                  ? (idx == currentQuestion.correctOptionIndex
-                                      ? Colors.green
-                                      : Colors.red)
-                                  : (idx == currentQuestion.correctOptionIndex
-                                      ? Colors.green
-                                      : Colors.white))
+                              ? (idx == currentQuestion.correctOptionIndex
+                              ? Colors.green
+                              : Colors.red)
+                              : (idx == currentQuestion.correctOptionIndex
+                              ? Colors.green
+                              : Colors.white))
                               : Colors.white,
                           border: Border.all(color: ColorTheme.maincolor),
                           borderRadius: BorderRadius.circular(8.0),
@@ -117,6 +135,9 @@ class _QuizScreenState extends State<QuizScreen> {
                     );
                   }).toList(),
                 ),
+                SizedBox(height: size.height * .02),
+                Text("Score: $score", // Display the score
+                    style: GlobalTextStyles.thirdTittle),
                 SizedBox(height: size.height * .1),
                 Container(
                   height: size.height * 0.05,
@@ -127,9 +148,12 @@ class _QuizScreenState extends State<QuizScreen> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ScoreScreen(name: LevelScreen(easy: QuizScreen( difficulty: 'easy'), medium: QuizScreen( difficulty: 'medium'),
-                                hard: QuizScreen( difficulty: 'hard')),
-
+                            builder: (context) => ScoreScreen(
+                              name: LevelScreen(
+                                easy: QuizScreen(difficulty: 'easy'),
+                                medium: QuizScreen(difficulty: 'medium'),
+                                hard: QuizScreen(difficulty: 'hard'),
+                              ),
                             ),
                           ),
                         );

@@ -13,7 +13,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   void initState() {
-    Timer(Duration(seconds: 10), () {
+    Timer(Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => OnboardingScreen()));
     });

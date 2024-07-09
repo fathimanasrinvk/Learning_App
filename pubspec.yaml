@@ -39,7 +39,8 @@ dependencies:
   flutter_staggered_grid_view:
   http:
   path_provider:
-  rename_app: ^1.4.0 
+  rename_app:
+  youtube_player_flutter:
 
 dev_dependencies:
   flutter_test:

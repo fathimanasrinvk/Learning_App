@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
 import 'package:gaming_app/presentation/registration_page/view/registration_screen.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:introduction_screen/introduction_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {

@@ -3,13 +3,15 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
+import 'package:gaming_app/presentation/alphabet_screen/view/alphabet_screen.dart';
 import 'package:gaming_app/presentation/sentense_screen/view/sentence_screen.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:path_provider/path_provider.dart';
-import '../../alphabet_screen/view/alphabet_screen.dart';
+
 import '../../game_screen/view/game_screen.dart';
 import '../../registration_page/view/registration_screen.dart';
 import '../../translation_screen/view/translation_screen.dart';
+import '../../video_screen/view/video_screen.dart';
 import '../../word_screen/view/word_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -55,13 +57,16 @@ class _HomeScreenState extends State<HomeScreen> {
       'LEARN WITH WORDS',
       'LEARN WITH GAMES',
       'LEARN WITH SENTENCES',
+      'LEARN WITH VIDEOS',
       'TRANSLATION'
+
     ];
     var screen = [
       AlphabetScreen(),
       WordScreen(),
       GameScreen(),
       SentenceScreen(),
+      VideosScreen(),
       TranslationScreen()
     ];
     double size = constantsize(context);
@@ -70,65 +75,65 @@ class _HomeScreenState extends State<HomeScreen> {
         body: CustomScrollView(slivers: [
           SliverList(
               delegate: SliverChildListDelegate([
-            SizedBox(height: size * 25),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                SizedBox(height: size * 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: size * 45),
-                      child: Container(
-                        width: size * 210,
-                        alignment: Alignment.centerLeft,
-                        child: Text("Hi, 👋 $_name",
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: GlobalTextStyles.subTitle3),
-                      ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: size * 45),
+                          child: Container(
+                            width: size * 210,
+                            alignment: Alignment.centerLeft,
+                            child: Text("Hi, 👋 $_name",
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: GlobalTextStyles.subTitle3),
+                          ),
+                        ),
+                        Padding(
+                            padding: EdgeInsets.only(left: size * 45),
+                            child: Container(
+                                alignment: Alignment.centerLeft,
+                                child: Text("Let’s start learning!",
+                                    style: GlobalTextStyles.subTitle1))),
+                      ],
                     ),
                     Padding(
-                        padding: EdgeInsets.only(left: size * 45),
-                        child: Container(
-                            alignment: Alignment.centerLeft,
-                            child: Text("Let’s start learning!",
-                                style: GlobalTextStyles.subTitle1))),
+                      padding: EdgeInsets.only(right: size * 20),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => RegistrationScreen()),
+                                  (route) => false);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: ColorTheme.maincolor,
+                          backgroundColor: Colors.white, // Text color
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                        child: Text(
+                          "LogOut",
+                          style: TextStyle(color: ColorTheme.maincolor),
+                        ),
+                      ),
+                    )
                   ],
                 ),
-                Padding(
-                  padding: EdgeInsets.only(right: size * 20),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => RegistrationScreen()),
-                          (route) => false);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: ColorTheme.maincolor,
-                      backgroundColor: Colors.white, // Text color
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                    ),
-                    child: Text(
-                      "LogOut",
-                      style: TextStyle(color: ColorTheme.maincolor),
-                    ),
-                  ),
-                )
-              ],
-            ),
-            SizedBox(height: size * 65)
-          ])),
+                SizedBox(height: size * 65)
+              ])),
           SliverList(
             delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
+                  (BuildContext context, int index) {
                 return Padding(
                   padding:
-                      EdgeInsets.fromLTRB(size * 20, size * 20, size * 20, 0),
+                  EdgeInsets.fromLTRB(size * 20, size * 20, size * 20, 0),
                   child: InkWell(
                     onTap: () {
                       Navigator.push(
@@ -172,7 +177,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 );
               },
-              childCount: 5,
+              childCount: 6,
             ),
           ),
         ]));

@@ -1,13 +1,10 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
 import 'package:gaming_app/presentation/alphabet_screen/view/alphabet_screen.dart';
 import 'package:gaming_app/presentation/sentense_screen/view/sentence_screen.dart';
-
 import 'package:path_provider/path_provider.dart';
-
 import '../../game_screen/view/game_screen.dart';
 import '../../registration_page/view/registration_screen.dart';
 import '../../translation_screen/view/translation_screen.dart';

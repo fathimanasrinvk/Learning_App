@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body: CustomScrollView(slivers: [
           SliverList(
               delegate: SliverChildListDelegate([
-                SizedBox(height: size * 15),
+                SizedBox(height: size *30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -126,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     )
                   ],
                 ),
-                SizedBox(height: size * 65)
+                SizedBox(height: size *20)
               ])),
           SliverList(
             delegate: SliverChildBuilderDelegate(

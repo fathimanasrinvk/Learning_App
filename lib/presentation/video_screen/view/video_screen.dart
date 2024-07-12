@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
+import '../../../core/constants/colors.dart';
+import '../../../core/constants/global_text_style.dart';
+
 
 class VideosScreen extends StatefulWidget {
   @override
@@ -46,7 +49,8 @@ class _VideosScreenState extends State<VideosScreen> {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: Text('Videos '),
+        leading: BackButton(color: ColorTheme.maincolor),
+        title: Text('VIDEOS',style: GlobalTextStyles.mainTittle),
         centerTitle: true,
       ),
       body: ListView.builder(

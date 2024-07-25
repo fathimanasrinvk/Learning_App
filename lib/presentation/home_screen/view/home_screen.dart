@@ -5,6 +5,7 @@ import 'package:gaming_app/core/constants/colors.dart';
 import 'package:gaming_app/core/constants/global_text_style.dart';
 import 'package:gaming_app/presentation/alphabet_screen/view/alphabet_screen.dart';
 import 'package:gaming_app/presentation/sentense_screen/view/sentence_screen.dart';
+import 'package:gaming_app/presentation/spell_checker/view/spell_checker.dart';
 
 import 'package:path_provider/path_provider.dart';
 
@@ -57,6 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'LEARN WITH WORDS',
       'LEARN WITH GAMES',
       'LEARN WITH SENTENCES',
+      'SPELL CHECKER'
       'LEARN WITH VIDEOS',
       'TRANSLATION'
 
@@ -66,7 +68,8 @@ class _HomeScreenState extends State<HomeScreen> {
       WordScreen(),
       GameScreen(),
       SentenceScreen(),
-      VideoScreen(),
+      SpellChecker(),
+      VideosScreen(),
       TranslationScreen()
     ];
     double size = constantsize(context);
